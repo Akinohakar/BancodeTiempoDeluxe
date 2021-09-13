@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:orientation="vertical"
+    android:background="@color/blackapp"
+    android:padding="20dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logoImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:transitionName="logoImage"
+        >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="128dp"
+            android:layout_height="135dp"
+            android:src="@drawable/ic_passes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_time_white"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/logoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:transitionName="logoTxt"
+        android:text="Hola Usuario, Bienvenido de Nuevo"
+        android:textColor="@color/whiteapp"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/sloganName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anticf"
+        android:text="Registrate para continuar"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/whiteapp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:hint="Usename or email"
+            app:hintTextColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
+            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeErrorColor="@color/whiteapp"
+            app:errorTextColor="@color/whiteapp"
+            app:placeholderTextColor="@color/whiteapp"
+            app:suffixTextColor="@color/whiteapp"
+
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:shadowColor="@color/whiteapp"
+                android:textColorLink="@color/whiteapp"
+                android:textColor="@color/whiteapp"
+                android:textColorHighlight="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:hint="Contraseña"
+            app:hintTextColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
+            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeErrorColor="@color/whiteapp"
+            app:errorTextColor="@color/whiteapp"
+            app:placeholderTextColor="@color/whiteapp"
+            app:suffixTextColor="@color/whiteapp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/whiteapp"
+
+
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:shadowColor="@color/whiteapp"
+                android:textColorLink="@color/whiteapp"
+                android:textColor="@color/whiteapp"
+                android:textColorHighlight="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:inputType="textPassword"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="Forget Password"
+                android:layout_gravity="right"
+                android:elevation="10dp"
+                android:layout_margin="5dp"/>
+            <Button
+                android:id="@+id/goSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="Nuevo Usuario"
+                android:layout_gravity="right"
+                android:elevation="10dp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar"
+            android:backgroundTint="@color/yellowapp"
+            android:background="@color/yellowapp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/btnGo"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navBuscar"
+            android:icon="@drawable/search"
+            android:title="Buscar" />
+        <item
+            android:id="@+id/navTransac"
+            android:icon="@drawable/search"
+            android:title="Transaciones" />
+        <item
+            android:id="@+id/navNotificaciones"
+            android:icon="@drawable/notifications"
+            android:title="Notificaciones" />
+        <item
+            android:id="@+id/navMensajes"
+            android:icon="@drawable/ic_baseline_chat_24"
+            android:title="Mensajes" />
+
+
+    </group>
+
+        <item android:title="Perfil">
+
+            <menu>
+                <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/navPerfil"
+                    android:icon="@drawable/person"
+                    android:title="home" />
+                <item
+                    android:id="@+id/navconfiPerfil"
+                    android:icon="@drawable/settings"
+                    android:title="home" />
+            </group>
+            </menu>
+        </item>
+
+
+</menu>
