@@ -6,6 +6,9 @@
     android:background="#0B2C60"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:navigationIcon="@drawable/menu">
+    app:navigationIcon="@drawable/menu"
+    app:title="Banco de Tiempo">
+
+
 
 </androidx.appcompat.widget.Toolbar>

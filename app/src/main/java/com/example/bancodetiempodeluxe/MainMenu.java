@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -23,6 +24,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
 //Gets
         drawerLayout=findViewById(R.id.drawerLayout);
@@ -41,7 +43,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.navPerfil);
-
 
     }
 //para que no se salga de la app el navegation drawer

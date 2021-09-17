@@ -20,21 +20,13 @@
             android:id="@+id/imageView3"
             android:layout_width="128dp"
             android:layout_height="135dp"
-            android:src="@drawable/ic_passes"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="69dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_time_white"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -42,7 +34,7 @@
         android:id="@+id/logoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bungee"
+        android:fontFamily="@font/montserrat_bold"
         android:transitionName="logoTxt"
         android:text="Hola Usuario, Bienvenido de Nuevo"
         android:textColor="@color/whiteapp"
@@ -166,8 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Iniciar"
-            android:backgroundTint="@color/yellowapp"
-            android:background="@color/yellowapp"
+            android:backgroundTint="@color/blueapp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/btnGo"
