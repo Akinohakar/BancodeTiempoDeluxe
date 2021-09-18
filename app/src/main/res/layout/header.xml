@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
+            android:onClick="goProfile"
             android:layout_width="75dp"
             android:layout_height="75dp"
             app:cardCornerRadius="40dp"
