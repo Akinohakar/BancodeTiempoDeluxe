@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -105,16 +106,17 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/star_black"
                 android:layout_marginTop="10dp"/>
+
             <TextView
                 android:id="@+id/globalCalification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/star"
-                android:textSize="12sp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:layout_centerHorizontal="true"
-                android:text="Calificacion"/>
+                android:text="Rating"
+                android:textSize="12sp" />
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/globalCalification"
@@ -142,8 +144,100 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.53">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            >
 
+            <ImageView
+                android:id="@+id/work"
+                android:layout_width="41dp"
+                android:layout_height="42dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/work_black"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/actualWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/work"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Trabajo Actual"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/theWork"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/actualWork"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carpinteria"
+                android:textSize="20sp"/>
+
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="413dp"
+        android:layout_height="215dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Edad  14"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="135dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Pronombres  Elle"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Descripcion de Trabajo" />
+
+
+
+                <TextView
+                    android:layout_margin="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsun" />
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,15 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentSearch"
-    android:background="@color/yellowapp">
-    <TextView
-        android:layout_width="wrap_content"
+    android:background="@color/blackapp">
+
+    <LinearLayout
+        android:id="@+id/searchMotor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SeaRCH fRAGMENT"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:orientation="horizontal"
+        android:background="#1F304A">
 
 
+
+
+        <EditText
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Busca lo que necesites"
+            android:textColorHint="@color/whiteapp"
+            android:textColorHighlight="@color/whiteapp"
+            android:textColor="@color/whiteapp"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:shadowColor="@color/whiteapp"
+            android:textColorLink="@color/whiteapp"/>
+        <ImageView
+        android:layout_width="65dp"
+        android:layout_height="69dp"
+        android:src="@drawable/search_white" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contactsRecView"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+
+        android:layout_below="@+id/searchMotor" />
 
 
 </RelativeLayout>
