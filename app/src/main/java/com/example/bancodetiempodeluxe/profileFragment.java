@@ -1,5 +1,6 @@
 package com.example.bancodetiempodeluxe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,12 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link profileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class profileFragment extends Fragment {
+    private FloatingActionButton fab;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +62,16 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        ViewGroup view= (ViewGroup) inflater.inflate(R.layout.fragment_profile, container, false);//Inflate fragment layout
+
+        fab=view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),editProfile.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }

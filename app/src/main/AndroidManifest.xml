@@ -16,6 +16,9 @@
             android:name=".SecondActivity"
             android:exported="true" />
         <activity
+            android:name=".editProfile"
+            android:exported="true" />
+        <activity
             android:name=".SignUp"
             android:exported="true" />
         <activity
