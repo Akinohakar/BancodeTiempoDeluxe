@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     app:cardCornerRadius="15dp"
-    app:cardElevation="10dp"
+    app:cardElevation="20dp"
     android:layout_margin="10dp"
     android:background="#0E3175"
-    android:backgroundTint="#0E3175">
+    android:backgroundTint="#072153">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:layout_marginTop="7dp"
             android:text="Job Name"
             android:textColor="@color/whiteapp"
-            android:textStyle="italic"
+
             android:layout_marginStart="5dp"/>
         <TextView
             android:id="@+id/txtDispDate"
@@ -66,7 +66,7 @@
             android:layout_marginTop="7dp"
             android:text="Disp Date"
             android:textColor="@color/whiteapp"
-            android:textStyle="italic"
+
             android:layout_marginStart="5dp"/>
         <ImageView
             android:layout_width="wrap_content"

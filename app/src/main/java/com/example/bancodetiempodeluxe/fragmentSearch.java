@@ -70,7 +70,7 @@ public class fragmentSearch extends Fragment {
         contactsRecView=view.findViewById(R.id.contactsRecView);//Se isntancia aqui
 
         ArrayList<Contact> contacts=new ArrayList<>();
-        contacts.add(new Contact("Margot Robie","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Plomeria", "L M M J V S D"));
+        contacts.add(new Contact("Margot Robie","Toma@tomassitometonatiu.com","https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg","Plomeria", "L M M J V S D"));
         contacts.add(new Contact("Tonita  Le Tinac Jr","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Carpinteria","L M M J V S D"));
         contacts.add(new Contact("El Sinjo de cuae","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Tineria","L M M J V S D"));
         contacts.add(new Contact("Juan le tonga","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Programacion","L M M J V S D"));

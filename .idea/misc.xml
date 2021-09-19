@@ -28,7 +28,7 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_search.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.33" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/toolbar.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/menu/mian_menu.xml" value="0.2755208333333333" />
       </map>
@@ -39,5 +39,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>
