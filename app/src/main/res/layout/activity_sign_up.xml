@@ -44,7 +44,8 @@
         android:text="Registrate para empezar tu futuro con nosotros"
         android:textSize="18sp"
         android:textColor="@color/whiteapp"
-        android:layout_marginTop="-20dp"/>
+        android:layout_marginTop="-20dp"
+        />
 
     <LinearLayout
         android:layout_width="366dp"
@@ -67,11 +68,13 @@
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
             app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
-            app:suffixTextColor="@color/whiteapp">
+            app:suffixTextColor="@color/whiteapp"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/yellowapp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -93,7 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de usuario"
-
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/yellowapp"
             app:counterEnabled="true"
             app:counterMaxLength="15"
             app:hintTextColor="@color/whiteapp"
@@ -104,8 +108,8 @@
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
             app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
-            app:boxStrokeErrorColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
+            app:boxStrokeErrorColor="@color/design_default_color_error"
             app:errorTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
             app:suffixTextColor="@color/whiteapp">
@@ -129,7 +133,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo Electronico"
-
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/yellowapp"
             app:hintTextColor="@color/whiteapp"
             android:outlineAmbientShadowColor="@color/whiteapp"
             android:textColorHint="@color/whiteapp"
@@ -138,7 +143,7 @@
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
             app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
@@ -171,9 +176,11 @@
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
             app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
+            app:startIconDrawable="@drawable/ic_smartphone"
+            app:startIconTint="@color/yellowapp"
             app:placeholderTextColor="@color/whiteapp"
             app:suffixTextColor="@color/whiteapp">
 
@@ -212,7 +219,7 @@
                 app:helperTextTextColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
                 app:counterTextColor="@color/whiteapp"
-                app:boxStrokeColor="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"
@@ -248,7 +255,7 @@
                 app:helperTextTextColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
                 app:counterTextColor="@color/whiteapp"
-                app:boxStrokeColor="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"

@@ -68,11 +68,13 @@
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
             app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
             app:suffixTextColor="@color/whiteapp"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/yellowapp"
 
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -102,13 +104,15 @@
             app:prefixTextColor="@color/whiteapp"
             app:helperTextTextColor="@color/whiteapp"
             app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/whiteapp"
+            app:counterTextColor="@color/yellowapp"
+            app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
             app:suffixTextColor="@color/whiteapp"
             app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_password"
+            app:startIconTint="@color/yellowapp"
             app:passwordToggleTint="@color/whiteapp"
 
 

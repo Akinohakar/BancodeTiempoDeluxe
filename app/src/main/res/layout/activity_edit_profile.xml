@@ -5,15 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blackapp"
+    android:backgroundTint="@color/blackapp"
     tools:context=".editProfile">
 
 
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="14dp"
+        android:background="@color/yellowapp"
+        android:backgroundTint="@color/yellowapp"
+        app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="112dp"
+        android:layout_width="189dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Editar Perfil"
         android:textColor="@color/whiteapp"
@@ -22,17 +34,286 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="144dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="144dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="108dp"
+        android:innerRadius="0dp"
+        android:onClick="goProfile"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        android:layout_marginBottom="44dp"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/exampleuser" />
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="9dp"
+        android:background="@color/yellowapp"
+        android:backgroundTint="@color/yellowapp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="63dp"
+        android:text="Imagen de Perfil"
+        android:textColor="@color/whiteapp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toStartOf="@+id/cardView2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="11dp"
         android:backgroundTint="@color/blueapp"
-        android:text="Confirmar"
+        android:text="Cambiar"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/yellowapp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="411dp"
+        android:layout_height="362dp"
+        android:layout_marginBottom="20dp"
+        android:fillViewport="true"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Edad"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    app:boxStrokeColor="@color/yellowapp"
+                    app:boxStrokeErrorColor="@color/whiteapp"
+                    app:counterOverflowTextColor="@color/whiteapp"
+                    app:counterTextColor="@color/whiteapp"
+                    app:errorTextColor="@color/whiteapp"
+                    app:helperTextTextColor="@color/whiteapp"
+                    app:hintTextColor="@color/whiteapp"
+                    app:placeholderTextColor="@color/whiteapp"
+                    app:prefixTextColor="@color/whiteapp"
+                    app:startIconDrawable="@drawable/ic_date"
+                    app:startIconTint="@color/yellowapp"
+                    app:suffixTextColor="@color/whiteapp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:outlineAmbientShadowColor="@color/whiteapp"
+                        android:outlineSpotShadowColor="@color/whiteapp"
+                        android:shadowColor="@color/whiteapp"
+                        android:textColor="@color/whiteapp"
+                        android:textColorHighlight="@color/whiteapp"
+                        android:textColorHint="@color/whiteapp"
+                        android:textColorLink="@color/whiteapp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editPronouns"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Pronombres"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    app:boxStrokeColor="@color/yellowapp"
+                    app:boxStrokeErrorColor="@color/whiteapp"
+                    app:counterOverflowTextColor="@color/whiteapp"
+                    app:counterTextColor="@color/whiteapp"
+                    app:errorTextColor="@color/whiteapp"
+                    app:helperTextTextColor="@color/whiteapp"
+                    app:hintTextColor="@color/whiteapp"
+                    app:placeholderTextColor="@color/whiteapp"
+                    app:prefixTextColor="@color/whiteapp"
+                    app:startIconDrawable="@drawable/ic_pronombre"
+                    app:startIconTint="@color/yellowapp"
+                    app:suffixTextColor="@color/whiteapp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:outlineAmbientShadowColor="@color/whiteapp"
+                        android:outlineSpotShadowColor="@color/whiteapp"
+                        android:shadowColor="@color/whiteapp"
+                        android:textColor="@color/whiteapp"
+                        android:textColorHighlight="@color/whiteapp"
+                        android:textColorHint="@color/whiteapp"
+                        android:textColorLink="@color/whiteapp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editNo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Numero de telefono"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    app:boxStrokeColor="@color/yellowapp"
+                    app:boxStrokeErrorColor="@color/whiteapp"
+                    app:counterOverflowTextColor="@color/whiteapp"
+                    app:counterTextColor="@color/whiteapp"
+                    app:errorTextColor="@color/whiteapp"
+                    app:helperTextTextColor="@color/whiteapp"
+                    app:hintTextColor="@color/whiteapp"
+                    app:placeholderTextColor="@color/whiteapp"
+                    app:prefixTextColor="@color/whiteapp"
+                    app:startIconDrawable="@drawable/ic_smartphone"
+                    app:startIconTint="@color/yellowapp"
+                    app:suffixTextColor="@color/whiteapp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:outlineAmbientShadowColor="@color/whiteapp"
+                        android:outlineSpotShadowColor="@color/whiteapp"
+                        android:shadowColor="@color/whiteapp"
+                        android:textColor="@color/whiteapp"
+                        android:textColorHighlight="@color/whiteapp"
+                        android:textColorHint="@color/whiteapp"
+                        android:textColorLink="@color/whiteapp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editJob"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Trabajo"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    app:boxStrokeColor="@color/yellowapp"
+                    app:boxStrokeErrorColor="@color/whiteapp"
+                    app:counterOverflowTextColor="@color/whiteapp"
+                    app:counterTextColor="@color/whiteapp"
+                    app:errorTextColor="@color/whiteapp"
+                    app:helperTextTextColor="@color/whiteapp"
+                    app:hintTextColor="@color/whiteapp"
+                    app:placeholderTextColor="@color/whiteapp"
+                    app:prefixTextColor="@color/whiteapp"
+                    app:startIconDrawable="@drawable/work_black"
+                    app:startIconTint="@color/yellowapp"
+                    app:suffixTextColor="@color/whiteapp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:outlineAmbientShadowColor="@color/whiteapp"
+                        android:outlineSpotShadowColor="@color/whiteapp"
+                        android:shadowColor="@color/whiteapp"
+                        android:textColor="@color/whiteapp"
+                        android:textColorHighlight="@color/whiteapp"
+                        android:textColorHint="@color/whiteapp"
+                        android:textColorLink="@color/whiteapp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="370dp"
+                android:layout_height="3dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginBottom="9dp"
+                android:background="@color/yellowapp"
+                android:backgroundTint="@color/yellowapp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView2"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/blueapp"
+        android:text="Confirmar Cambios"
+        app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.961"
-        app:rippleColor="@color/blackapp" />
+        app:rippleColor="@color/yellowapp"
+        app:strokeColor="@color/blueapp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
