@@ -12,25 +12,12 @@
         android:id="@+id/imageView"
         android:layout_width="148dp"
         android:layout_height="152dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_check_circle_24" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blueapp"
-        android:text="Regresar"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="#FFB400"
-        tools:layout_editor_absoluteY="553dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -42,7 +29,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="168dp" />
+        tools:layout_editor_absoluteY="249dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#f8f8f8"
+        android:text="Regresar"
+
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#FFB400"
+        tools:layout_editor_absoluteY="553dp" />
 
     <TextView
         android:id="@+id/textView15"

@@ -28,7 +28,7 @@ public class ContactRecViewAdapter extends RecyclerView.Adapter<ContactRecViewAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {//El paremtro viewgrup es pare generar un conjunto layout,ste es el padre de todos los layout
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ofert_list_item,parent,false);//para sacar elViewHolder,aque se relaciona con el Xml de contact lsit item
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ofert_list_item,parent,false);//para sacar elViewHolder,aque se relaciona con el Xml de contact lsit item,en si es ponerle elementos de item anime
         ViewHolder holder=new ViewHolder(view);//se crea una istancia de la viewHoler class para cadda elemento en nuestra recicler view
         return holder;//Este return lo mandara a inBingViewHolder
     }
@@ -65,7 +65,7 @@ public class ContactRecViewAdapter extends RecyclerView.Adapter<ContactRecViewAd
         private ImageView image;
         private CardView parent;
         public ViewHolder(@NonNull View itemView){
-            super(itemView);
+            super(itemView);//se busca del item que se pasa abajo
             txtName=itemView.findViewById(R.id.txtName);//Como no estamos en la main activity debemos utilizar el parametro item view
             parent=itemView.findViewById(R.id.parent);
             txtJob=itemView.findViewById(R.id.txtJob);

@@ -9,7 +9,7 @@
     app:cardElevation="20dp"
     android:layout_margin="10dp"
     android:background="#0E3175"
-    android:backgroundTint="#072153">
+    android:backgroundTint="#F8F8F8">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:text="Contact Name"
             android:layout_below="@+id/userImg"
-            android:textColor="@color/whiteapp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginTop="7dp"/>
 
@@ -54,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="7dp"
             android:text="Job Name"
-            android:textColor="@color/whiteapp"
+            android:textColor="@color/black"
 
             android:layout_marginStart="5dp"/>
         <TextView
@@ -65,7 +65,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="7dp"
             android:text="Disp Date"
-            android:textColor="@color/whiteapp"
+            android:textColor="@color/black"
 
             android:layout_marginStart="5dp"/>
         <ImageView
