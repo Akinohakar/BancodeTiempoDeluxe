@@ -11,4 +11,10 @@
     <color name="yellowapp">#FFC947</color>
     <color name="blueapp">#185ADB</color>
     <color name="blackapp">#0A1931</color>
+
+    <color name="d_blue1">#010038</color>
+    <color name="d_blue2">#293A80</color>
+    <color name="d_blue3">#537EC5</color>
+    <color name="d_orange">#F39422</color>
+    <color name="j_hueso">#F8F8F8</color>
 </resources>
