@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:text="Tomas Ulises Pena Matinez"
+            android:text="Alan Eduardo Aquino Rosas"
             android:textColor="@color/whiteapp"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

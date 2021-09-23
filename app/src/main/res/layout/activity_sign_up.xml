@@ -264,7 +264,14 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
