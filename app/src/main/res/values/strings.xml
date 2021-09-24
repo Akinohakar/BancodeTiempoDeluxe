@@ -24,4 +24,20 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- The Tona Strings uwu -->
+    <!-- Titles  -->
+    <string name="transactionsTitle">Mis Transacciones</string>
+    <string name="saldoTitle">Mi Saldo</string>
+    <!-- Placeholders -->
+    <string name="placeholderImage">Cambiar por definitiva</string>
+    <string name="placeholderHoras">01</string>
+    <string name="placeholderTransacciones">Mi transaccion</string>
+    <string name="placeholderFecha">2021-09-24</string>
+    <string name="placeholderUser">Alan Aquino</string>
+    <string name="placeholderWork">Carpintero</string>
+    <string name="placeholderStatus">En progreso</string>
+    <!-- Other Values -->
+    <string name="horas">Horas</string>
+    <string name="verDetalle">Ver Detalle</string>
 </resources>

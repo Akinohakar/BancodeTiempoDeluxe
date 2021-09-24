@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class transactionsFragment extends Fragment {
 
-    ArrayList<String> listDatos;
+    ArrayList<TransaccionesModel> listDatos;
     RecyclerView recycler;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -70,16 +71,25 @@ public class transactionsFragment extends Fragment {
 
         recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        listDatos = new ArrayList<String>();
+        listDatos = new ArrayList<TransaccionesModel>();
 
         //Crear las transacciones
-        for(int i = 0; i<9; i++){
-            listDatos.add("Transaccion no. " + i + " ");
-        }
+        listDatos.add(new TransaccionesModel("2021-09-24","01","Good Co","Música","Done"));
+        listDatos.add(new TransaccionesModel("2021-09-23","01","Emma Clair","Remix","Done"));
+        listDatos.add(new TransaccionesModel("2021-09-22","01","Wolfgang Lohr","Remix","Cancel"));
+        listDatos.add(new TransaccionesModel("2021-09-21","01","Alan Aquino","Programacion","Cancel"));
+        listDatos.add(new TransaccionesModel("2021-09-21","01","Vale Cabañas","Diseños","Done"));
+        listDatos.add(new TransaccionesModel("2021-09-21","01","Juan VaTe","Smash","Cancel"));
+        listDatos.add(new TransaccionesModel("2021-09-21","01","DinhoTec","Siuuuu","Done"));
 
         AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(listDatos);
         recycler.setAdapter(adapter);
 
         return view;
+    }
+
+    public void generatePDF_transactions(){
+        String msg = "Pasar a ver detalle";
+        Toast toast = Toast.makeText(getActivity(), msg,Toast.LENGTH_SHORT);
     }
 }
