@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blackapp">
 
-    <TextView
-        android:id="@+id/idDatosTransacciones"
+    <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mensaje"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/idTransFecha"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/placeholderFecha"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/j_hueso"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:id="@+id/idTransHora"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/placeholderHoras"
+            android:textColor="@color/j_hueso"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:id="@+id/idTransPerson"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/placeholderUser"
+            android:textSize="12sp"
+            android:textColor="@color/j_hueso"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:id="@+id/idTransWork"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/placeholderWork"
+            android:textColor="@color/j_hueso"
+            android:textSize="12sp"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:id="@+id/idTransStatus"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/placeholderStatus"
+            android:textColor="@color/j_hueso"
+            android:textSize="12sp"
+            android:fontFamily="@font/montserrat"/>
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
