@@ -3,10 +3,14 @@ package com.example.bancodetiempodeluxe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +18,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class transactionsFragment extends Fragment {
+
+    ArrayList<String> listDatos;
+    RecyclerView recycler;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +67,18 @@ public class transactionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_transactions, container, false);//Inflate fragment layout
+
+        recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        listDatos = new ArrayList<String>();
+
+        //Crear las transacciones
+        for(int i = 0; i<9; i++){
+            listDatos.add("Transaccion no. " + i + " ");
+        }
+
+        AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(listDatos);
+        recycler.setAdapter(adapter);
 
         return view;
     }
