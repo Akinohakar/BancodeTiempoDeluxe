@@ -16,15 +16,20 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
    private DrawerLayout drawer;
+    //iNATANCE OF FIREBASE
+    private FirebaseAuth mAuth;//Creating an instance firebase auth
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
+        mAuth = FirebaseAuth.getInstance();//Inicializion the instance
 
         Toolbar toolbar=findViewById(R.id.toolabar);
         setSupportActionBar(toolbar);
@@ -40,6 +45,24 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
         navigationView.setCheckedItem(R.id.navBuscar);}
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();//get the current user and store it in the variable
+        //If current user is not sign in the variable current user is going to be null
+        if(currentUser==null){//If user is not sign in
+            sendToStart();
+        }
+
+    }
+
+    private void sendToStart() {
+        Intent startIntent=new Intent(MainMenu.this,Login.class);
+        startActivity(startIntent);//the user is going back to the login page
+        finish();//so the user dont come back to this activity,the main activity
     }
 
     @Override
@@ -66,10 +89,21 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.navWho:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new whoFragment()).commit();
                 break;
+            case R.id.logOut:
+                //Caso apra logout
+                goOut();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void goOut() {
+        Toast.makeText(MainMenu.this, "Sesion cerrada", Toast.LENGTH_SHORT).show();
+        FirebaseAuth.getInstance().signOut();
+        sendToStart();//to go to login
+    }
+
     public void goProfile(View view){//method to go profile from header image
         NavigationView navigationView=findViewById(R.id.navView);
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new profileFragment()).commit();
@@ -77,6 +111,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         drawer.closeDrawer(GravityCompat.START);
 
     }
+    
 
     @Override
     public void onBackPressed() {//Post Accion of clicked item in navigation drawer

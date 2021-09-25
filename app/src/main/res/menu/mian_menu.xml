@@ -39,6 +39,10 @@
                     android:id="@+id/navWho"
                     android:icon="@drawable/ic_info"
                     android:title="¿Quienes somos?" />
+                <item
+                    android:id="@+id/logOut"
+                    android:icon="@drawable/ic_logout"
+                    android:title="Salir de cuenta" />
             </group>
         </menu>
     </item>

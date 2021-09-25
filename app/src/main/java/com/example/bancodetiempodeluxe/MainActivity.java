@@ -16,6 +16,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN=5000;
     //Varaibles
@@ -24,18 +27,29 @@ public class MainActivity extends AppCompatActivity {
     TextView logoTxt;
     ConstraintLayout consti;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        animations();
+
+
+
+
+    }
+
+
+
+    private void animations() {//mETHOD OF ANIMATION AND THE START
         //Anumations
         topAnim= AnimationUtils.loadAnimation(this,R.anim.top_animation);
         bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
         //Hooks
-       consti=findViewById(R.id.constImage);
+        consti=findViewById(R.id.constImage);
         logoTxt=findViewById(R.id.textView);
 
         consti.setAnimation(topAnim);
@@ -43,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(MainActivity.this,Login.class);
+                Intent intent=new Intent(MainActivity.this,MainMenu.class);
                 //For Animation we set a pair Animation,View
                 Pair[] pairs=new Pair[2];
                 pairs[0]=new Pair<View,String>(consti,"logoImage");
@@ -52,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent,options.toBundle());//To bundle to get the extras in this case is the animation
             }
         },SPLASH_SCREEN);
-
-
     }
+
 }
