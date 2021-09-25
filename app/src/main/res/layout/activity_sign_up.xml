@@ -54,48 +54,14 @@
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre completo"
-            android:textColorHint="@color/whiteapp"
-            app:hintTextColor="@color/whiteapp"
-            android:outlineAmbientShadowColor="@color/whiteapp"
-            android:outlineSpotShadowColor="@color/whiteapp"
-            app:prefixTextColor="@color/whiteapp"
-            app:helperTextTextColor="@color/whiteapp"
-            app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/yellowapp"
-            app:boxStrokeErrorColor="@color/whiteapp"
-            app:errorTextColor="@color/whiteapp"
-            app:placeholderTextColor="@color/whiteapp"
-            app:suffixTextColor="@color/whiteapp"
-            app:startIconDrawable="@drawable/person"
-            app:startIconTint="@color/yellowapp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:outlineSpotShadowColor="@color/whiteapp"
-                android:outlineAmbientShadowColor="@color/whiteapp"
-                android:shadowColor="@color/whiteapp"
-                android:textColorLink="@color/whiteapp"
-                android:textColor="@color/whiteapp"
-                android:textColorHighlight="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/newUserName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre de usuario"
+            android:hint="Nombre Completo"
             app:startIconDrawable="@drawable/person"
             app:startIconTint="@color/yellowapp"
             app:counterEnabled="true"
@@ -287,6 +253,7 @@
 
                 android:layout_marginRight="2dp"/>
             <Button
+                android:id="@+id/newConfirm"
                 android:layout_width="wrap_content"
                 android:layout_weight="5"
                 android:layout_height="wrap_content"
