@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+//IMPORTANTE CHECAR ADVERTIENCIAS DE NO HAY INTERNET
 public class SignUp extends AppCompatActivity {
     private TextInputLayout mDisplayName,mEmail,mpas,mpass;
     private Button mCreateBtn;
@@ -53,8 +54,11 @@ public class SignUp extends AppCompatActivity {
                 System.out.println(email);
                 String pass=mpas.getEditText().getText().toString();
                 System.out.println(pass);
+                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)){
+                    register_user(name,email,pass);
+                }
 
-                register_user(name,email,pass);}
+                }
 
         });
     }
