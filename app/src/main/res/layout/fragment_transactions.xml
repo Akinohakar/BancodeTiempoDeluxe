@@ -61,79 +61,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/alegreya_sans_sc"
         android:text="@string/transactionsTitle"
         android:textColor="@color/j_hueso"
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
-        <ImageView
-            android:id="@+id/imgCalendarTrans"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/calendario"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:id="@+id/imgRelojTrans"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/ic_time_white"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:id="@+id/imgPersonTrans"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/persona"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:id="@+id/imgWorkTrans"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/work_white"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:id="@+id/imgStatusTrans"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/ic_info"
-            tools:ignore="ImageContrastCheck" />
-    </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewIDTransacciones"
         android:layout_width="match_parent"
-        android:layout_height="220dp" />
+        android:layout_height="300dp" />
 
     <Button
+        android:id="@+id/btnDescargarPDF"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
         android:backgroundTint="@color/d_orange"
         android:fontFamily="@font/montserrat"
-        android:text="@string/verDetalle"
+        android:text="@string/descargarPDF"
         android:textColor="@color/blackapp" />
 
 </LinearLayout>
