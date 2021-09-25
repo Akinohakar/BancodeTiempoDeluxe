@@ -34,10 +34,11 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="placeholderHoras">01</string>
     <string name="placeholderTransacciones">Mi transaccion</string>
     <string name="placeholderFecha">2021-09-24</string>
-    <string name="placeholderUser">Alan Aquino</string>
-    <string name="placeholderWork">Carpintero</string>
-    <string name="placeholderStatus">En progreso</string>
+    <string name="placeholderUser">Alan Eduardo Aquino Rosas</string>
+    <string name="placeholderWork">Carpintería</string>
+    <string name="placeholderStatus">Completado</string>
+    <string name="placeholderContract">Contrato</string>
     <!-- Other Values -->
     <string name="horas">Horas</string>
-    <string name="verDetalle">Ver Detalle</string>
+    <string name="descargarPDF">Descargar PDF</string>
 </resources>

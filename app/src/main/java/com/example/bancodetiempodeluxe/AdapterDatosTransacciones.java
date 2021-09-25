@@ -45,23 +45,32 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
         TextView user;
         TextView work;
         TextView status;
+        TextView contrato;
+        ImageView imgStatus;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
-            fecha = (TextView) itemView.findViewById(R.id.idTransFecha);
-            hora  = (TextView) itemView.findViewById(R.id.idTransHora);
-            user  = (TextView) itemView.findViewById(R.id.idTransPerson);
-            work  = (TextView) itemView.findViewById(R.id.idTransWork);
-            status= (TextView) itemView.findViewById(R.id.idTransStatus);
-
+            fecha    = (TextView) itemView.findViewById(R.id.idTransFecha);
+            hora     = (TextView) itemView.findViewById(R.id.idTransHora);
+            user     = (TextView) itemView.findViewById(R.id.idTransUser);
+            work     = (TextView) itemView.findViewById(R.id.idTransWork);
+            status   = (TextView) itemView.findViewById(R.id.idTransStatus);
+            contrato = (TextView) itemView.findViewById(R.id.idTransContract);
+            imgStatus= (ImageView) itemView.findViewById(R.id.idTransIMGStatus);
         }
 
         public void asignarDatos(TransaccionesModel tModel) {
+            contrato.setText(tModel.contrato);
             fecha.setText(tModel.fecha);
             hora.setText(tModel.hora);
             user.setText(tModel.cliente);
             work.setText(tModel.trabajo);
             status.setText(tModel.status);
+            if(tModel.status == "Cancelado"){
+                imgStatus.setImageResource(R.drawable.ic_cancel);
+            }else{
+                imgStatus.setImageResource(R.drawable.ic_checked);
+            }
         }
     }
 }

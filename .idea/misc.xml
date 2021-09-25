@@ -37,6 +37,7 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/toolbar.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/menu/mian_menu.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_date.xml" value="0.2703125" />
+        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_password.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_confir_servicio.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_dashboard.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_edit_profile.xml" value="0.17255434782608695" />
@@ -52,7 +53,7 @@
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_notifications.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_profile.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_search.xml" value="0.17889492753623187" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.30960086299892126" />
+        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.2737430167597765" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_who.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.17889492753623187" />
