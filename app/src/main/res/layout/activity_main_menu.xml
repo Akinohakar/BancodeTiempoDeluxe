@@ -23,7 +23,23 @@
             android:elevation="10dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Banco de Tiempo"></com.google.android.material.appbar.MaterialToolbar>
+            app:title=" "
+            >
+            <ImageView
+                android:layout_marginLeft="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/logowhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Banco de Tiempo"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/whiteapp"
+                />
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <FrameLayout
             android:id="@+id/framentContainer"

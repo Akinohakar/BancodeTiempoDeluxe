@@ -3,13 +3,23 @@ package com.example.bancodetiempodeluxe;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +28,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class profileFragment extends Fragment {
     private FloatingActionButton fab;
-
+    //Database
+    private DatabaseReference mUserDatabase;
+    private FirebaseUser mCurrentUser;
+    //View Elements
+    private TextView userStatus,userName;
+    private ImageView userImage;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,12 +78,41 @@ public class profileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup view= (ViewGroup) inflater.inflate(R.layout.fragment_profile, container, false);//Inflate fragment layout
+        //Listing the view elements
+        userStatus=view.findViewById(R.id.profile_user_status);
+        userName=view.findViewById(R.id.profile_user_name);
+        userImage=view.findViewById(R.id.profile_image);
+        //To retrive the data
+        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        String current_uid=mCurrentUser.getUid();
+        mUserDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);//pOINTING TO THE USERS OBJECT and to the id object
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {//Add data or retrive data
+                String name=snapshot.child("name").getValue().toString();
+                String image=snapshot.child("image").getValue().toString();
+                String status=snapshot.child("status").getValue().toString();
+                String thumb_image=snapshot.child("thumb_image").getValue().toString();
+                String number=snapshot.child("phone").getValue().toString();
+                userName.setText(name);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {//For errors
+
+            }
+        });
+
 
         fab=view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name_value=userName.toString();
                 Intent intent=new Intent(getActivity(),editProfile.class);
+                intent.putExtra("name",name_value);
                 startActivity(intent);
             }
         });

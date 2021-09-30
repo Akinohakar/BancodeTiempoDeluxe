@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        //ACCIONADOR INICIO SESION
         goMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
                 if(!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)){
                     //progress dialog
                     mLoginProgress.setTitle("Iniciando Sesion");
-                    mLoginProgress.setMessage("Esperate prro en lo que las credenciales nos llegan del bigote");
+                    mLoginProgress.setMessage("Porfavor espere");
                     mLoginProgress.setCanceledOnTouchOutside(false);
                     mLoginProgress.show();
                     //send to login
@@ -67,6 +67,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //SE ENVIA EL REGISTRO A FIREBASE AUTH PARA HACER SESION
     private void loginUser(String email, String pass) {
        mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
            @Override
@@ -79,7 +80,7 @@ public class Login extends AppCompatActivity {
                    finish();
                }else{
                    mLoginProgress.hide();
-                   Toast.makeText(Login.this, "Gfe acuerdese de su cuenta o chequele xd", Toast.LENGTH_LONG).show();
+                   Toast.makeText(Login.this, "No se puede ingresar,Porfavor comprueba que toda la informacion este completa", Toast.LENGTH_LONG).show();
                }
 
            }

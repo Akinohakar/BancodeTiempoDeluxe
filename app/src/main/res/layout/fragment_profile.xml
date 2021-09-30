@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/profile_user_image"
                     android:layout_width="146dp"
                     android:layout_height="156dp"
                     android:scaleType="centerInside"
@@ -68,7 +69,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/userProfileName"
+            android:id="@+id/profile_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -80,12 +81,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/idUser"
+            android:id="@+id/profile_user_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="170dp"
             android:layout_marginTop="10dp"
-            android:text="#040540054"
+            android:text="No verificado"
             android:textColor="#685D5D"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
