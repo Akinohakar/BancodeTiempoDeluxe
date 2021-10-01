@@ -115,7 +115,7 @@ public class transactionsFragment extends Fragment {
         }
 
         //Crear las transacciones
-        listDatos.add(new TransaccionesModel("2021-09-24","01","Good Co","Música","Completado","Contrato"));
+        /*listDatos.add(new TransaccionesModel("2021-09-24","01","Good Co","Música","Completado","Contrato"));
         listDatos.add(new TransaccionesModel("2021-09-23","01","Emma Clair","Remix","Completado","Contratade"));
         listDatos.add(new TransaccionesModel("2021-09-22","01","Wolfgang Lohr","Remix","Cancelado","Contrato"));
         listDatos.add(new TransaccionesModel("2021-09-21","01","Alan Aquino","Programacion","Cancelado","Contrato"));
@@ -123,6 +123,15 @@ public class transactionsFragment extends Fragment {
         listDatos.add(new TransaccionesModel("2021-09-21","01","Juan VaTe","Smash","Cancelado","Contrato"));
         listDatos.add(new TransaccionesModel("2021-09-21","01","DinhoTec","Siuuuu","En Progreso","Contratade"));
         listDatos.add(new TransaccionesModel("2021-09-27", "01","Arenoman","Bigote","Cancelado", "Contrato"));
+        */
+
+        for(int i = 1; i <= 80; i++){
+            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contrato"));
+        }
+        for(int i = 1; i <= 120; i++){
+            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contratade"));
+        }
+
         AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(listDatos);
         recycler.setAdapter(adapter);
 
@@ -148,14 +157,16 @@ public class transactionsFragment extends Fragment {
         int pageHeight = 792;
         int pageWidth  = 612;
 
+        int pageNumber = 1;
+        int overViewContents = 0;
+
         //Positions
         int starting_y = 0;
 
         //Strings for PDF Header
         String clientName = "Alan Eduardo Aquino Rosas";
-        String profileNum = "#12345";
 
-        String documentTitle = "Transacciones "+ clientName +profileNum+".pdf";
+        String documentTitle = "Transacciones "+ clientName+".pdf";
 
         //Actual Date
         Date date = Calendar.getInstance().getTime();
@@ -214,7 +225,7 @@ public class transactionsFragment extends Fragment {
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
         canvas.drawText("Listado de Transacciones", 100,55, title);
         title.setTextSize(10);
-        canvas.drawText(clientName +"  "+profileNum, 100,65, title);
+        canvas.drawText(clientName, 100,65, title);
         ///////////////////////////////////////////////////////////////////////////////
         starting_y = 100;
 
@@ -248,17 +259,34 @@ public class transactionsFragment extends Fragment {
         ///////Obtener elementos de Lista
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         title.setTextSize(8);
-        for(TransaccionesModel t : listDatos){
-            if(t.contrato.equals("Contrato")) {
-                canvas.drawText(t.cliente, xUser, starting_y, title);
-                canvas.drawText(t.trabajo, xWork, starting_y, title);
-                canvas.drawText(t.fecha, xDate, starting_y, title);
-                canvas.drawText(t.hora, xHour, starting_y, title);
-                canvas.drawText(t.status, xStat, starting_y, title);
-                starting_y += 10;
+        for(int i = 0; i< listDatos.size(); i++){
+            if(overViewContents >= 60){
+                document.finishPage(page);
+                pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,++pageNumber).create();
+                page = document.startPage(pageInfo);
+                canvas = page.getCanvas();
+                overViewContents = 0;
+                starting_y = 30;
             }
+            if(listDatos.get(i).contrato.equals("Contrato")) {
+                canvas.drawText(listDatos.get(i).cliente, xUser, starting_y, title);
+                canvas.drawText(listDatos.get(i).trabajo, xWork, starting_y, title);
+                canvas.drawText(listDatos.get(i).fecha, xDate, starting_y, title);
+                canvas.drawText(listDatos.get(i).hora, xHour, starting_y, title);
+                canvas.drawText(listDatos.get(i).status, xStat, starting_y, title);
+                starting_y += 10;
+                ++overViewContents;
+            }
+
         }
-        //////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        document.finishPage(page);
+        pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,++pageNumber).create();
+        page = document.startPage(pageInfo);
+        canvas = page.getCanvas();
+
+        overViewContents = 0;
+        starting_y = 30;
 
         /////////////// Trabajos Realizados ///////////////////////////////////////////
         paint.setColor(Color.rgb(150, 159, 168));
@@ -290,18 +318,27 @@ public class transactionsFragment extends Fragment {
         ///////Obtener elementos de Lista
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         title.setTextSize(8);
-        for(TransaccionesModel t : listDatos){
-            if(t.contrato.equals("Contratade")) {
-                canvas.drawText(t.cliente, xUser, starting_y, title);
-                canvas.drawText(t.trabajo, xWork, starting_y, title);
-                canvas.drawText(t.fecha, xDate, starting_y, title);
-                canvas.drawText(t.hora, xHour, starting_y, title);
-                canvas.drawText(t.status, xStat, starting_y, title);
+        overViewContents = 0;
+        for(int j = 0; j< listDatos.size(); j++){
+            if(overViewContents >= 60){
+                document.finishPage(page);
+                pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,++pageNumber).create();
+                page = document.startPage(pageInfo);
+                canvas = page.getCanvas();
+                overViewContents = 0;
+                starting_y = 30;
+            }
+            if(listDatos.get(j).contrato.equals("Contratade")) {
+                canvas.drawText(listDatos.get(j).cliente, xUser, starting_y, title);
+                canvas.drawText(listDatos.get(j).trabajo, xWork, starting_y, title);
+                canvas.drawText(listDatos.get(j).fecha, xDate, starting_y, title);
+                canvas.drawText(listDatos.get(j).hora, xHour, starting_y, title);
+                canvas.drawText(listDatos.get(j).status, xStat, starting_y, title);
                 starting_y += 10;
+                ++overViewContents;
             }
         }
         //////////////////////////////////////////////////////////////////////////////////
-
         document.finishPage(page);
 
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),documentTitle);
