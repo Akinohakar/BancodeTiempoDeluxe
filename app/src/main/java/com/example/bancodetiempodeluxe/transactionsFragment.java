@@ -4,6 +4,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
@@ -27,7 +28,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -44,7 +50,6 @@ public class transactionsFragment extends Fragment {
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     Bitmap bmp, scaledbmp;
-    String documentTitle = "TestPDF.pdf";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,7 +106,7 @@ public class transactionsFragment extends Fragment {
         listDatos = new ArrayList<TransaccionesModel>();
 
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
-        scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140,false);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
 
         if(checkPermision()){
             Toast.makeText(getActivity(), "Permiso Concedido", Toast.LENGTH_SHORT).show();
@@ -117,7 +122,7 @@ public class transactionsFragment extends Fragment {
         listDatos.add(new TransaccionesModel("2021-09-21","01","Vale Cabañas","Diseños","Completado","Contratade"));
         listDatos.add(new TransaccionesModel("2021-09-21","01","Juan VaTe","Smash","Cancelado","Contrato"));
         listDatos.add(new TransaccionesModel("2021-09-21","01","DinhoTec","Siuuuu","En Progreso","Contratade"));
-
+        listDatos.add(new TransaccionesModel("2021-09-27", "01","Arenoman","Bigote","Cancelado", "Contrato"));
         AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(listDatos);
         recycler.setAdapter(adapter);
 
@@ -125,7 +130,7 @@ public class transactionsFragment extends Fragment {
           @Override
           public void onClick(View view) {
               //generatePDF_transactions();
-              create_PDFDocument();
+              create_PDFDocument(listDatos);
           }
         });
 
@@ -138,44 +143,164 @@ public class transactionsFragment extends Fragment {
         toast.show();
     }
 
-    public void create_PDFDocument(){
+    public void create_PDFDocument(ArrayList<TransaccionesModel> listDatos){
         //Medidas de la pagina
-        int pageHeight = 1120;
-        int pageWidth  = 792;
+        int pageHeight = 792;
+        int pageWidth  = 612;
+
+        //Positions
+        int starting_y = 0;
+
+        //Strings for PDF Header
+        String clientName = "Alan Eduardo Aquino Rosas";
+        String profileNum = "#12345";
+
+        String documentTitle = "Transacciones "+ clientName +profileNum+".pdf";
+
+        //Actual Date
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String actualDate = df.format(date);
+
+        //Headers
+        String hUser = "Usuario";
+        String hWork = "Trabajo";
+        String hDate = "Fecha";
+        String hHour = "Horas";
+        String hStat = "Estado";
+
+
+        int separator = 63;
+        int xUser = 15;
+        int xWork = 5 + separator + xUser + separator;
+        int xDate = separator + xWork + separator;
+        int xHour = separator + xDate + separator;
+        int xStat = separator + xHour + separator;
+        ///////////////////////////////////////////
 
         //for drawing shapes we use title
         //for adding text in PDF file
         Paint paint = new Paint();
         Paint title = new Paint();
+        PdfDocument.Page page;
 
         //Crear nuevo documento
         PdfDocument document = new PdfDocument();
+
+        //Creando cada página
 
         //Create a page description
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,1).create();
 
         //Start a page
-        PdfDocument.Page page = document.startPage(pageInfo);
-
+        page = document.startPage(pageInfo);
         Canvas canvas = page.getCanvas();
 
+        ///////////////////// HEADER ///////////////////////////////
         //Dibujar el logo
-        canvas.drawBitmap(scaledbmp, 56,40, paint);
-
-        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
-        title.setTextSize(20);
+        canvas.drawBitmap(scaledbmp, 5,10, paint);
 
         title.setColor(ContextCompat.getColor(getActivity(), R.color.blackapp));
 
         //Parametros: texto, position from start, position from top, paint variable
-        canvas.drawText("Banco de tiempo",209,80,title);
-        canvas.drawText("Reporte Automático Generado", 209,100, title);
-
+        title.setTextSize(30);
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        canvas.drawText("Banco de Tiempo",100,40,title);
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
-        title.setTextSize(15);
+        title.setTextSize(10);
+        canvas.drawText(actualDate,530,30,title);
 
+        title.setTextSize(15);
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
+        canvas.drawText("Listado de Transacciones", 100,55, title);
+        title.setTextSize(10);
+        canvas.drawText(clientName +"  "+profileNum, 100,65, title);
+        ///////////////////////////////////////////////////////////////////////////////
+        starting_y = 100;
+
+        /////////////// Trabajos Contratados ///////////////////////////////////////////
+        paint.setColor(Color.rgb(150, 159, 168));
+        paint.setStrokeWidth(0);
+        canvas.drawRect(5,starting_y,607,starting_y += 30,paint);
+
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         title.setColor(ContextCompat.getColor(getActivity(), R.color.blackapp));
-        canvas.drawText("Listado de Transacciones", 209, 250, title);
+        title.setTextSize(20);
+        canvas.drawText("Trabajos Contratados", 10, starting_y - 10, title);
+
+        //Encabezados
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
+        title.setTextSize(15);
+        starting_y +=20;
+
+        canvas.drawText(hUser, xUser, starting_y, title);
+        canvas.drawText(hWork, xWork, starting_y, title);
+        canvas.drawText(hDate, xDate, starting_y, title);
+        canvas.drawText(hHour, xHour, starting_y, title);
+        canvas.drawText(hStat, xStat, starting_y, title);
+
+        starting_y += 10;
+        paint.setColor(Color.rgb(150, 159, 168));
+        paint.setStrokeWidth(0);
+        canvas.drawRect(5,starting_y,607,starting_y += 1,paint);
+        starting_y += 10;
+
+        ///////Obtener elementos de Lista
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+        title.setTextSize(8);
+        for(TransaccionesModel t : listDatos){
+            if(t.contrato.equals("Contrato")) {
+                canvas.drawText(t.cliente, xUser, starting_y, title);
+                canvas.drawText(t.trabajo, xWork, starting_y, title);
+                canvas.drawText(t.fecha, xDate, starting_y, title);
+                canvas.drawText(t.hora, xHour, starting_y, title);
+                canvas.drawText(t.status, xStat, starting_y, title);
+                starting_y += 10;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////
+
+        /////////////// Trabajos Realizados ///////////////////////////////////////////
+        paint.setColor(Color.rgb(150, 159, 168));
+        paint.setStrokeWidth(0);
+        canvas.drawRect(5,starting_y,607,starting_y += 30,paint);
+
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        title.setColor(ContextCompat.getColor(getActivity(), R.color.blackapp));
+        title.setTextSize(20);
+        canvas.drawText("Trabajos Realizados", 10, starting_y - 10, title);
+
+        //Encabezados
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
+        title.setTextSize(15);
+        starting_y +=20;
+
+        canvas.drawText(hUser, xUser, starting_y, title);
+        canvas.drawText(hWork, xWork, starting_y, title);
+        canvas.drawText(hDate, xDate, starting_y, title);
+        canvas.drawText(hHour, xHour, starting_y, title);
+        canvas.drawText(hStat, xStat, starting_y, title);
+
+        starting_y += 10;
+        paint.setColor(Color.rgb(150, 159, 168));
+        paint.setStrokeWidth(0);
+        canvas.drawRect(5,starting_y,607,starting_y += 1,paint);
+        starting_y += 10;
+
+        ///////Obtener elementos de Lista
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+        title.setTextSize(8);
+        for(TransaccionesModel t : listDatos){
+            if(t.contrato.equals("Contratade")) {
+                canvas.drawText(t.cliente, xUser, starting_y, title);
+                canvas.drawText(t.trabajo, xWork, starting_y, title);
+                canvas.drawText(t.fecha, xDate, starting_y, title);
+                canvas.drawText(t.hora, xHour, starting_y, title);
+                canvas.drawText(t.status, xStat, starting_y, title);
+                starting_y += 10;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////
 
         document.finishPage(page);
 
