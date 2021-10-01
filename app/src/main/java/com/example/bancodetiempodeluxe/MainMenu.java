@@ -13,16 +13,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
    private DrawerLayout drawer;
     //iNATANCE OF FIREBASE
     private FirebaseAuth mAuth;//Creating an instance firebase auth
+    private DatabaseReference mUserDatabase;
+    private FirebaseUser mCurrentUser;
+    private TextView  profileHeaderName,profilePronoun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +45,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         drawer=findViewById(R.id.drawerLayout);
         NavigationView navigationView=findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
-
+        headerFirebase();
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_closed);
         drawer.addDrawerListener(toggle);
@@ -45,6 +54,29 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
         navigationView.setCheckedItem(R.id.navBuscar);}
 
+
+    }
+    public void headerFirebase(){
+        profileHeaderName=findViewById(R.id.headerTitleName);
+        profilePronoun=findViewById(R.id.headerPronoun);
+        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        String current_uid=mCurrentUser.getUid();
+        mUserDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);//pOINTING TO THE USERS OBJECT and to the id object
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name=snapshot.child("name").getValue().toString();
+                String pronoun=snapshot.child("pronoun").getValue().toString();
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

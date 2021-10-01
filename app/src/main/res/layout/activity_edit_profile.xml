@@ -12,7 +12,7 @@
     <!--El ripple color es cuando se presiona,el app background es para el borde-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabImageChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"

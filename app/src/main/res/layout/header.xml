@@ -44,6 +44,7 @@
                     android:textColor="@color/whiteapp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/headerPronoun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -81,7 +82,7 @@
         android:layout_marginTop="20dp">
 
         <TextView
-
+            android:id="@+id/headerTitleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"

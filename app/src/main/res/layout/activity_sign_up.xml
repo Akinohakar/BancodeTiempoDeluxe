@@ -62,7 +62,11 @@
         android:textColor="@color/whiteapp"
         android:layout_marginTop="-20dp"
         />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+    </androidx.core.widget.NestedScrollView>
     <LinearLayout
         android:layout_width="366dp"
         android:layout_height="386dp"
@@ -257,6 +261,83 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newJob"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Trabajo"
+                app:startIconDrawable="@drawable/ic_job"
+                app:startIconTint="@color/yellowapp"
+                app:hintTextColor="@color/whiteapp"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newPronoun"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Pronombres"
+                android:layout_weight="1"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                app:hintTextColor="@color/whiteapp"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 //IMPORTANTE CHECAR ADVERTIENCIAS DE NO HAY INTERNET
 public class SignUp extends AppCompatActivity {
-    private TextInputLayout mDisplayName,mEmail,mpas,mpass,mTel;
+    private TextInputLayout mDisplayName,mEmail,mpas,mpass,mTel,mJobTile,mPronoun;
     private Button mCreateBtn;
 
     private FirebaseAuth mAuth;//Intancia autenticacion Firebase
@@ -44,6 +44,8 @@ public class SignUp extends AppCompatActivity {
         mpass=findViewById(R.id.newPass);
         mCreateBtn=findViewById(R.id.newConfirm);
         mTel=findViewById(R.id.newPhone);
+        mJobTile=findViewById(R.id.newJob);
+        mPronoun=findViewById(R.id.newPronoun);
 
         //Pasword check
         String newPass1=mpas.getEditText().toString();
@@ -65,8 +67,10 @@ public class SignUp extends AppCompatActivity {
                 System.out.println(pass);
                 String tel=mTel.getEditText().getText().toString();
                 System.out.println(tel);
-                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)){
-                    register_user(name,email,pass,tel);
+                String job=mJobTile.getEditText().getText().toString();
+                String pronoun=mPronoun.getEditText().getText().toString();
+                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)||!TextUtils.isEmpty(tel)||!TextUtils.isEmpty(job)||!TextUtils.isEmpty(pronoun)){
+                    register_user(name,email,pass,tel,job,pronoun);
                 }
 
                 }
@@ -85,24 +89,35 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    private void register_user(String name, String email, String pass,String tel) {
+    private void register_user(String name, String email, String pass,String tel,String job,String pronoun) {
         mAuth.createUserWithEmailAndPassword(email,pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {//listen to the registation is completed
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
                             //To get the user id
                             FirebaseUser current_user=FirebaseAuth.getInstance().getCurrentUser();
                             String uid=current_user.getUid();
+
                             //Create database reference
                             mDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(uid);//Until reference is the root
                             //Hasmap to store complex data
                             HashMap<String,String> userMap=new HashMap<>();
                             userMap.put("name",name);
-                            userMap.put("status","0");
+                            userMap.put("age"," ");
+                            userMap.put("status","0");//Es que no esta autenticado
                             userMap.put("phone",tel);
+                            userMap.put("pronoun",pronoun);
                             userMap.put("image","default");
                             userMap.put("thumb_image","default");
+                            userMap.put("jobtitle",job);
+                            userMap.put("address"," ");
+                            userMap.put("rating","0.0");
+                            userMap.put("balance","0");
+                            userMap.put("role","user");
+                            userMap.put("jobdesc"," ");
+
                             //puting the hash map in the reference
                             mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {//Para saber si se cumplio
                                 @Override

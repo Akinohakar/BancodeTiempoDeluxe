@@ -32,7 +32,7 @@ public class profileFragment extends Fragment {
     private DatabaseReference mUserDatabase;
     private FirebaseUser mCurrentUser;
     //View Elements
-    private TextView userStatus,userName;
+    private TextView userStatus,userName,userRating,userActualJob,userAge,userPronoun,userJobDesc;
     private ImageView userImage;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +82,11 @@ public class profileFragment extends Fragment {
         userStatus=view.findViewById(R.id.profile_user_status);
         userName=view.findViewById(R.id.profile_user_name);
         userImage=view.findViewById(R.id.profile_image);
+        userActualJob=view.findViewById(R.id.profileWorkTitle);
+        userRating=view.findViewById(R.id.profileActualRating);
+        userAge=view.findViewById(R.id.profileAge);
+        userPronoun=view.findViewById(R.id.profilePronoun);
+        userJobDesc=view.findViewById(R.id.profileJobDesc);
         //To retrive the data
         mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
         String current_uid=mCurrentUser.getUid();
@@ -94,7 +99,18 @@ public class profileFragment extends Fragment {
                 String status=snapshot.child("status").getValue().toString();
                 String thumb_image=snapshot.child("thumb_image").getValue().toString();
                 String number=snapshot.child("phone").getValue().toString();
+                String work=snapshot.child("jobtitle").getValue().toString();
+                String rating=snapshot.child("rating").getValue().toString();
+                String pronoun=snapshot.child("pronoun").getValue().toString();
+                String jobdesc=snapshot.child("jobdesc").getValue().toString();
+                String edad=snapshot.child("age").getValue().toString();
                 userName.setText(name);
+                userRating.setText(rating);
+                userActualJob.setText(work);
+                userPronoun.setText("Pronombres: "+pronoun);
+                userJobDesc.setText(jobdesc);
+                userAge.setText("Edad: "+edad);
+
 
 
             }
