@@ -127,6 +127,8 @@ public class transactionsFragment extends Fragment {
 
         for(int i = 1; i <= 80; i++){
             listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contrato"));
+            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Cancelado", "Contrato"));
+            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "En Proceso", "Contrato"));
         }
         for(int i = 1; i <= 120; i++){
             listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contratade"));
