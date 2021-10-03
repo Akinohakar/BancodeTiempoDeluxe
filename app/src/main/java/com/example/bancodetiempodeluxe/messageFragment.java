@@ -1,12 +1,27 @@
 package com.example.bancodetiempodeluxe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +29,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class messageFragment extends Fragment {
+   // private RecyclerView mUserList;
+   // private DatabaseReference mUsersDatabase;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +77,81 @@ public class messageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_message, container, false);//Inflate fragment layout
+        super.onCreate(savedInstanceState);
+
+       // mUserList= view.findViewById(R.id.users_list);
+//
+       // mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users");//reference
+       // mUserList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+        //FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>().setQuery(mUsersDatabase, Users.class).build();
+//
+        //FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Users, UsersViewHolders>(options) {
+        //    @Override
+        //    protected void onBindViewHolder(@NonNull UsersViewHolders holder, int position, @NonNull Users users) {
+        //        holder.setName(users.getName());
+        //        holder.setStatus(users.getStatus());
+        //        holder.SetThumbImage(users.getImage());
+        //        Log.d("TAG", "--------------");
+        //        Log.d("TAG", "users.getName() : " + users.getName());
+        //        Log.d("TAG", "users.getStatus() : " + users.getStatus());
+        //        Log.d("TAG", "users.getThumb_image() : " + users.getImage());
+        //        final String selected_user_id = getRef(position).getKey();
+//
+//
+//      //          Set event for component
+        //        holder.mView.setOnClickListener(new View.OnClickListener() {
+        //            @Override
+        //            public void onClick(View v) {
+        //                Intent profileIntent= new Intent(getActivity(),ProfileActivity.class);
+        //                profileIntent.putExtra("user_id",selected_user_id);
+        //                startActivity(profileIntent);
+        //            }
+        //        });
+        //    }
+//
+        //    @NonNull
+        //    @Override
+        //    public UsersViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_single_layout, parent, false);
+        //        return new UsersViewHolders(view);
+        //    }
+//
+        //};
+        //mUserList.setAdapter(adapter);
+        //adapter.startListening();
+    }
+
+   // public static class UsersViewHolders extends RecyclerView.ViewHolder{
+   //     View mView;
+   //     public UsersViewHolder(@NonNull View itemView) {
+   //         super(itemView);
+   //         mView=itemView;
+   //     }
+   //     public void setName(String name){
+   //         TextView userNameView=(TextView) mView.findViewById(R.id.user_single_name);
+   //         userNameView.setText(name);
+//
+   //     }
+   //     public void setStatus(String status){
+   //         TextView userstatusView = mView.findViewById(R.id.user_single_status);
+   //         userstatusView.setText(status);
+   //     }
+   //     public void SetThumbImage(String url_avatar){
+   //         CircleImageView userAvatarView = mView.findViewById(R.id.user_single_image);
+// //               if user hadn't set avatar display default avatar
+   //         if(!url_avatar.equals("default")){
+   //             Picasso.get().load(url_avatar).placeholder(R.drawable.exampleuser).into(userAvatarView);
+   //         }
+   //     }
+//
+   // }
 }

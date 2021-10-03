@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 
 public class editProfile extends AppCompatActivity {
     private TextInputLayout editName,editAge,editPronouns,editPhone,editAdr,editJob,editDescJob;
@@ -94,8 +96,9 @@ public class editProfile extends AppCompatActivity {
                  editAdr.getEditText().setText(address);
                  editJob.getEditText().setText(job);
                  editDescJob.getEditText().setText(descjob);
-                 Picasso.get().load(image).into(mDisplayImage);
-
+                 if(!image.equals("default")) {
+                     Picasso.get().load(image).placeholder(R.drawable.exampleuser).into(mDisplayImage);
+                 }
              }
 
              @Override
@@ -180,6 +183,7 @@ public class editProfile extends AppCompatActivity {
                 Uri resultUri = result.getUri();//Gets the uri of that image
                 String current_user_id=mCurrentUser.getUid();
 
+
                 StorageReference filepath=mImageStorage.child("profile_images").child(current_user_id+".jpg");
 
                 filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -195,6 +199,7 @@ public class editProfile extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String downloadUrl;
                                     downloadUrl = uri.toString();
+
                                     mStatusDatabse.child("image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {//put the image url into the user child(img)
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -221,15 +226,5 @@ public class editProfile extends AppCompatActivity {
         }
     }
 
-    public static String random() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(10);
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
-    }
+
 }

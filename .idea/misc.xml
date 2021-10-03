@@ -22,7 +22,9 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
-        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_offer_description.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_offer_description.xml" value="0.33" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_register_job.xml" value="0.34103260869565216" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_second.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_trasactions.xml" value="0.2755208333333333" />
@@ -32,10 +34,11 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_profile.xml" value="0.32547387887193713" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_search.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.22" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/toolbar.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/transacciones_item_list.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/users_single_layout.xml" value="0.1" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/menu/mian_menu.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_date.xml" value="0.2703125" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_password.xml" value="0.14635416666666667" />

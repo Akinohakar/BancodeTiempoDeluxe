@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
    private DrawerLayout drawer;
@@ -45,7 +47,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         drawer=findViewById(R.id.drawerLayout);
         NavigationView navigationView=findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
-        headerFirebase();
+
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_closed);
         drawer.addDrawerListener(toggle);
@@ -53,31 +55,41 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         if(savedInstanceState==null){//to safe the state when the state is rotated
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
         navigationView.setCheckedItem(R.id.navBuscar);}
-
+        headerFirebase();
 
     }
-    public void headerFirebase(){
-        profileHeaderName=findViewById(R.id.headerTitleName);
-        profilePronoun=findViewById(R.id.headerPronoun);
-        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
-        String current_uid=mCurrentUser.getUid();
-        mUserDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);//pOINTING TO THE USERS OBJECT and to the id object
-        mUserDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name=snapshot.child("name").getValue().toString();
-                String pronoun=snapshot.child("pronoun").getValue().toString();
+   public void headerFirebase(){
+       //get instances navigation view
+       NavigationView navigationView=findViewById(R.id.navView);
+       View headerView = navigationView.getHeaderView(0);
+       TextView navUsername = (TextView) headerView.findViewById(R.id.headerTitleName);
+       TextView navPronoun = (TextView) headerView.findViewById(R.id.headerPronoun);
+       TextView navRating = (TextView) headerView.findViewById(R.id.headerRating);
+       ImageView navProfileImg=(ImageView) headerView.findViewById(R.id.headerImageProfile);
+//
+       mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+       String current_uid=mCurrentUser.getUid();
+       mUserDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);//pOINTING TO THE USERS OBJECT and to the id object
+       mUserDatabase.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               String name=snapshot.child("name").getValue().toString();
+               String pronoun=snapshot.child("pronoun").getValue().toString();
+               String rating=snapshot.child("rating").getValue().toString();
+               String image=snapshot.child("image").getValue().toString();
+               navUsername.setText(name);
+               navPronoun.setText(pronoun);
+               navRating.setText(rating);
+               Picasso.get().load(image).into(navProfileImg);
 
+           }
 
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+           }
+       });
+   }
 
     @Override
     public void onStart() {

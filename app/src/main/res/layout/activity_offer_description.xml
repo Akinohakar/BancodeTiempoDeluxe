@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".offerDescription"
-    android:background="@color/blackapp">
+    android:background="@color/blackapp"
+    tools:context=".offerDescription">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="107dp"
         android:layout_height="108dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="64dp"
         android:layout_marginTop="100dp"
         android:innerRadius="0dp"
-        android:onClick="goProfile"
+
         android:shape="ring"
         android:thicknessRatio="1.9"
         app:cardCornerRadius="40dp"
@@ -26,9 +27,10 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/offer_userimg"
                 android:layout_width="146dp"
                 android:layout_height="156dp"
-                android:scaleType="centerInside"
+                android:scaleType="centerCrop"
                 android:src="@drawable/exampleuser"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -43,102 +45,132 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="148dp"
         android:text="Horarios"
         android:textColor="@color/whiteapp"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/offer_username" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="116dp"
         android:text="L M M J V S D"
         android:textColor="@color/whiteapp"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="169dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/offer_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:text="Alan Eduardo Aquino Rosas"
         android:textColor="@color/whiteapp"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/offer_verificado_state" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/offer_jobtitles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="164dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Servicio"
         android:textColor="@color/whiteapp"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/divider4"
         android:layout_width="409dp"
         android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="15dp"
         android:background="@color/yellowapp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/offer_jobtitles" />
 
     <View
         android:id="@+id/divider5"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:background="@color/yellowapp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="253dp" />
+        android:layout_marginTop="256dp"
+        android:background="@color/j_hueso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/divider6"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:background="@color/yellowapp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:layout_marginTop="12dp"
+        android:background="@color/j_hueso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Trabajo"
         android:textColor="@color/whiteapp"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="274dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/offer_job_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
         android:text="Plomeria"
+        android:textAlignment="textStart"
         android:textColor="@color/whiteapp"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="274dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Descripcion Servicio"
         android:textColor="@color/whiteapp"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="330dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="322dp"
         android:layout_height="176dp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="378dp">
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/offer_job_descip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lorem_ipsun"
@@ -147,13 +179,33 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/offer_button_agree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/blueapp"
         android:text="Aceptar"
-        app:rippleColor="#FFB400"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="583dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:rippleColor="#FFB400" />
+
+    <TextView
+        android:id="@+id/offer_verificado_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="17dp"
+        android:text="state verrificado"
+        android:textColor="@color/whiteapp"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="195dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

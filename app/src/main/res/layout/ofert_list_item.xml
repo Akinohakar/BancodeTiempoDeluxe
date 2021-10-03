@@ -27,7 +27,7 @@
             android:layout_marginRight="52dp"
             android:layout_marginLeft="52dp">
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/list_item_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/exampleuser"

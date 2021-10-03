@@ -57,7 +57,7 @@
                     android:id="@+id/profile_user_image"
                     android:layout_width="146dp"
                     android:layout_height="156dp"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/exampleuser"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
