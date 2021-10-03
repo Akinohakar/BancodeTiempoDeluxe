@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp"
+    tools:context=".RegisterJobActivity"
     android:orientation="vertical"
     android:background="@color/blackapp"
     android:padding="20dp">
@@ -32,32 +32,33 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-            <TextView
-                android:layout_marginTop="40sp"
+        <TextView
+            android:layout_marginTop="40sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:text="Banco de Tiempo"
-                android:textColor="@color/whiteapp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/montserrat_bold"/>
+            android:textColor="@color/whiteapp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/montserrat_bold"/>
 
     </LinearLayout>
 
 
     <TextView
+        android:id="@+id/register_job_header"
         android:layout_marginVertical="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Bienvenido!"
+        android:text="Hola,!"
         android:textColor="@color/whiteapp"
         android:textSize="40dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrate para empezar tu futuro con nosotros"
+        android:text="Te pedimos que nos des un poco mas de informacion sobre ti y tu trabajo"
         android:textSize="18sp"
         android:textColor="@color/whiteapp"
         android:layout_marginTop="-20dp"
@@ -77,11 +78,11 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newUserName"
+            android:id="@+id/register_job_jobtitle"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre Completo"
+            android:hint="Trabajo"
             app:startIconDrawable="@drawable/person"
             app:startIconTint="@color/yellowapp"
             app:counterEnabled="true"
@@ -114,11 +115,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newEmail"
+            android:id="@+id/register_job_jobdesc"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Correo Electronico"
+            android:hint="Descripcion Trabajo"
             app:startIconDrawable="@drawable/ic_email"
             app:startIconTint="@color/yellowapp"
             app:hintTextColor="@color/whiteapp"
@@ -147,131 +148,79 @@
                 android:textColorHighlight="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newPhone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Numero de telefono"
-            app:hintTextColor="@color/whiteapp"
-            android:outlineAmbientShadowColor="@color/whiteapp"
-            android:textColorHint="@color/whiteapp"
-            android:outlineSpotShadowColor="@color/whiteapp"
-            app:prefixTextColor="@color/whiteapp"
-            app:helperTextTextColor="@color/whiteapp"
-            app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
-            app:boxStrokeColor="@color/yellowapp"
-            app:boxStrokeErrorColor="@color/whiteapp"
-            app:errorTextColor="@color/whiteapp"
-            app:startIconDrawable="@drawable/ic_smartphone"
-            app:startIconTint="@color/yellowapp"
-            app:placeholderTextColor="@color/whiteapp"
-            app:suffixTextColor="@color/whiteapp">
+            android:textColor="@color/whiteapp"
+            android:text="Seleciona los dias que tienes disponibles de la semana"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+               android:id="@+id/register_job_monday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:outlineSpotShadowColor="@color/whiteapp"
-                android:outlineAmbientShadowColor="@color/whiteapp"
-                android:shadowColor="@color/whiteapp"
-                android:textColorLink="@color/whiteapp"
                 android:textColor="@color/whiteapp"
-                android:textColorHighlight="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newPas"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:text="L"/>
+            <CheckBox
+                android:id="@+id/register_job_tuesday"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Contraseña"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
-                app:hintTextColor="@color/whiteapp"
-                android:outlineAmbientShadowColor="@color/whiteapp"
-                android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
-                app:boxStrokeColor="@color/yellowapp"
-                app:boxStrokeErrorColor="@color/whiteapp"
-                app:errorTextColor="@color/whiteapp"
-                app:placeholderTextColor="@color/whiteapp"
-                app:suffixTextColor="@color/whiteapp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:outlineSpotShadowColor="@color/whiteapp"
-                    android:outlineAmbientShadowColor="@color/whiteapp"
-                    android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
-                    android:textColor="@color/whiteapp"
-                    android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newPass"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColor="@color/whiteapp"
+                android:text="M"/>
+            <CheckBox
+                android:id="@+id/register_job_wednesday"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Confirma Contraseña"
-                app:passwordToggleTint="@color/whiteapp"
-                app:passwordToggleEnabled="true"
-                android:textColorHint="@color/whiteapp"
-                app:hintTextColor="@color/whiteapp"
-                android:outlineAmbientShadowColor="@color/whiteapp"
-                android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
-                app:boxStrokeColor="@color/yellowapp"
-                app:boxStrokeErrorColor="@color/whiteapp"
-                app:errorTextColor="@color/whiteapp"
-                app:placeholderTextColor="@color/whiteapp"
-                app:suffixTextColor="@color/whiteapp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:outlineSpotShadowColor="@color/whiteapp"
-                    android:outlineAmbientShadowColor="@color/whiteapp"
-                    android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
-                    android:textColor="@color/whiteapp"
-                    android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
+                android:textColor="@color/whiteapp"
+                android:text="MI"/>
+            <CheckBox
+                android:id="@+id/register_job_thursday"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whiteapp"
+                android:text="JV"/>
+            <CheckBox
+                android:id="@+id/register_job_friday"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whiteapp"
+                android:text="V"/>
+            <CheckBox
+                android:id="@+id/register_job_saturday"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whiteapp"
+                android:text="S"/>
+            <CheckBox
+                android:id="@+id/register_job_sunday"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whiteapp"
+                android:text="D"/>
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newJob"
+                android:id="@+id/register_job_homeaddress"
                 android:layout_weight="1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Edad"
+                android:hint="Direccion de casa"
                 app:startIconDrawable="@drawable/ic_job"
                 app:startIconTint="@color/yellowapp"
                 app:hintTextColor="@color/whiteapp"
@@ -300,41 +249,7 @@
                     android:textColorHighlight="@color/whiteapp"
                     android:textColorHint="@color/whiteapp"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/newPronoun"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Pronombres"
-                android:layout_weight="1"
-                app:startIconDrawable="@drawable/person"
-                app:startIconTint="@color/yellowapp"
-                app:hintTextColor="@color/whiteapp"
-                android:outlineAmbientShadowColor="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
-                android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
-                app:boxStrokeColor="@color/yellowapp"
-                app:boxStrokeErrorColor="@color/whiteapp"
-                app:errorTextColor="@color/whiteapp"
-                app:placeholderTextColor="@color/whiteapp"
-                app:suffixTextColor="@color/whiteapp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:outlineSpotShadowColor="@color/whiteapp"
-                    android:outlineAmbientShadowColor="@color/whiteapp"
-                    android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
-                    android:textColor="@color/whiteapp"
-                    android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
-            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
 
@@ -342,6 +257,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/register_job_alreadygoLogin"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -350,7 +266,7 @@
 
                 android:layout_marginRight="2dp"/>
             <Button
-                android:id="@+id/newConfirm"
+                android:id="@+id/register_job_goNewAccount"
                 android:layout_width="wrap_content"
                 android:layout_weight="5"
                 android:layout_height="wrap_content"

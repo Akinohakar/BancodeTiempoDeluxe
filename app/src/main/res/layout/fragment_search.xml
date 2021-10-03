@@ -20,7 +20,7 @@
         <EditText
             style="@style/Widget.AppCompat.EditText"
             android:layout_marginLeft="30dp"
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextTypeJob"
             android:layout_width="320dp"
             android:layout_height="match_parent"
             android:ems="10"

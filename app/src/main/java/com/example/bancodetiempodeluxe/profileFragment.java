@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,7 +82,7 @@ public class profileFragment extends Fragment {
         //Listing the view elements
         userStatus=view.findViewById(R.id.profile_user_status);
         userName=view.findViewById(R.id.profile_user_name);
-        userImage=view.findViewById(R.id.profile_image);
+        userImage=view.findViewById(R.id.profile_user_image);
         userActualJob=view.findViewById(R.id.profileWorkTitle);
         userRating=view.findViewById(R.id.profileActualRating);
         userAge=view.findViewById(R.id.profileAge);
@@ -110,6 +111,7 @@ public class profileFragment extends Fragment {
                 userPronoun.setText("Pronombres: "+pronoun);
                 userJobDesc.setText(jobdesc);
                 userAge.setText("Edad: "+edad);
+                Picasso.get().load(image).into(userImage);
 
 
 
