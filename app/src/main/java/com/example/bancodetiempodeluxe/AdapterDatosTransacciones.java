@@ -68,8 +68,10 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
             status.setText(tModel.status);
             if(tModel.status == "Cancelado"){
                 imgStatus.setImageResource(R.drawable.ic_cancel);
+            }else if(tModel.status == "Completado"){
+                imgStatus.setImageResource(R.drawable.ic_check);
             }else{
-                imgStatus.setImageResource(R.drawable.ic_checked);
+                imgStatus.setImageResource(R.drawable.ic_proceso);
             }
         }
     }

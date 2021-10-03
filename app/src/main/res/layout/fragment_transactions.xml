@@ -10,49 +10,123 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
 
-        android:fontFamily="@font/alegreya_sans_sc"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/saldoTitle"
         android:textColor="@color/j_hueso"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textSize="40sp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp">
 
-        <ImageView
-            android:id="@+id/imgSaldoTitle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="40dp"
-            android:contentDescription="@string/placeholderImage"
-            android:src="@drawable/ic_action_name"
-            tools:ignore="ImageContrastCheck" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserratfont"
-            android:text="@string/placeholderHoras"
-            android:textColor="@color/j_hueso"
-            android:textSize="35sp" />
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/montserratfont"
-            android:text="@string/horas"
-            android:textColor="@color/j_hueso"
-            android:textSize="35sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/horasRecibidas"
+                    android:textColor="@color/j_hueso"
+                    android:textSize="21sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_action_name"/>
+                    <TextView
+                        android:id="@+id/idHorasRecibidas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="@string/placeholderHoras"
+                        android:textColor="@color/j_hueso"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="@string/horas"
+                        android:textColor="@color/j_hueso"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/horasDadas"
+                    android:textColor="@color/j_hueso"
+                    android:textSize="21sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_action_name"/>
+                    <TextView
+                        android:id="@+id/idHorasDadas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="@string/placeholderHoras"
+                        android:textColor="@color/j_hueso"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="@string/horas"
+                        android:textColor="@color/j_hueso"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -60,18 +134,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/alegreya_sans_sc"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/transactionsTitle"
-        android:textColor="@color/j_hueso"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textColor="@color/yellowapp"
+        android:textSize="18sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewIDTransacciones"
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        android:layout_height="325dp" />
 
     <Button
         android:id="@+id/btnDescargarPDF"
@@ -80,8 +153,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/d_orange"
-        android:fontFamily="@font/montserrat"
+        android:backgroundTint="@color/yellowapp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/descargarPDF"
         android:textColor="@color/blackapp" />
 
