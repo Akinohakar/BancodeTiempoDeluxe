@@ -27,18 +27,27 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
 
     <!-- The Tona Strings uwu -->
     <!-- Titles  -->
-    <string name="transactionsTitle">Mis Transacciones</string>
-    <string name="saldoTitle">Mi Saldo</string>
+    <string name="transactionsTitle">Transacciones Efectuadas</string>
+    <string name="saldoTitle">Saldo</string>
+    <string name="horasRecibidas">Horas Recibidas</string>
+    <string name="horasDadas">Horas Dadas</string>
+    <string name="configuracionesTitle">Configuraciones</string>
+    <string name="changeEmail">Cambiar Correo Electrónico</string>
+    <string name="changePassw">Cambiar Contraseña</string>
+    <string name="help">Ayuda</string>
+    <string name="report">Reportar un problema</string>
+    <string name="contactUs">Contáctanos</string>
+    <string name="privacyTitle">Aviso de Privacidad</string>
     <!-- Placeholders -->
     <string name="placeholderImage">Cambiar por definitiva</string>
     <string name="placeholderHoras">01</string>
     <string name="placeholderTransacciones">Mi transaccion</string>
-    <string name="placeholderFecha">2021-09-24</string>
+    <string name="placeholderFecha">2021–09–24</string>
     <string name="placeholderUser">Alan Eduardo Aquino Rosas</string>
     <string name="placeholderWork">Carpintería</string>
     <string name="placeholderStatus">Completado</string>
     <string name="placeholderContract">Contrato</string>
     <!-- Other Values -->
-    <string name="horas">Horas</string>
+    <string name="horas">H</string>
     <string name="descargarPDF">Descargar PDF</string>
 </resources>
