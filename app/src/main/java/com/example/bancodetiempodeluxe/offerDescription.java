@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ import java.util.Locale;
 
 public class offerDescription extends AppCompatActivity {
     private ImageView mProfileImage;
-    private TextView mProfileName,mProfileJobTitle,mProfileJobDesc,mProfileState;
+    private TextView mProfileName,mProfileJobTitle,mProfileJobDesc,mProfileState,mProfileDateJob;
     private Button mProfileDoRequest;
     private DatabaseReference mUsersDatabase,mServiceRequestDatabase,mThisUser;
     private ProgressDialog mProgressDialog;
@@ -48,6 +49,7 @@ public class offerDescription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_description);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         String user_id=getIntent().getStringExtra("user_id");
         mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
@@ -62,6 +64,7 @@ public class offerDescription extends AppCompatActivity {
         mProfileJobDesc=findViewById(R.id.offer_job_descip);
         mProfileDoRequest=findViewById(R.id.offer_button_agree);
         mProfileState=findViewById(R.id.offer_verificado_state);
+        mProfileDateJob=findViewById(R.id.offer_datejob);
 
         mcurrent_state=0;
 
@@ -82,10 +85,12 @@ public class offerDescription extends AppCompatActivity {
                 String image =snapshot.child("image").getValue().toString();
                 String job=snapshot.child("jobtitle").getValue().toString();
                 String jobdesc=snapshot.child("jobdesc").getValue().toString();
+                String jobdate=snapshot.child("datejob").getValue().toString();
                 mProfileName.setText(display_name);
                 mProfileState.setText(status);
                 mProfileJobTitle.setText(job);
                 mProfileJobDesc.setText(jobdesc);
+                mProfileDateJob.setText(jobdate);
                 Picasso.get().load(image).placeholder(R.drawable.exampleuser).into(mProfileImage);
                 mProgressDialog.dismiss();
                 //--------------------------Service Request Feature-----------------

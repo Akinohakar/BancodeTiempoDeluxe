@@ -52,13 +52,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Hola,!"
+        android:text="Hola,User!"
         android:textColor="@color/whiteapp"
         android:textSize="40dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Te pedimos que nos des un poco mas de informacion sobre ti y tu trabajo"
+        android:text="Te pedimos que nos des un poco mas de informacion sobre ti y tu trabajo,antes de poder registrarte"
         android:textSize="18sp"
         android:textColor="@color/whiteapp"
         android:layout_marginTop="-20dp"

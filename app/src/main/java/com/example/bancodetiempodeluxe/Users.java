@@ -5,20 +5,28 @@ public class Users {
     public String image;
     public String status;
     public String jobtitle;
+    public String datejob;
 
-
-
-    public Users(String name, String image, String status, String jobtitle) {
+    public Users(String name, String image, String status, String jobtitle, String datejob) {
         this.name = name;
         this.image = image;
         this.status = status;
         this.jobtitle = jobtitle;
+        this.datejob = datejob;
     }
+
+
     public Users(){
 
     }
 
+    public String getDatejob() {
+        return datejob;
+    }
 
+    public void setDatejob(String datejob) {
+        this.datejob = datejob;
+    }
 
     public void setJobtitle(String jobtitle) {
         this.jobtitle = jobtitle;

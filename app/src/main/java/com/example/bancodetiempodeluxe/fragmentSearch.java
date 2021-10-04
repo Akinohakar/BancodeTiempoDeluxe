@@ -129,6 +129,7 @@ public class fragmentSearch extends Fragment {
                     holder.setName(users.getName());
                     holder.setJob(users.getJobtitle());
                     holder.SetThumbImage(users.getImage());
+                    holder.setDate(users.getDatejob());
                     Log.d("TAG", "--------------");
                     Log.d("TAG", "users.getName() : " + users.getName());
                     Log.d("TAG", "users.getStatus() : " + users.getStatus());
@@ -183,6 +184,10 @@ public class fragmentSearch extends Fragment {
         public void setJob(String jobtitle){
             TextView userstatusView = mView.findViewById(R.id.txtJob);
             userstatusView.setText(jobtitle);
+        }
+        public  void setDate(String datejob){
+            TextView datejobView=mView.findViewById(R.id.txtDispDate);
+            datejobView.setText(datejob);
         }
 
 

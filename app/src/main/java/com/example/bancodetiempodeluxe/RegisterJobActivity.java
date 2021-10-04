@@ -128,7 +128,7 @@ public class RegisterJobActivity extends AppCompatActivity {
                             HashMap<String,String> userMap=new HashMap<>();
                             userMap.put("name",name);
                             userMap.put("age",age);
-                            userMap.put("status","0");//Es que no esta autenticado
+                            userMap.put("status","No verificado");//Es que no esta autenticado
                             userMap.put("phone",tel);
                             userMap.put("pronoun",pronoun);
                             userMap.put("image","default");

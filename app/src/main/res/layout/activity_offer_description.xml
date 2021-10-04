@@ -55,11 +55,12 @@
         app:layout_constraintTop_toBottomOf="@+id/offer_username" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/offer_datejob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
+        android:gravity="start"
         android:text="L M M J V S D"
         android:textColor="@color/whiteapp"
         app:layout_constraintEnd_toEndOf="parent"
