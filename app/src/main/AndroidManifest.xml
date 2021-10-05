@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,27 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.BancodeTiempoDeluxe">
+        <activity
+            android:name=".ProblemasCorreo"
+            android:exported="true" />
+        <activity
+            android:name=".CorreoEnviado"
+            android:exported="true" />
+        <activity
+            android:name=".ContactUs"
+            android:exported="true" />
+        <activity
+            android:name=".ReportProblems"
+            android:exported="true" />
+        <activity
+            android:name=".Help"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
+            android:name=".ChangeEmail"
+            android:exported="true" />
         <activity
             android:name=".RegisterJobActivity"
             android:exported="true" />

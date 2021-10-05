@@ -1,5 +1,6 @@
 package com.example.bancodetiempodeluxe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,58 @@ public class configPerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_config_perfil, container, false);
+        View view = inflater.inflate(R.layout.fragment_config_perfil, container, false);
+
+        View.OnClickListener chngMail = new View.OnClickListener(){
+          @Override
+          public void onClick(View v){
+              startActivity(new Intent(getActivity(), ChangeEmail.class));
+          }
+        };
+
+        View.OnClickListener chngPassw = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), ChangePassword.class));
+            }
+        };
+
+        View.OnClickListener helpo = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), Help.class));
+            }
+        };
+
+        View.OnClickListener rport = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), ReportProblems.class));
+            }
+        };
+
+        View.OnClickListener cntactUs = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), ContactUs.class));
+            }
+        };
+
+        LinearLayout changeEmail = view.findViewById(R.id.idCambiarCorreo);
+        changeEmail.setOnClickListener(chngMail);
+
+        LinearLayout changePassw = view.findViewById(R.id.idCambiarContra);
+        changePassw.setOnClickListener(chngPassw);
+
+        LinearLayout askHelpo = view.findViewById(R.id.idHelpo);
+        askHelpo.setOnClickListener(helpo);
+
+        LinearLayout report = view.findViewById(R.id.idReportProblems);
+        report.setOnClickListener(rport);
+
+        LinearLayout contac = view.findViewById(R.id.idContactUs);
+        contac.setOnClickListener(cntactUs);
+
+        return view;
     }
 }

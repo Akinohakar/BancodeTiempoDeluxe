@@ -38,6 +38,21 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="report">Reportar un problema</string>
     <string name="contactUs">Contáctanos</string>
     <string name="privacyTitle">Aviso de Privacidad</string>
+    <string name="prevMail">Correo Electrónico anterior</string>
+    <string name="newMail"> Correo Electrónico nuevo</string>
+    <string name="password">Contraseña</string>
+    <string name="change">Cambiar</string>
+    <string name="prevPass">Contraseña anterior</string>
+    <string name="newPass"> Contraseña nueva</string>
+    <string name="problem">Problema</string>
+    <string name="description">Descripción</string>
+    <string name="send">Enviar</string>
+    <string name="yourMail">Escribe tu Correo Electrónico</string>
+    <string name="subject">Asunto</string>
+    <string name="contactEmail">Correo Electrónico de Contacto</string>
+    <string name="sentEmail">¡Mensaje enviado correctamente!</string>
+    <string name="problemMail">¡Error al enviar el mensaje!</string>
+    <string name="back">Volver</string>
     <!-- Placeholders -->
     <string name="placeholderImage">Cambiar por definitiva</string>
     <string name="placeholderHoras">01</string>
