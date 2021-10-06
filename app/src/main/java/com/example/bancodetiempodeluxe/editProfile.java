@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +45,7 @@ public class editProfile extends AppCompatActivity {
     private FloatingActionButton editProfilePic;
     private static final int GALLERY_PICK=1;
     private CircleImageView mDisplayImage;
+    private Snackbar snackbar,snackbarImg;
 
     //Storage Firebase
     private StorageReference mImageStorage;
@@ -138,6 +140,8 @@ public class editProfile extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             mProgress.dismiss();
+                            snackbar=Snackbar.make(view,"Datos actualizados",Snackbar.LENGTH_SHORT);
+                            snackbar.show();
                         }else{
                             Toast.makeText(getApplicationContext(), "Ups no quiero cambairme : )", Toast.LENGTH_SHORT).show();
                         }
@@ -156,6 +160,8 @@ public class editProfile extends AppCompatActivity {
                 galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(galleryIntent,"SELECT IMAGE"),GALLERY_PICK);
+                snackbarImg=Snackbar.make(view,"Imagen cambiada correctamente",Snackbar.LENGTH_SHORT);
+
             }
         });
     }
@@ -205,6 +211,8 @@ public class editProfile extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
                                             mPicProgress.dismiss();
+                                            snackbarImg.show();
+
                                         }
                                     });
 

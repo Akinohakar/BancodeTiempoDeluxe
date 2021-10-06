@@ -3,6 +3,7 @@ package com.example.bancodetiempodeluxe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +35,7 @@ public class RegisterJobActivity extends AppCompatActivity {
     private TextInputLayout mDisplayJob,mJobdesc,mHomeAddress;
     private Button goLogIN,goNewAccount;
     private CheckBox dayL,dayM,dayMI,dayJV,dayV,dayS,dayD;
+    private Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,11 @@ public class RegisterJobActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_job);
         mAuth=FirebaseAuth.getInstance();
         //Get intances
+        MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(RegisterJobActivity.this);
+        builder.setTitle("Aceptar Terminos y Condiciones");
+        builder.setMessage("Aqui los terminso y condiciones");
+        builder.setIcon(R.drawable.ic_infogrey);
+
         header=findViewById(R.id.register_job_header);
         mDisplayJob=findViewById(R.id.register_job_jobtitle);
         mJobdesc=findViewById(R.id.register_job_jobdesc);
@@ -101,8 +110,23 @@ public class RegisterJobActivity extends AppCompatActivity {
                 String homeaddress=mHomeAddress.getEditText().getText().toString();
 
                 if (!TextUtils.isEmpty(job)||!TextUtils.isEmpty(jobdesc)|| !TextUtils.isEmpty(homeaddress)||!TextUtils.isEmpty(strDate.toString())){
-                    register_user(name,email,pass,tel,age,pronoun,job,jobdesc,homeaddress,strDate.toString());
+                    builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            register_user(name,email,pass,tel,age,pronoun,job,jobdesc,homeaddress,strDate.toString());
+                        }
+                    });
+                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
+                        }
+                    });
+                    builder.show();
+
+
+                }else{
+                    Toast.makeText(RegisterJobActivity.this, "Existe algun campo en blanco", Toast.LENGTH_LONG).show();
                 }
             }
         });

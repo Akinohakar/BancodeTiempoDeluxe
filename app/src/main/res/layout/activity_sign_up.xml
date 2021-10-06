@@ -85,7 +85,7 @@
             app:startIconDrawable="@drawable/person"
             app:startIconTint="@color/yellowapp"
             app:counterEnabled="true"
-            app:counterMaxLength="15"
+            app:counterMaxLength="30"
             app:hintTextColor="@color/whiteapp"
             android:outlineAmbientShadowColor="@color/whiteapp"
             android:textColorHint="@color/whiteapp"
@@ -291,7 +291,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
@@ -326,7 +326,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
