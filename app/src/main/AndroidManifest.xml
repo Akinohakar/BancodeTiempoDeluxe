@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancodeTiempoDeluxe">
         <activity
+            android:name=".DescriptionNotification"
+            android:exported="true" />
+        <activity
             android:name=".RegisterJobActivity"
             android:exported="true" />
         <activity
