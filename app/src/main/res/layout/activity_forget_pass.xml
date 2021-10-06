@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForgetPass"
+    android:orientation="vertical"
+    android:background="@color/blackapp"
+    android:padding="20dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/logoImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:transitionName="logoImage"
+            >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="118dp"
+                android:layout_height="115dp"
+                android:src="@drawable/logowhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_marginTop="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Banco de Tiempo"
+            android:textColor="@color/whiteapp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/montserrat_bold"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Recuperar contraseña"
+        android:textColor="@color/whiteapp"
+        android:textSize="40dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Porfavor ingresa tu correo para restablecer tu contraseña"
+        android:textSize="18sp"
+        android:textColor="@color/whiteapp"
+        android:layout_marginTop="-20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="366dp"
+        android:layout_height="386dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forgetPassemail"
+            android:layout_marginTop="70dp"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo electronico"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/yellowapp"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:hintTextColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
+            app:boxStrokeColor="@color/yellowapp"
+            app:boxStrokeErrorColor="@color/design_default_color_error"
+            app:errorTextColor="@color/whiteapp"
+            app:placeholderTextColor="@color/whiteapp"
+            app:suffixTextColor="@color/whiteapp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:shadowColor="@color/whiteapp"
+                android:textColorLink="@color/whiteapp"
+                android:textColor="@color/whiteapp"
+                android:textColorHighlight="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/forgetPassconfirmbtn"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Restablecer contraseña"
+                android:backgroundTint="@color/blueapp"
+
+                android:layout_marginRight="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

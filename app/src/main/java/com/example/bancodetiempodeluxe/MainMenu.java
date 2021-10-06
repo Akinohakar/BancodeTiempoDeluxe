@@ -54,7 +54,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         if(savedInstanceState==null){//to safe the state when the state is rotated
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
         navigationView.setCheckedItem(R.id.navBuscar);}
-        headerFirebase();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser!=null){//If user is not sign in
+           headerFirebase();
+        }
 
     }
    public void headerFirebase(){
