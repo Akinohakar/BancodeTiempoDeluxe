@@ -22,7 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private Button callSigUp,goMenu;
+    private Button callSigUp,goMenu,goForgotPass;
     private TextInputLayout emaillogin,pasLogin;
     private ProgressDialog mLoginProgress;
     //Firebase
@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
         goMenu=findViewById(R.id.btnGo);
         emaillogin=findViewById(R.id.username);
         pasLogin=findViewById(R.id.password);
+        goForgotPass=findViewById(R.id.logingoForgetpass);
         //Firebase
         mAuth=FirebaseAuth.getInstance();
 
@@ -44,7 +45,19 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Login.this,SignUp.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
+
+
+            }
+        });
+        //ACCIONADOR FORGET PASSWORD
+        goForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Login.this,ForgetPass.class);
+                startActivity(intent);
+
             }
         });
 

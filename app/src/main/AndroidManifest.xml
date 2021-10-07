@@ -37,6 +37,9 @@
         <activity
             android:name=".ChangeEmail"
             android:exported="true" />
+          <activity
+            android:name=".ForgetPass"
+            android:exported="true" />
         <activity
             android:name=".RegisterJobActivity"
             android:exported="true" />
