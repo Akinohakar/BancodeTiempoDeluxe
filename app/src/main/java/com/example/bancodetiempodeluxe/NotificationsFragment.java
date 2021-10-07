@@ -1,8 +1,6 @@
 package com.example.bancodetiempodeluxe;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
@@ -17,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,15 +104,21 @@ public class NotificationsFragment extends Fragment {
             protected void onBindViewHolder(@NonNull NotifsViewHolder holder, int position, @NonNull Notification notification) {
                 holder.setType(notification.getType());
                 holder.setStatus(notification.getStatus());
+                System.out.println(position);
                 Log.d("TAG", "--------------");
-                Log.d("TAG", "users.getName() : " + notification.getType());
+                Log.d("TAG", "users.getType() : " + notification.getType());
                 Log.d("TAG", "users.getStatus() : " + notification.getStatus());
 
+                final String selectedNotif = getRef(position).getKey();
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getActivity(), FragmentNotificationGotRequest.class);
-                        startActivity(intent);
+                        if(notification.getType().equals("request")) {
+                            Intent intent = new Intent(getActivity(), DescriptionNotificationRequest.class);
+                            intent.putExtra("JID", notification.getJob());
+                            intent.putExtra("NID", selectedNotif);
+                            startActivity(intent);
+                        }
                     }
                 });
             }

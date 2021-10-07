@@ -2,9 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notificationFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentNotificationGotRequest">
+    android:background="#293A80"
+    android:fitsSystemWindows="true"
+    tools:context=".DescriptionNotificationRequest">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -38,7 +41,6 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/employeerName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,6 +64,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -76,7 +79,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/employeerPronoun"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -100,6 +102,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerPronoun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -113,8 +116,7 @@
                     android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/employeerAge"
+            <!--<com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -138,6 +140,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -149,9 +152,9 @@
                     android:textColorHighlight="@color/whiteapp"
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/employeerTel"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -187,10 +190,9 @@
                     android:textColorHighlight="@color/whiteapp"
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>-->
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/employeerDir"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -226,7 +228,7 @@
                     android:textColorHighlight="@color/whiteapp"
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/job"
@@ -283,6 +285,7 @@
                 android:layout_marginBottom="30dp">
 
                 <TextView
+                    android:id="@+id/descJob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:outlineAmbientShadowColor="@color/whiteapp"
@@ -353,6 +356,5 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

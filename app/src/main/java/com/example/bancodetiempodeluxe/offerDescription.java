@@ -145,9 +145,11 @@ public class offerDescription extends AppCompatActivity {
                });
                mThisUser.child("Actual Job").child(pushedRef.getKey().toString()).child("Rol").setValue("hirer");
                mUsersDatabase.child("Actual Job").child(pushedRef.getKey().toString()).child("Rol").setValue("supplier");
-               System.out.println(mUsersDatabase.getKey());
 
-
+               DatabaseReference refNotif = mUsersDatabase.child("notifications").push();
+               mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("type").setValue("request");
+               mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("status").setValue(0);
+               mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("job").setValue(pushedRef.getKey().toString());
            }
        });
     }
