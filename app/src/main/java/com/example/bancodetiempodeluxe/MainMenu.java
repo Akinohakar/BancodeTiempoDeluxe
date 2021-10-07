@@ -56,9 +56,9 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
         navigationView.setCheckedItem(R.id.navBuscar);}
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null){//If user is not sign in
-           headerFirebase();
-
+        if(currentUser!=null) {//If user is not sign in
+            headerFirebase();
+        }
     }
    public void headerFirebase(){
        //get instances navigation view
