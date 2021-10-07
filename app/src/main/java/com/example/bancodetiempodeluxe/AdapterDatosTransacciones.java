@@ -13,12 +13,11 @@ import java.util.ArrayList;
 
 public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatosTransacciones.ViewHolderDatos> {
 
-    ArrayList<TransaccionesModel> transaccionesContratadas, transaccionesRealizadas, trabajoActual;
+    ArrayList<TransaccionesModel> transaccionesRealizadas, transaccionesContratadas;
 
-    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> transaccionesContratadas, ArrayList<TransaccionesModel> transaccionesRealizadas, ArrayList<TransaccionesModel>trabajoActual){
+    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> transaccionesContratadas, ArrayList<TransaccionesModel> transaccionesRealizadas){
         this.transaccionesContratadas = transaccionesContratadas;
-        this.transaccionesRealizadas  = transaccionesRealizadas;
-        this.trabajoActual = trabajoActual;
+        this.transaccionesRealizadas = transaccionesRealizadas;
     }
 
     @NonNull
@@ -30,12 +29,17 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        holder.asignarDatos(transaccionesContratadas.get(position));
+        if(position < transaccionesContratadas.size()){
+            holder.asignarDatos(transaccionesContratadas.get(position));
+        }else{
+            holder.asignarDatos(transaccionesRealizadas.get(position - transaccionesContratadas.size()));
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return transaccionesContratadas.size();
+        return transaccionesContratadas.size() + transaccionesRealizadas.size();
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
@@ -60,14 +64,14 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
 
         public void asignarDatos(TransaccionesModel tModel) {
             contrato.setText(tModel.getRating());
-            user.setText(tModel.getNameusersupplier());
             fecha.setText(tModel.getDate());
             hora.setText(tModel.getHour());
+            user.setText(tModel.getNameusersupplier());
             work.setText(tModel.getJob());
             status.setText(tModel.getStatus());
-            if(tModel.getStatus().equals("Cancelado")){
+            if(tModel.status.equals("Cancelado")){
                 imgStatus.setImageResource(R.drawable.ic_cancel);
-            }else if(tModel.getStatus().equals("Completado")){
+            }else if(tModel.status.equals("Completado")){
                 imgStatus.setImageResource(R.drawable.ic_check);
             }else{
                 imgStatus.setImageResource(R.drawable.ic_proceso);
@@ -75,3 +79,4 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
         }
     }
 }
+

@@ -119,16 +119,16 @@ public class transactionsFragment extends Fragment {
         mTrabajosRealizados  = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Worked Jobs");
         mActualJob           = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Actual Job");
 
+        transaccionesContratadas = new ArrayList<TransaccionesModel>();
+        transaccionesRealizadas  = new ArrayList<TransaccionesModel>();
 
         Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
 
         recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
-        //recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        transaccionesContratadas = new ArrayList<TransaccionesModel>();
-        transaccionesRealizadas  = new ArrayList<TransaccionesModel>();
+
 
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
@@ -141,7 +141,7 @@ public class transactionsFragment extends Fragment {
         transaccionesRealizadas  = new ArrayList<>();
         trabajoActual            = new ArrayList<>();
 
-        AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(transaccionesContratadas,transaccionesRealizadas,trabajoActual);
+        AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(transaccionesContratadas, transaccionesRealizadas);
         recycler.setAdapter(adapter);
 
         mActualJob.addValueEventListener(new ValueEventListener() {
@@ -152,40 +152,21 @@ public class transactionsFragment extends Fragment {
                     if(dataSnapshot.getKey() != null){
                     String trabajoID = dataSnapshot.getKey();
                     TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
                     mTrabajos.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                String v = dataSnapshot1.getValue(String.class);
-
-                                if(dataSnapshot1.getKey().equals("date")){
-                                    tm.setDate(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("hour")){
-                                    tm.setHour(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("iduserhire")){
-                                    tm.setIduserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("idusersupplier")){
-                                    tm.setIdusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("job")){
-                                    tm.setJob(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameuserhire")){
-                                    tm.setNameuserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
-                                    tm.setNameusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("rating")){
-                                    tm.setRating(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("status")){
-                                    tm.setStatus(v);
-                                    trabajoActual.add(tm);
+                                if(dataSnapshot1.getKey().equals(trabajoID)){
+                                    TransaccionesModel tm = dataSnapshot1.getValue(TransaccionesModel.class);
+                                    if(tm.getIduserhire().equals(current_id)){
+                                        transaccionesContratadas.add(tm);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                    else if(tm.getIdusersupplier().equals(current_id)){
+                                        transaccionesRealizadas.add(tm);
+                                        adapter.notifyDataSetChanged();
+                                    }
                                 }
                             }
 
@@ -197,7 +178,7 @@ public class transactionsFragment extends Fragment {
                         }
                     });
                 }}
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -213,43 +194,16 @@ public class transactionsFragment extends Fragment {
                     if(dataSnapshot.getKey() != null){
                     String trabajoID = dataSnapshot.getKey();
                     TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
                     mTrabajos.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                String v = dataSnapshot1.getValue(String.class);
-
-                                if(dataSnapshot1.getKey().equals("date")){
-                                    tm.setDate(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("hour")){
-                                    tm.setHour(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("iduserhire")){
-                                    tm.setIduserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("idusersupplier")){
-                                    tm.setIdusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("job")){
-                                    tm.setJob(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameuserhire")){
-                                    tm.setNameuserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
-                                    tm.setNameusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("rating")){
-                                    tm.setRating(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("status")){
-                                    tm.setStatus(v);
-                                    transaccionesRealizadas.add(tm);
+                                if(dataSnapshot1.getKey().equals(trabajoID)){
+                                    transaccionesRealizadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
+                                    adapter.notifyDataSetChanged();
                                 }
                             }
-
                         }
 
                         @Override
@@ -258,7 +212,6 @@ public class transactionsFragment extends Fragment {
                         }
                     });
                 }}
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -274,40 +227,14 @@ public class transactionsFragment extends Fragment {
                     if(dataSnapshot.getKey() != null){
                     String trabajoID = dataSnapshot.getKey();
                     TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
                     mTrabajos.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                String v = dataSnapshot1.getValue(String.class);
-
-                                if(dataSnapshot1.getKey().equals("date")){
-                                    tm.setDate(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("hour")){
-                                    tm.setHour(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("iduserhire")){
-                                    tm.setIduserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("idusersupplier")){
-                                    tm.setIdusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("job")){
-                                    tm.setJob(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameuserhire")){
-                                    tm.setNameuserhire(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
-                                    tm.setNameusersupplier(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("rating")){
-                                    tm.setRating(v);
-                                }
-                                if(dataSnapshot1.getKey().equals("status")){
-                                    tm.setStatus(v);
-                                    transaccionesContratadas.add(tm);
+                                if(dataSnapshot1.getKey().equals(trabajoID)){
+                                    transaccionesContratadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
+                                    adapter.notifyDataSetChanged();
                                 }
                             }
 
@@ -319,7 +246,6 @@ public class transactionsFragment extends Fragment {
                         }
                     });
                 }}
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -327,6 +253,8 @@ public class transactionsFragment extends Fragment {
 
             }
         });
+        ArrayList<TransaccionesModel> listDatos = new ArrayList<>();
+        listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test ", "En Proceso", "Contrato","a","4.0","Completado"));
 
 
         btnPDF.setOnClickListener(new View.OnClickListener() {
@@ -362,7 +290,7 @@ public class transactionsFragment extends Fragment {
         int starting_y = 0;
 
         //Strings for PDF Header
-        String clientName = "Alan Eduardo Aquino Rosas";
+        String clientName = mAuth.getCurrentUser().getUid();
 
         String documentTitle = "Transacciones "+ clientName+".pdf";
 
