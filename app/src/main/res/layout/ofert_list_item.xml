@@ -26,12 +26,12 @@
             android:thicknessRatio="1.9"
             android:layout_marginRight="52dp"
             android:layout_marginLeft="52dp">
+
             <ImageView
                 android:id="@+id/list_item_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/exampleuser"
-                />
+                android:src="@drawable/exampleuser" />
 
         </androidx.cardview.widget.CardView>
 
@@ -39,12 +39,12 @@
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Contact Name"
             android:layout_below="@+id/userImg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:text="Contact Name"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginTop="7dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtJob"
@@ -69,14 +69,15 @@
             android:text="Disp Date"
 
             android:textColor="@color/black" />
+
         <ImageView
+            android:id="@+id/txtModality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtModality"
             android:layout_below="@id/txtDispDate"
-            android:src="@drawable/camera_white"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/camera_white" />
 
 
     </RelativeLayout>

@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -50,11 +49,16 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_closed);
+
         drawer.addDrawerListener(toggle);
+
         toggle.syncState();
+
         if(savedInstanceState==null){//to safe the state when the state is rotated
         getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new fragmentSearch()).commit();//cUNDO SE INICIA LA ACTIVIDAD SE QUIRE ABIERTO EL PRIMERO
-        navigationView.setCheckedItem(R.id.navBuscar);}
+        navigationView.setCheckedItem(R.id.navBuscar);
+        }
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser!=null) {//If user is not sign in
             headerFirebase();
@@ -124,7 +128,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new messageFragment()).commit();
                 break;
             case R.id.navNotificaciones:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new notificationsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new NotificationsFragment()).commit();
                 break;
             case R.id.navPerfil:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framentContainer,new profileFragment()).commit();
