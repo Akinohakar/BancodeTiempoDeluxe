@@ -39,6 +39,9 @@
             android:exported="true" />
           <activity
             android:name=".ForgetPass"
+            android:exported="true"/>
+        <activity
+            android:name=".DescriptionNotificationRequest"
             android:exported="true" />
         <activity
             android:name=".RegisterJobActivity"
