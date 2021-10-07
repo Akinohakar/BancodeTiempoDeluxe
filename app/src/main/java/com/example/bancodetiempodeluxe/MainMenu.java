@@ -61,10 +61,9 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         }
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null){//If user is not sign in
-           headerFirebase();
+        if(currentUser!=null) {//If user is not sign in
+            headerFirebase();
         }
-
     }
    public void headerFirebase(){
        //get instances navigation view
