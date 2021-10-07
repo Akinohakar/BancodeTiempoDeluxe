@@ -38,11 +38,11 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="report">Reportar un problema</string>
     <string name="contactUs">Contáctanos</string>
     <string name="privacyTitle">Aviso de Privacidad</string>
-    <string name="prevMail">Correo Electrónico anterior</string>
+    <string name="prevMail">Correo Electrónico actual</string>
     <string name="newMail"> Correo Electrónico nuevo</string>
     <string name="password">Contraseña</string>
     <string name="change">Cambiar</string>
-    <string name="prevPass">Contraseña anterior</string>
+    <string name="prevPass">Contraseña actual</string>
     <string name="newPass"> Contraseña nueva</string>
     <string name="problem">Problema</string>
     <string name="description">Descripción</string>
