@@ -1,6 +1,5 @@
 package com.example.bancodetiempodeluxe;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatosTransacciones.ViewHolderDatos> {
 
-    ArrayList<TransaccionesModel> listTransacciones;
+    ArrayList<TransaccionesModel> transaccionesContratadas, transaccionesRealizadas, trabajoActual;
 
-    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> listTransacciones){
-        this.listTransacciones = listTransacciones;
+    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> transaccionesContratadas, ArrayList<TransaccionesModel> transaccionesRealizadas, ArrayList<TransaccionesModel>trabajoActual){
+        this.transaccionesContratadas = transaccionesContratadas;
+        this.transaccionesRealizadas  = transaccionesRealizadas;
+        this.trabajoActual = trabajoActual;
     }
 
     @NonNull
@@ -31,12 +30,12 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        holder.asignarDatos(listTransacciones.get(position));
+        holder.asignarDatos(transaccionesContratadas.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return listTransacciones.size();
+        return transaccionesContratadas.size();
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
@@ -60,15 +59,15 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
         }
 
         public void asignarDatos(TransaccionesModel tModel) {
-            contrato.setText(tModel.contrato);
-            fecha.setText(tModel.fecha);
-            hora.setText(tModel.hora);
-            user.setText(tModel.cliente);
-            work.setText(tModel.trabajo);
-            status.setText(tModel.status);
-            if(tModel.status == "Cancelado"){
+            contrato.setText(tModel.getRating());
+            user.setText(tModel.getNameusersupplier());
+            fecha.setText(tModel.getDate());
+            hora.setText(tModel.getHour());
+            work.setText(tModel.getJob());
+            status.setText(tModel.getStatus());
+            if(tModel.getStatus().equals("Cancelado")){
                 imgStatus.setImageResource(R.drawable.ic_cancel);
-            }else if(tModel.status == "Completado"){
+            }else if(tModel.getStatus().equals("Completado")){
                 imgStatus.setImageResource(R.drawable.ic_check);
             }else{
                 imgStatus.setImageResource(R.drawable.ic_proceso);

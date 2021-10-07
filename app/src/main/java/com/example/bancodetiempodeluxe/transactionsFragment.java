@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
@@ -45,7 +56,9 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
  */
 public class transactionsFragment extends Fragment {
 
-    ArrayList<TransaccionesModel> listDatos;
+    private DatabaseReference mUsersDatabase, mTrabajosContratados, mTrabajosRealizados, mActualJob, mTrabajos;
+    private FirebaseAuth mAuth;
+    ArrayList<TransaccionesModel> transaccionesContratadas, transaccionesRealizadas, trabajoActual;
     RecyclerView recycler;
 
     private static final int PERMISSION_REQUEST_CODE = 200;
@@ -97,64 +110,247 @@ public class transactionsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_transactions, container, false);//Inflate fragment layout
 
+        mAuth = FirebaseAuth.getInstance();
+
+        String current_id = mAuth.getCurrentUser().getUid();
+
+        mUsersDatabase       = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id);
+        mTrabajosContratados = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Hired Jobs");
+        mTrabajosRealizados  = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Worked Jobs");
+        mActualJob           = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Actual Job");
+
+
         Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
 
         recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
         //recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listDatos = new ArrayList<TransaccionesModel>();
+
+        transaccionesContratadas = new ArrayList<TransaccionesModel>();
+        transaccionesRealizadas  = new ArrayList<TransaccionesModel>();
 
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
 
-        if(checkPermision()){
-            Toast.makeText(getActivity(), "Permiso Concedido", Toast.LENGTH_SHORT).show();
-        }else{
+        if(!checkPermision()){
             requestPermision();
         }
 
-        //Crear las transacciones
-        /*listDatos.add(new TransaccionesModel("2021-09-24","01","Good Co","Música","Completado","Contrato"));
-        listDatos.add(new TransaccionesModel("2021-09-23","01","Emma Clair","Remix","Completado","Contratade"));
-        listDatos.add(new TransaccionesModel("2021-09-22","01","Wolfgang Lohr","Remix","Cancelado","Contrato"));
-        listDatos.add(new TransaccionesModel("2021-09-21","01","Alan Aquino","Programacion","Cancelado","Contrato"));
-        listDatos.add(new TransaccionesModel("2021-09-21","01","Vale Cabañas","Diseños","Completado","Contratade"));
-        listDatos.add(new TransaccionesModel("2021-09-21","01","Juan VaTe","Smash","Cancelado","Contrato"));
-        listDatos.add(new TransaccionesModel("2021-09-21","01","DinhoTec","Siuuuu","En Progreso","Contratade"));
-        listDatos.add(new TransaccionesModel("2021-09-27", "01","Arenoman","Bigote","Cancelado", "Contrato"));
-        */
+        transaccionesContratadas = new ArrayList<>();
+        transaccionesRealizadas  = new ArrayList<>();
+        trabajoActual            = new ArrayList<>();
 
-        for(int i = 1; i <= 80; i++){
-            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contrato"));
-            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Cancelado", "Contrato"));
-            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "En Proceso", "Contrato"));
-        }
-        for(int i = 1; i <= 120; i++){
-            listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test " + i, "Completado", "Contratade"));
-        }
-
-        AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(listDatos);
+        AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(transaccionesContratadas,transaccionesRealizadas,trabajoActual);
         recycler.setAdapter(adapter);
+
+        mActualJob.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.getKey() != null){
+                    String trabajoID = dataSnapshot.getKey();
+                    TransaccionesModel tm = new TransaccionesModel();
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
+                                String v = dataSnapshot1.getValue(String.class);
+
+                                if(dataSnapshot1.getKey().equals("date")){
+                                    tm.setDate(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("hour")){
+                                    tm.setHour(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("iduserhire")){
+                                    tm.setIduserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("idusersupplier")){
+                                    tm.setIdusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("job")){
+                                    tm.setJob(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameuserhire")){
+                                    tm.setNameuserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
+                                    tm.setNameusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("rating")){
+                                    tm.setRating(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("status")){
+                                    tm.setStatus(v);
+                                    trabajoActual.add(tm);
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }}
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        mTrabajosRealizados.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.getKey() != null){
+                    String trabajoID = dataSnapshot.getKey();
+                    TransaccionesModel tm = new TransaccionesModel();
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
+                                String v = dataSnapshot1.getValue(String.class);
+
+                                if(dataSnapshot1.getKey().equals("date")){
+                                    tm.setDate(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("hour")){
+                                    tm.setHour(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("iduserhire")){
+                                    tm.setIduserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("idusersupplier")){
+                                    tm.setIdusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("job")){
+                                    tm.setJob(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameuserhire")){
+                                    tm.setNameuserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
+                                    tm.setNameusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("rating")){
+                                    tm.setRating(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("status")){
+                                    tm.setStatus(v);
+                                    transaccionesRealizadas.add(tm);
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }}
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        mTrabajosContratados.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.getKey() != null){
+                    String trabajoID = dataSnapshot.getKey();
+                    TransaccionesModel tm = new TransaccionesModel();
+                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(trabajoID);
+                    mTrabajos.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
+                                String v = dataSnapshot1.getValue(String.class);
+
+                                if(dataSnapshot1.getKey().equals("date")){
+                                    tm.setDate(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("hour")){
+                                    tm.setHour(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("iduserhire")){
+                                    tm.setIduserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("idusersupplier")){
+                                    tm.setIdusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("job")){
+                                    tm.setJob(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameuserhire")){
+                                    tm.setNameuserhire(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("nameusersupplier")){
+                                    tm.setNameusersupplier(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("rating")){
+                                    tm.setRating(v);
+                                }
+                                if(dataSnapshot1.getKey().equals("status")){
+                                    tm.setStatus(v);
+                                    transaccionesContratadas.add(tm);
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }}
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         btnPDF.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               //generatePDF_transactions();
-              create_PDFDocument(listDatos);
+              create_PDFDocument(transaccionesContratadas,transaccionesRealizadas);
           }
         });
 
         return view;
     }
 
-    public void generatePDF_transactions(){
-        String msg = "Generando Reporte PDF";
-        Toast toast = Toast.makeText(getActivity(), msg,Toast.LENGTH_SHORT);
-        toast.show();
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+
     }
 
-    public void create_PDFDocument(ArrayList<TransaccionesModel> listDatos){
+
+
+    public void create_PDFDocument(ArrayList<TransaccionesModel> transaccionesContratadas, ArrayList<TransaccionesModel>transaccionesRealizadas){
         //Medidas de la pagina
         int pageHeight = 792;
         int pageWidth  = 612;
@@ -261,7 +457,7 @@ public class transactionsFragment extends Fragment {
         ///////Obtener elementos de Lista
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         title.setTextSize(8);
-        for(int i = 0; i< listDatos.size(); i++){
+        for(int i = 0; i< transaccionesContratadas.size(); i++){
             if(overViewContents >= 60){
                 document.finishPage(page);
                 pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,++pageNumber).create();
@@ -270,15 +466,13 @@ public class transactionsFragment extends Fragment {
                 overViewContents = 0;
                 starting_y = 30;
             }
-            if(listDatos.get(i).contrato.equals("Contrato")) {
-                canvas.drawText(listDatos.get(i).cliente, xUser, starting_y, title);
-                canvas.drawText(listDatos.get(i).trabajo, xWork, starting_y, title);
-                canvas.drawText(listDatos.get(i).fecha, xDate, starting_y, title);
-                canvas.drawText(listDatos.get(i).hora, xHour, starting_y, title);
-                canvas.drawText(listDatos.get(i).status, xStat, starting_y, title);
-                starting_y += 10;
-                ++overViewContents;
-            }
+            canvas.drawText(transaccionesContratadas.get(i).nameusersupplier, xUser, starting_y, title);
+            canvas.drawText(transaccionesContratadas.get(i).job, xWork, starting_y, title);
+            canvas.drawText(transaccionesContratadas.get(i).date, xDate, starting_y, title);
+            canvas.drawText(transaccionesContratadas.get(i).hour, xHour, starting_y, title);
+            canvas.drawText(transaccionesContratadas.get(i).status, xStat, starting_y, title);
+            starting_y += 10;
+            ++overViewContents;
 
         }
         /////////////////////////////////////////////////////////////////////////////////
@@ -321,7 +515,7 @@ public class transactionsFragment extends Fragment {
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         title.setTextSize(8);
         overViewContents = 0;
-        for(int j = 0; j< listDatos.size(); j++){
+        for(int j = 0; j< transaccionesRealizadas.size(); j++){
             if(overViewContents >= 60){
                 document.finishPage(page);
                 pageInfo = new PdfDocument.PageInfo.Builder(pageWidth,pageHeight,++pageNumber).create();
@@ -330,15 +524,13 @@ public class transactionsFragment extends Fragment {
                 overViewContents = 0;
                 starting_y = 30;
             }
-            if(listDatos.get(j).contrato.equals("Contratade")) {
-                canvas.drawText(listDatos.get(j).cliente, xUser, starting_y, title);
-                canvas.drawText(listDatos.get(j).trabajo, xWork, starting_y, title);
-                canvas.drawText(listDatos.get(j).fecha, xDate, starting_y, title);
-                canvas.drawText(listDatos.get(j).hora, xHour, starting_y, title);
-                canvas.drawText(listDatos.get(j).status, xStat, starting_y, title);
-                starting_y += 10;
-                ++overViewContents;
-            }
+            canvas.drawText(transaccionesRealizadas.get(j).nameuserhire, xUser, starting_y, title);
+            canvas.drawText(transaccionesRealizadas.get(j).job, xWork, starting_y, title);
+            canvas.drawText(transaccionesRealizadas.get(j).date, xDate, starting_y, title);
+            canvas.drawText(transaccionesRealizadas.get(j).hour, xHour, starting_y, title);
+            canvas.drawText(transaccionesRealizadas.get(j).status, xStat, starting_y, title);
+            starting_y += 10;
+            ++overViewContents;
         }
         //////////////////////////////////////////////////////////////////////////////////
         document.finishPage(page);
@@ -375,7 +567,7 @@ public class transactionsFragment extends Fragment {
                 boolean readStorage  = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
                 if(wrtieStorage && readStorage){
-                    Toast.makeText(getActivity(), "Permiso Concedido", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Permiso Concedido", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(),"Permiso Rechazado", Toast.LENGTH_SHORT).show();
                     getActivity().finish();
