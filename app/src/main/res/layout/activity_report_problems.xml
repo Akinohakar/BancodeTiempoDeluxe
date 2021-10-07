@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackapp"
+    android:orientation="vertical"
+    tools:context=".ReportProblems">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/report"
+        android:textSize="30sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat_bold"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/idProblemTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/problem"
+        app:startIconDrawable="@drawable/ic_reportproblemwhite"
+        app:startIconTint="@color/yellowapp"
+        app:hintTextColor="@color/whiteapp"
+        android:outlineAmbientShadowColor="@color/whiteapp"
+        android:textColorHint="@color/whiteapp"
+        android:outlineSpotShadowColor="@color/whiteapp"
+        app:prefixTextColor="@color/whiteapp"
+        app:helperTextTextColor="@color/whiteapp"
+        app:counterOverflowTextColor="@color/whiteapp"
+        app:counterTextColor="@color/whiteapp"
+        app:boxStrokeColor="@color/yellowapp"
+        app:boxStrokeErrorColor="@color/whiteapp"
+        app:errorTextColor="@color/whiteapp"
+        app:placeholderTextColor="@color/whiteapp"
+        app:suffixTextColor="@color/whiteapp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:shadowColor="@color/whiteapp"
+            android:textColorLink="@color/whiteapp"
+            android:textColor="@color/whiteapp"
+            android:textColorHighlight="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/idProblemDescription"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:hint="@string/description"
+        app:hintTextColor="@color/whiteapp"
+        android:outlineAmbientShadowColor="@color/whiteapp"
+        android:textColorHint="@color/whiteapp"
+        android:outlineSpotShadowColor="@color/whiteapp"
+        app:prefixTextColor="@color/whiteapp"
+        app:helperTextTextColor="@color/whiteapp"
+        app:counterOverflowTextColor="@color/whiteapp"
+        app:counterTextColor="@color/whiteapp"
+        app:boxStrokeColor="@color/yellowapp"
+        app:boxStrokeErrorColor="@color/whiteapp"
+        app:errorTextColor="@color/whiteapp"
+        app:placeholderTextColor="@color/whiteapp"
+        app:suffixTextColor="@color/whiteapp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:outlineSpotShadowColor="@color/whiteapp"
+            android:outlineAmbientShadowColor="@color/whiteapp"
+            android:shadowColor="@color/whiteapp"
+            android:textColorLink="@color/whiteapp"
+            android:textColor="@color/whiteapp"
+            android:textColorHighlight="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/idSendReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/send"
+        android:textColor="@color/blackapp"
+        android:textSize="15sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:backgroundTint="@color/yellowapp"/>
+
+
+</LinearLayout>
