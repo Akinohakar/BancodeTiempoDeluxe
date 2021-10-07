@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerificationMain"
+    android:background="@color/blackapp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/verifyTitle"
+        android:textSize="30sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/verifyDesc"
+        android:textSize="15sp"
+        android:textColor="@color/j_hueso"/>
+
+    <com.getmati.mati_sdk.MatiButton
+        android:id="@+id/matiKYCButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:color="@color/greeno"
+        app:textColor="@color/j_hueso"
+        app:text="@string/verifyTitle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/poweredByMati"
+        android:textSize="11sp"
+        android:textColor="@color/j_hueso"
+        android:layout_gravity="center"/>
+
+
+
+</LinearLayout>

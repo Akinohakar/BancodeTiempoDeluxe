@@ -80,7 +80,8 @@ public class configPerfilFragment extends Fragment {
         View.OnClickListener helpo = new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getActivity(), Help.class));
+                //startActivity(new Intent(getActivity(), Help.class));
+                startActivity(new Intent(getActivity(), VerificationMain.class));
             }
         };
 

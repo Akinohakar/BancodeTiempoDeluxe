@@ -53,6 +53,8 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="sentEmail">¡Mensaje enviado correctamente!</string>
     <string name="problemMail">¡Error al enviar el mensaje!</string>
     <string name="back">Volver</string>
+    <string name="verifyTitle">Verificación de Cuenta</string>
+    <string name="verifyDesc">Para una mejor seguridad y promover confianza en el Banco de Tiempo, es necesario que verifiques tu identidad a través de un documento oficial Mexicano (INE, Pasaporte, etc.)</string>
     <!-- Placeholders -->
     <string name="placeholderImage">Cambiar por definitiva</string>
     <string name="placeholderHoras">01</string>
@@ -65,4 +67,5 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <!-- Other Values -->
     <string name="horas">H</string>
     <string name="descargarPDF">Descargar PDF</string>
+    <string name="poweredByMati">Powered by Mati</string>
 </resources>

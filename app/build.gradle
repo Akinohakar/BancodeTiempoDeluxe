@@ -25,6 +25,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
     }
     buildFeatures {
         viewBinding true
@@ -59,6 +60,10 @@ dependencies {
     implementation 'com.sun.mail:android-mail:1.6.2'
     implementation 'com.sun.mail:android-activation:1.6.2'
 
+    implementation ('com.getmati:mati-sdk:3.9.0'){
+        exclude group: 'org.json', module: 'json'
+    }
 
+    implementation 'io.socket:socket.io-client:0.8.3'
 
 }
