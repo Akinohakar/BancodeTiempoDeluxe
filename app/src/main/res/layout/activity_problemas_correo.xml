@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProblemasCorreo"
+    android:orientation="vertical"
+    android:background="@color/blackapp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_cancel"
+        android:layout_gravity="center"
+        app:tint="@color/redo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="@string/problemMail"
+        android:textSize="30sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat"/>
+
+    <Button
+        android:id="@+id/idVolverProblemas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/yellowapp"
+        android:text="@string/back"
+        android:textSize="20sp"
+        android:textColor="@color/blackapp"
+        android:fontFamily="@font/montserrat"/>
+
+</LinearLayout>

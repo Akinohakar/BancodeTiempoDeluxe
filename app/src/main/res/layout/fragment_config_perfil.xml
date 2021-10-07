@@ -14,42 +14,48 @@
             android:layout_marginTop="5dp"
             android:text="@string/configuracionesTitle"
             android:textColor="@color/j_hueso"
-            android:textSize="25sp"
+            android:textSize="35sp"
             android:fontFamily="@font/montserrat_bold"/>
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/idCambiarCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:minHeight="48dp"
+        android:orientation="horizontal">
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/placeholderImage"
+            android:src="@drawable/ic_emailicwhite" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/changeEmail"
+            android:textColor="@color/j_hueso"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idCambiarContra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_emailicwhite"
-                android:contentDescription="@string/placeholderImage" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:text="@string/changeEmail"
-                android:textColor="@color/j_hueso"
-                android:textSize="15sp"
-                android:fontFamily="@font/montserrat"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_passwdwhite"
                 android:contentDescription="@string/placeholderImage"/>
 
@@ -59,20 +65,22 @@
                 android:layout_marginStart="7dp"
                 android:text="@string/changePassw"
                 android:textColor="@color/j_hueso"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/montserrat"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/idHelpo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_helpwhite"
                 android:contentDescription="@string/placeholderImage"/>
 
@@ -82,20 +90,22 @@
                 android:layout_marginStart="7dp"
                 android:text="@string/help"
                 android:textColor="@color/j_hueso"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/montserrat"/>
         </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/idReportProblems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginStart="20dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/ic_reportproblemwhite"
             android:contentDescription="@string/placeholderImage"/>
 
@@ -105,20 +115,22 @@
             android:layout_marginStart="7dp"
             android:text="@string/report"
             android:textColor="@color/j_hueso"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:fontFamily="@font/montserrat"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/idContactUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginStart="20dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/ic_contactwhite"
             android:contentDescription="@string/placeholderImage"/>
 
@@ -128,7 +140,31 @@
             android:layout_marginStart="7dp"
             android:text="@string/contactUs"
             android:textColor="@color/j_hueso"
-            android:textSize="15sp"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_privacy"
+            android:contentDescription="@string/placeholderImage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:text="@string/privacyTitle"
+            android:textColor="@color/j_hueso"
+            android:textSize="20sp"
             android:fontFamily="@font/montserrat"/>
     </LinearLayout>
 
