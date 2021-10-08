@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
-                android:hint="Nombre"
+                android:hint="Nombre del Solicitante"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
@@ -68,7 +68,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Mi Nombre"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
@@ -83,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
-                android:hint="Pronombre/s"
+                android:hint="Pronombre/s del Solicitante"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
@@ -106,7 +105,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Mi Pronombre"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
@@ -231,12 +229,11 @@
             </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/job"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Trabajo"
+                android:hint="Trabajo solicitado"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
@@ -255,10 +252,10 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/job"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Mi Trabajo"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
@@ -271,7 +268,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descripcion Trabajo"
+                android:text="Descripcion del Trabajo Solicitado"
                 android:textSize="15sp"
                 android:textColor="@color/whiteapp"
                 android:layout_marginLeft="5sp"/>
@@ -290,7 +287,6 @@
                     android:layout_height="wrap_content"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:outlineSpotShadowColor="@color/whiteapp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan ex ac semper hendrerit. Aliquam tempus lacus et velit pellentesque volutpat. Proin luctus auctor metus, ac porta sapien facilisis vel. Praesent blandit faucibus tortor. Pellentesque ac ullamcorper sapien. Praesent ut ipsum turpis. Donec imperdiet libero arcu, ac vehicula tellus fringilla in. Integer nisl massa, euismod eu enim vel, pulvinar accumsan ex. Nunc arcu justo, porttitor at lorem nec, sagittis posuere neque. Mauris ut erat suscipit purus suscipit ultricies. Vestibulum quis semper nunc. Donec at metus id felis sollicitudin dapibus ac sit amet nibh. Integer luctus nibh lorem, ac porttitor libero scelerisque eget."
                     android:shadowColor="@color/whiteapp"
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
