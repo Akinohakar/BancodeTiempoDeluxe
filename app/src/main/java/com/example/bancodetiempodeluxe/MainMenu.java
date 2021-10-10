@@ -3,6 +3,7 @@ package com.example.bancodetiempodeluxe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,7 +13,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
+
         mAuth = FirebaseAuth.getInstance();//Inicializion the instance
 
         Toolbar toolbar=findViewById(R.id.toolabar);
@@ -72,6 +76,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
        TextView navPronoun = (TextView) headerView.findViewById(R.id.headerPronoun);
        TextView navRating = (TextView) headerView.findViewById(R.id.headerRating);
        ImageView navProfileImg=(ImageView) headerView.findViewById(R.id.headerImageProfile);
+
 //
        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
        String current_uid=mCurrentUser.getUid();

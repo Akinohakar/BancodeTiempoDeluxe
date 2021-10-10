@@ -3,12 +3,15 @@ package com.example.bancodetiempodeluxe;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +19,7 @@ import android.widget.LinearLayout;
  * create an instance of this fragment.
  */
 public class configPerfilFragment extends Fragment {
+    private Switch switchviewmode;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,6 +117,27 @@ public class configPerfilFragment extends Fragment {
 
         LinearLayout contac = view.findViewById(R.id.idContactUs);
         contac.setOnClickListener(cntactUs);
+
+        switchviewmode=view.findViewById(R.id.configperfilmodeswitch);
+        switchviewmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+
+
+                    switchviewmode.setText("Modo claro");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
+                }else{
+
+
+                    switchviewmode.setText("Modo oscuro");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                }
+            }
+        });
 
         return view;
     }

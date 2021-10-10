@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
-                android:text="@string/help"
+                android:text="Verificación de Identidad"
                 android:textColor="@color/j_hueso"
                 android:textSize="20sp"
                 android:fontFamily="@font/montserrat"/>
@@ -167,5 +167,16 @@
             android:textSize="20sp"
             android:fontFamily="@font/montserrat"/>
     </LinearLayout>
+    <Switch
+        android:checked="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:id="@+id/configperfilmodeswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modo de vista"/>
 
 </LinearLayout>

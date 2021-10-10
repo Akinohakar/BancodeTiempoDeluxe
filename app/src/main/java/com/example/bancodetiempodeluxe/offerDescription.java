@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class offerDescription extends AppCompatActivity {
-    private ImageView mProfileImage;
+    private ImageView mProfileImage, mBack;
     private TextView mProfileName,mProfileJobTitle,mProfileJobDesc,mProfileState,mProfileDateJob;
     private Button mProfileDoRequest;
     private DatabaseReference mUsersDatabase,mServiceRequestDatabase,mThisUser;
@@ -67,6 +67,14 @@ public class offerDescription extends AppCompatActivity {
         mProfileDoRequest=findViewById(R.id.offer_button_agree);
         mProfileState=findViewById(R.id.offer_verificado_state);
         mProfileDateJob=findViewById(R.id.offer_datejob);
+        mBack = findViewById(R.id.volverBuscar);
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MainMenu.class));
+            }
+        });
 
         mcurrent_state=0;
 
@@ -128,7 +136,7 @@ public class offerDescription extends AppCompatActivity {
                        pushedRef.setValue(jobMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
-                               Toast.makeText(offerDescription.this, "A prro prro si jalo al solicitud", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(offerDescription.this, "Servicio Solicitado", Toast.LENGTH_SHORT).show();
                                String value_key=pushedRef.getKey();
                                System.out.println(value_key);
 
