@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
-                android:text="@string/help"
+                android:text="Verificación de Identidad"
                 android:textColor="@color/j_hueso"
                 android:textSize="20sp"
                 android:fontFamily="@font/montserrat"/>

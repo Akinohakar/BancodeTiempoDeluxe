@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notificationFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293A80"
+    android:fitsSystemWindows="true"
+    tools:context=".DescriptionNotificationRequest">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="144dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/exampleuser"
+        app:civ_border_color="@color/whiteapp"
+        app:civ_border_width="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="409dp"
+        android:layout_height="413dp"
+        android:layout_marginBottom="0dp"
+        android:fillViewport="true"
+        android:paddingTop="30dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutBtn"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:hint="Nombre"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:enabled="false"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="Mi Nombre"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:hint="Pronombre/s"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:enabled="false"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerPronoun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="Mi Pronombre"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:hint="Edad"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:enabled="false"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/ic_date"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/employeerAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="20"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/employeerTel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Numero Telefonico"
+                android:enabled="false"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="7226969420"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/employeerDir"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Direccion"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:enabled="false"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/work_black"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="Mi direccion"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/job"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Trabajo"
+                android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
+                android:enabled="false"
+                app:boxStrokeColor="@color/yellowapp"
+                app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
+                app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/ic_smartphone"
+                app:startIconTint="@color/yellowapp"
+                app:suffixTextColor="@color/whiteapp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="Mi Trabajo"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion Trabajo"
+                android:textSize="15sp"
+                android:textColor="@color/whiteapp"
+                android:layout_marginLeft="5sp"/>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="30dp">
+
+                <TextView
+                    android:id="@+id/descJob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan ex ac semper hendrerit. Aliquam tempus lacus et velit pellentesque volutpat. Proin luctus auctor metus, ac porta sapien facilisis vel. Praesent blandit faucibus tortor. Pellentesque ac ullamcorper sapien. Praesent ut ipsum turpis. Donec imperdiet libero arcu, ac vehicula tellus fringilla in. Integer nisl massa, euismod eu enim vel, pulvinar accumsan ex. Nunc arcu justo, porttitor at lorem nec, sagittis posuere neque. Mauris ut erat suscipit purus suscipit ultricies. Vestibulum quis semper nunc. Donec at metus id felis sollicitudin dapibus ac sit amet nibh. Integer luctus nibh lorem, ac porttitor libero scelerisque eget."
+                    android:shadowColor="@color/whiteapp"
+                    android:textColor="@color/whiteapp"
+                    android:textColorHighlight="@color/whiteapp"
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp"/>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:showDividers="middle"
+        android:divider="@drawable/empty_tall_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/rejectJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#F44336"
+            android:text="Rechazar\ntrabajo"
+            android:textSize="15dp"
+            app:icon="@drawable/ic_checked"
+            app:rippleColor="#C21104"
+            app:strokeColor="@color/blueapp" />
+
+        <Button
+            android:id="@+id/acceptJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#4CAF50"
+            android:text="Aceptar\nTrabajo"
+            android:textSize="15dp"
+            app:icon="@drawable/ic_checked"
+            app:rippleColor="#247D28"
+            app:strokeColor="@color/blueapp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="277dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Nueva Solicitud"
+        android:textAlignment="center"
+        android:textColor="@color/whiteapp"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -178,14 +178,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
-                android:text="MI"/>
+                android:text="X"/>
             <CheckBox
                 android:id="@+id/register_job_thursday"
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
-                android:text="JV"/>
+                android:text="J"/>
             <CheckBox
                 android:id="@+id/register_job_friday"
                 android:layout_marginLeft="5dp"
