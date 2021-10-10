@@ -1,6 +1,5 @@
 package com.example.bancodetiempodeluxe;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatosTransacciones.ViewHolderDatos> {
 
-    ArrayList<TransaccionesModel> listTransacciones;
+    ArrayList<TransaccionesModel> transaccionesRealizadas, transaccionesContratadas;
 
-    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> listTransacciones){
-        this.listTransacciones = listTransacciones;
+    public AdapterDatosTransacciones(ArrayList<TransaccionesModel> transaccionesContratadas, ArrayList<TransaccionesModel> transaccionesRealizadas){
+        this.transaccionesContratadas = transaccionesContratadas;
+        this.transaccionesRealizadas = transaccionesRealizadas;
     }
 
     @NonNull
@@ -31,12 +29,17 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        holder.asignarDatos(listTransacciones.get(position));
+        if(position < transaccionesContratadas.size()){
+            holder.asignarDatos(transaccionesContratadas.get(position));
+        }else{
+            holder.asignarDatos(transaccionesRealizadas.get(position - transaccionesContratadas.size()));
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return listTransacciones.size();
+        return transaccionesContratadas.size() + transaccionesRealizadas.size();
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
@@ -60,19 +63,27 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
         }
 
         public void asignarDatos(TransaccionesModel tModel) {
-            contrato.setText(tModel.contrato);
-            fecha.setText(tModel.fecha);
-            hora.setText(tModel.hora);
-            user.setText(tModel.cliente);
-            work.setText(tModel.trabajo);
-            status.setText(tModel.status);
-            if(tModel.status == "Cancelado"){
+            contrato.setText(tModel.getRating());
+            fecha.setText(tModel.getDate());
+            hora.setText(tModel.getHour());
+            user.setText(tModel.getNameusersupplier());
+            work.setText(tModel.getJob());
+            if(tModel.status.equals("cancel")){
+                status.setText("Cancelado");
                 imgStatus.setImageResource(R.drawable.ic_cancel);
-            }else if(tModel.status == "Completado"){
+            }else if(tModel.status.equals("completed")){
+                status.setText("Completado");
                 imgStatus.setImageResource(R.drawable.ic_check);
             }else{
                 imgStatus.setImageResource(R.drawable.ic_proceso);
+                if(tModel.getStatus().equals("sent")){
+                    status.setText("Solicitud En Espera");
+                }
+                if(tModel.getStatus().equals("inprogress")){
+                    status.setText("En Progreso");
+                }
             }
         }
     }
 }
+
