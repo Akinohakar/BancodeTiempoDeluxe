@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Banco de Tiempo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_closed">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lorem_ipsun">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus id interdum velit laoreet id donec. Sit amet luctus venenatis lectus magna. Sit amet facilisis magna etiam tempor orci eu lobortis. Sed felis eget velit aliquet sagittis id consectetur purus ut. Neque gravida in fermentum et sollicitudin ac orci phasellus egestas. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper. Dui nunc mattis enim ut. Magna sit amet purus gravida quis blandit turpis cursus. Tempus urna et pharetra pharetra. Arcu odio ut sem nulla pharetra diam sit amet. Elementum facilisis leo vel fringilla est ullamcorper eget.
+
+Vitae suscipit tellus mauris a. Justo eget magna fermentum iaculis eu. Pharetra diam sit amet nisl suscipit adipiscing bibendum. Ipsum dolor sit amet consectetur adipiscing elit. Sed arcu non odio euismod lacinia at quis risus. Mauris vitae ultricies leo integer. Dictum varius duis at consectetur lorem donec. Ac turpis egestas integer eget aliquet nibh. Convallis a cras semper auctor. Vulputate mi sit amet mauris commodo quis. At volutpat diam ut venenatis tellus in metus. Scelerisque in dictum non consectetur. Sed faucibus turpis in eu mi. Dolor magna eget est lorem ipsum dolor. Varius sit amet mattis vulputate enim nulla. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Scelerisque fermentum dui faucibus in ornare quam viverra. Facilisi morbi tempus iaculis urna id. Gravida arcu ac tortor dignissim convallis aenean et.
+
+Amet nisl purus in mollis nunc sed id semper risus. Condimentum id venenatis a condimentum vitae sapien pellentesque. Ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum. At urna condimentum mattis pellentesque id. In cursus turpis massa tincidunt dui ut. Rutrum quisque non tellus orci ac auctor augue. In tellus integer feugiat scelerisque varius. Eu tincidunt tortor aliquam nulla facilisi. Tellus integer feugiat scelerisque varius morbi enim nunc faucibus. Eget nunc lobortis mattis aliquam faucibus purus. Neque gravida in fermentum et sollicitudin ac orci phasellus. Tincidunt praesent semper feugiat nibh sed pulvinar. In egestas erat imperdiet sed euismod nisi porta. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Aliquet nec ullamcorper sit amet risus nullam. Massa massa ultricies mi quis hendrerit dolor. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Semper viverra nam libero justo laoreet sit amet cursus sit.
+
+Id volutpat lacus laoreet non curabitur gravida. Auctor augue mauris augue neque gravida in fermentum et. Libero nunc consequat interdum varius sit. Fermentum iaculis eu non diam. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Lacus vestibulum sed arcu non. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Sit amet justo donec enim diam vulputate ut pharetra. Id volutpat lacus laoreet non curabitur. Nulla malesuada pellentesque elit eget. Quisque non tellus orci ac. Leo integer malesuada nunc vel risus commodo. Non consectetur a erat nam at lectus urna duis convallis. Neque laoreet suspendisse interdum consectetur libero. Cursus sit amet dictum sit amet justo donec enim diam. Tortor id aliquet lectus proin. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit.
+
+Nam aliquam sem et tortor consequat. Suscipit adipiscing bibendum est ultricies. Vulputate mi sit amet mauris commodo. Mauris pellentesque pulvinar pellentesque habitant morbi. Montes nascetur ridiculus mus mauris vitae ultricies. Tellus id interdum velit laoreet id donec ultrices tincidunt. Id consectetur purus ut faucibus. Vestibulum morbi blandit cursus risus. Eros in cursus turpis massa tincidunt dui ut. Semper quis lectus nulla at volutpat. Convallis posuere morbi leo urna molestie. Aliquam ultrices sagittis orci a scelerisque purus semper eget duis.
+
+Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est ante in nibh mauris. Quis auctor elit sed vulputate mi sit amet mauris. Faucibus vitae aliquet nec ullamcorper. Imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Gravida rutrum quisque non tellus orci ac auctor augue. Nullam ac tortor vitae purus faucibus ornare. Id eu nisl nunc mi. Est sit amet facilisis magna etiam tempor. Tortor vitae purus faucibus ornare. Dignissim enim sit amet venenatis urna cursus eget. Aliquam purus sit amet luctus venenatis lectus magna fringilla urna. Sit amet consectetur adipiscing elit ut aliquam purus. Egestas congue quisque egestas diam in arcu cursus euismod quis. Tempor nec feugiat nisl pretium fusce id velit ut tortor. Ac turpis egestas maecenas pharetra convallis posuere morbi leo urna. Nunc sed blandit libero volutpat. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae. In iaculis nunc sed augue lacus viverra vitae. Phasellus egestas tellus rutrum tellus pellentesque eu.</string>
+    <string name="title_activity_edit_profile">editProfile</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- The Tona Strings uwu -->
+    <!-- Titles  -->
+    <string name="transactionsTitle">Transacciones Efectuadas</string>
+    <string name="saldoTitle">Saldo</string>
+    <string name="horasRecibidas">Horas Recibidas</string>
+    <string name="horasDadas">Horas Dadas</string>
+    <string name="configuracionesTitle">Configuraciones</string>
+    <string name="changeEmail">Cambiar Correo Electrónico</string>
+    <string name="changePassw">Cambiar Contraseña</string>
+    <string name="help">Ayuda</string>
+    <string name="report">Reportar un problema</string>
+    <string name="contactUs">Contáctanos</string>
+    <string name="privacyTitle">Aviso de Privacidad</string>
+    <string name="prevMail">Correo Electrónico anterior</string>
+    <string name="newMail"> Correo Electrónico nuevo</string>
+    <string name="password">Contraseña</string>
+    <string name="change">Cambiar</string>
+    <string name="prevPass">Contraseña anterior</string>
+    <string name="newPass"> Contraseña nueva</string>
+    <string name="problem">Problema</string>
+    <string name="description">Descripción</string>
+    <string name="send">Enviar</string>
+    <string name="yourMail">Escribe tu Correo Electrónico</string>
+    <string name="subject">Asunto</string>
+    <string name="contactEmail">Correo Electrónico de Contacto</string>
+    <string name="sentEmail">¡Mensaje enviado correctamente!</string>
+    <string name="problemMail">¡Error al enviar el mensaje!</string>
+    <string name="back">Volver</string>
+    <string name="verifyTitle">Verificación de Cuenta</string>
+    <string name="verifyDesc">Para una mejor seguridad y promover confianza en el Banco de Tiempo, es necesario que verifiques tu identidad a través de un documento oficial Mexicano (INE, Pasaporte, etc.)</string>
+    <!-- Placeholders -->
+    <string name="placeholderImage">Cambiar por definitiva</string>
+    <string name="placeholderHoras">01</string>
+    <string name="placeholderTransacciones">Mi transaccion</string>
+    <string name="placeholderFecha">2021–09–24</string>
+    <string name="placeholderUser">Alan Eduardo Aquino Rosas</string>
+    <string name="placeholderWork">Carpintería</string>
+    <string name="placeholderStatus">Completado</string>
+    <string name="placeholderContract">Contrato</string>
+    <!-- Other Values -->
+    <string name="horas">H</string>
+    <string name="descargarPDF">Descargar PDF</string>
+    <string name="poweredByMati">Powered by Mati</string>
+</resources>
