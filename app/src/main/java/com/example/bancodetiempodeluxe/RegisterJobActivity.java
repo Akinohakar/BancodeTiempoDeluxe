@@ -86,7 +86,7 @@ public class RegisterJobActivity extends AppCompatActivity {
                     strDate.append("M ");
                 }
                 if (dayMI.isChecked()){
-                    strDate.append("MI ");
+                    strDate.append("X ");
 
                 }
                 if (dayJV.isChecked()){

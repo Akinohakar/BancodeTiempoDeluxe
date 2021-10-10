@@ -23,13 +23,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,9 +41,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -60,6 +57,8 @@ public class transactionsFragment extends Fragment {
     private FirebaseAuth mAuth;
     ArrayList<TransaccionesModel> transaccionesContratadas, transaccionesRealizadas, trabajoActual;
     RecyclerView recycler;
+    TextView horasDadas, horasRecibidas;
+    String username;
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     Bitmap bmp, scaledbmp;
@@ -115,6 +114,24 @@ public class transactionsFragment extends Fragment {
         String current_id = mAuth.getCurrentUser().getUid();
 
         mUsersDatabase       = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id);
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.getKey() != null){
+                        if(dataSnapshot.getKey().equals("name")){
+                            username = dataSnapshot.getValue(String.class);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         mTrabajosContratados = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Hired Jobs");
         mTrabajosRealizados  = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Worked Jobs");
         mActualJob           = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id).child("Actual Job");
@@ -123,6 +140,9 @@ public class transactionsFragment extends Fragment {
         transaccionesRealizadas  = new ArrayList<TransaccionesModel>();
 
         Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
+
+        horasDadas = view.findViewById(R.id.idHorasDadas);
+        horasRecibidas = view.findViewById(R.id.idHorasRecibidas);
 
         recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
         recycler.setHasFixedSize(true);
@@ -140,6 +160,9 @@ public class transactionsFragment extends Fragment {
         transaccionesContratadas = new ArrayList<>();
         transaccionesRealizadas  = new ArrayList<>();
         trabajoActual            = new ArrayList<>();
+
+        final int[] horasR = {0};
+        final int[] horasD = {0};
 
         AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(transaccionesContratadas, transaccionesRealizadas);
         recycler.setAdapter(adapter);
@@ -162,10 +185,12 @@ public class transactionsFragment extends Fragment {
                                     if(tm.getIduserhire().equals(current_id)){
                                         transaccionesContratadas.add(tm);
                                         adapter.notifyDataSetChanged();
+                                        ++horasD[0];
                                     }
                                     else if(tm.getIdusersupplier().equals(current_id)){
                                         transaccionesRealizadas.add(tm);
                                         adapter.notifyDataSetChanged();
+                                        ++horasR[0];
                                     }
                                 }
                             }
@@ -202,6 +227,7 @@ public class transactionsFragment extends Fragment {
                                 if(dataSnapshot1.getKey().equals(trabajoID)){
                                     transaccionesRealizadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
                                     adapter.notifyDataSetChanged();
+                                    ++horasR[0];
                                 }
                             }
                         }
@@ -235,6 +261,7 @@ public class transactionsFragment extends Fragment {
                                 if(dataSnapshot1.getKey().equals(trabajoID)){
                                     transaccionesContratadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
                                     adapter.notifyDataSetChanged();
+                                    ++horasD[0];
                                 }
                             }
 
@@ -253,9 +280,6 @@ public class transactionsFragment extends Fragment {
 
             }
         });
-        ArrayList<TransaccionesModel> listDatos = new ArrayList<>();
-        listDatos.add(new TransaccionesModel("2021-09-24","01","TestClient","Test ", "En Proceso", "Contrato","a","4.0","Completado"));
-
 
         btnPDF.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -264,6 +288,9 @@ public class transactionsFragment extends Fragment {
               create_PDFDocument(transaccionesContratadas,transaccionesRealizadas);
           }
         });
+
+        horasRecibidas.setText(String.valueOf(horasR[0]));
+        horasDadas.setText(String.valueOf(horasD[0]));
 
         return view;
     }
@@ -290,7 +317,7 @@ public class transactionsFragment extends Fragment {
         int starting_y = 0;
 
         //Strings for PDF Header
-        String clientName = mAuth.getCurrentUser().getUid();
+        String clientName = username;
 
         String documentTitle = "Transacciones "+ clientName+".pdf";
 

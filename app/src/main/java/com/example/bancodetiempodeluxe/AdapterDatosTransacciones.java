@@ -68,13 +68,20 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
             hora.setText(tModel.getHour());
             user.setText(tModel.getNameusersupplier());
             work.setText(tModel.getJob());
-            status.setText(tModel.getStatus());
-            if(tModel.status.equals("Cancelado")){
+            if(tModel.status.equals("cancel")){
+                status.setText("Cancelado");
                 imgStatus.setImageResource(R.drawable.ic_cancel);
-            }else if(tModel.status.equals("Completado")){
+            }else if(tModel.status.equals("completed")){
+                status.setText("Completado");
                 imgStatus.setImageResource(R.drawable.ic_check);
             }else{
                 imgStatus.setImageResource(R.drawable.ic_proceso);
+                if(tModel.getStatus().equals("sent")){
+                    status.setText("Solicitud En Espera");
+                }
+                if(tModel.getStatus().equals("inprogress")){
+                    status.setText("En Progreso");
+                }
             }
         }
     }
