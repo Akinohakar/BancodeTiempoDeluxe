@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -44,6 +45,7 @@ public class offerDescription extends AppCompatActivity {
     private String date=simpleDate.format(dateintancer);
     private SimpleDateFormat simplehour=new SimpleDateFormat("HH:mm",Locale.getDefault());
     private String hour=simplehour.format(dateintancer);
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +107,10 @@ public class offerDescription extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                DatabaseReference pushedRef=mServiceRequestDatabase.push();
-               mThisUser.addValueEventListener(new ValueEventListener() {
+               mThisUser.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String name=snapshot.child("name").getValue().toString();
+                        name=snapshot.child("name").getValue().toString();
 
 
                        HashMap<String,String> jobMap=new HashMap<>();
@@ -133,10 +135,7 @@ public class offerDescription extends AppCompatActivity {
                            }
                        });
 
-
-
                    }
-
 
                    @Override
                    public void onCancelled(@NonNull DatabaseError error) {
@@ -150,6 +149,10 @@ public class offerDescription extends AppCompatActivity {
                mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("type").setValue("request");
                mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("status").setValue(0);
                mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("job").setValue(pushedRef.getKey().toString());
+
+               Intent intent = new Intent(offerDescription.this, MainMenu.class);
+               startActivity(intent);
+               finish();
            }
        });
     }
