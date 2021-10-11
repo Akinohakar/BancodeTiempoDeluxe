@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancodeTiempoDeluxe">
         <activity
-            android:name=".ChatActivity"
+            android:name=".JobConfirmation"
             android:exported="true" />
+        <activity
+            android:name=".ActivityConfirmation"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true"/>
         <activity
             android:name=".VerificationMain"
             android:exported="true" />
@@ -42,7 +48,7 @@
             android:exported="true" />
         <activity
             android:name=".ForgetPass"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DescriptionNotificationRequest"
             android:exported="true" />

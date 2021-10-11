@@ -119,6 +119,19 @@ public class NotificationsFragment extends Fragment {
                             intent.putExtra("NID", selectedNotif);
                             startActivity(intent);
                         }
+                        if(notification.getType().equals("confirmed")){
+                            Intent intent = new Intent(getActivity(), ActivityConfirmation.class);
+                            intent.putExtra("JID", notification.getJob());
+                            intent.putExtra("NID", selectedNotif);
+                            intent.putExtra("Status", "confirmed");
+                            startActivity(intent);
+                        }
+                        if(notification.getType().equals("iscompleted")){
+                            Intent intent = new Intent(getActivity(), JobConfirmation.class);
+                            intent.putExtra("JID", notification.getJob());
+                            intent.putExtra("NID", selectedNotif);
+                            startActivity(intent);
+                        }
                     }
                 });
             }
@@ -149,6 +162,13 @@ public class NotificationsFragment extends Fragment {
                     notifBody.setText("¡Nueva solicitud recibida!\nDa click aquí para más información");
                     notifImage.setImageResource(R.drawable.work_black);
                     break;
+                case "confirmed":
+                    notifBody.setText("¡Tu solicitud de trabajo fue aceptada!\nDa click aquí para más información");
+                    notifImage.setImageResource(R.drawable.ic_baseline_check_circle_24);
+                    break;
+                case "iscompleted":
+                    notifBody.setText("¡Trabajo en progreso!\n¿Ya ha acabado el trabajo? Da click aquí para completarlo");
+                    notifImage.setImageResource(R.drawable.ic_access_alarm);
                 default:
                     break;
             }
@@ -156,10 +176,15 @@ public class NotificationsFragment extends Fragment {
         public void setStatus(int status){
             CardView cardView = (CardView) mView.findViewById(R.id.notifParent);
             TextView notifBody = (TextView) mView.findViewById(R.id.notifBody);
+            if (status == -1){
+                cardView.setCardBackgroundColor(ContextCompat.getColor(mView.getContext(), R.color.notifblue));
+                notifBody.setTypeface(Typeface.DEFAULT_BOLD);
+            }
             if (status == 0){
                 cardView.setCardBackgroundColor(ContextCompat.getColor(mView.getContext(), R.color.notifblue));
                 notifBody.setTypeface(Typeface.DEFAULT_BOLD);
-            }else{
+            }
+            if (status == 1){
                 cardView.setCardBackgroundColor(ContextCompat.getColor(mView.getContext(), R.color.j_hueso));
                 notifBody.setTypeface(Typeface.DEFAULT);
             }

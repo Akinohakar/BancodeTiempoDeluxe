@@ -63,21 +63,31 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //FIREBASE AUTH INSTANCE
         mAuth=FirebaseAuth.getInstance();
+        //GET THE CURRENT UID
         mCurrentId=mAuth.getCurrentUser().getUid();
+        //GET THE UID OF THE USER SELECTED IN THE PREVIOUS VIEW IN THE RECICLER VIEW UI
         mChatUser=getIntent().getStringExtra("user_id");
+        //FIND ELEMENTS OF THE CURRENT VIEW
         nameChat=findViewById(R.id.chatusername);
         imageChat=findViewById(R.id.chatuserimage);
         seenChat=findViewById(R.id.chatlastseen);
         messageChat=findViewById(R.id.chatMessage);
         mAdd=findViewById(R.id.chatadd);
         mSend=findViewById(R.id.chatsend);
+        //INICIALIZE THE ADAPTER FOR THE RECICLER VIEW
         mAdapter=new MessageAdapter(messageList);
+        //FIND THE RECICLER VIEW
         mMessagesList=findViewById(R.id.messagesList);
+        //FIND THE SWAP ID
         mRefreshLayout=findViewById(R.id.message_swipe_layout);
+        //SELECTE THE TYPE OF LAYOUT FOR THE RECYCLER VIEW
         mLinearLayout=new LinearLayoutManager(this);
         mMessagesList.setHasFixedSize(true);
+        //SET THE PREVIOS INTACIATED LINEAR LAYOUT TO THE RECYCLER VIEW mMessage List
         mMessagesList.setLayoutManager(mLinearLayout);
+        //SET THE ADAPTER
         mMessagesList.setAdapter(mAdapter);
 
 
