@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,14 +22,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityConfirmation extends AppCompatActivity {
     private Intent intent;
     private ImageView mImageV;
     private TextView mTextConf, mTextMens;
-    private DatabaseReference mJobDatabase;
+    private DatabaseReference mJobDatabase,mFriendsDatabase;
     private FirebaseUser mCurrentUser;
     private Button btnRegresar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,9 @@ public class ActivityConfirmation extends AppCompatActivity {
 
                     DatabaseReference mProviderDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("idusersupplier").getValue().toString());
 
+
+
+
                     DatabaseReference refNotifP = mProviderDatabase.child("notifications").push();
 
                     mProviderDatabase.child("Actual Job").child(JID).child("Rol").setValue("supplier");
@@ -85,6 +91,57 @@ public class ActivityConfirmation extends AppCompatActivity {
                     mProviderDatabase.child("notifications").child(refNotifP.getKey().toString()).child("job").setValue(JID);
 
                     //Ambas partes aceptaron el trabajo
+                    Toast.makeText(ActivityConfirmation.this, "Si pasa", Toast.LENGTH_SHORT).show();
+                    String provider=snapshot.child("idusersupplier").getValue().toString();
+                    String hirer=snapshot.child("iduserhire").getValue().toString();
+                    mFriendsDatabase=FirebaseDatabase.getInstance().getReference();
+                    //Status 0:In progress
+                    //Status 1:Job Finished\
+                    mFriendsDatabase.child("Users").child(provider).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotJV) {
+
+                            String image=snapshotJV.child("image").getValue().toString();
+                            String job=snapshotJV.child("jobtitle").getValue().toString();
+                            HashMap<String,String> friendMaphirer=new HashMap<>();
+                            friendMaphirer.put("name",snapshot.child("nameusersupplier").getValue().toString());
+                            friendMaphirer.put("status","0");
+                            friendMaphirer.put("image",image);
+                            friendMaphirer.put("jobtitle",job);
+                            mFriendsDatabase.child("Friends").child(hirer).child(provider).setValue(friendMaphirer);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    mFriendsDatabase.child("Users").child(hirer).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotJV) {
+                            String image=snapshotJV.child("image").getValue().toString();
+                            String job=snapshotJV.child("jobtitle").getValue().toString();
+                            HashMap<String,String> friendMapsupplier=new HashMap<>();
+                            friendMapsupplier.put("name",snapshot.child("nameuserhire").getValue().toString());
+                            friendMapsupplier.put("status","0");
+                            friendMapsupplier.put("image",image);
+                            friendMapsupplier.put("jobtitle",job);
+                            mFriendsDatabase.child("Friends").child(provider).child(hirer).setValue(friendMapsupplier);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+
+
+
+
+
                 }
 
                 @Override
