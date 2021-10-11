@@ -59,6 +59,8 @@ public class transactionsFragment extends Fragment {
     RecyclerView recycler;
     TextView horasDadas, horasRecibidas;
     String username;
+    final int[] horasR = {0};
+    final int[] horasD = {0};
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     Bitmap bmp, scaledbmp;
@@ -109,6 +111,48 @@ public class transactionsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_transactions, container, false);//Inflate fragment layout
 
+
+        Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
+
+        horasDadas = view.findViewById(R.id.idHorasDadas);
+        horasRecibidas = view.findViewById(R.id.idHorasRecibidas);
+
+        recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
+        recycler.setHasFixedSize(true);
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
+
+        if(!checkPermision()){
+            requestPermision();
+        }
+
+        btnPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!transaccionesContratadas.isEmpty() || !transaccionesRealizadas.isEmpty()){
+                    create_PDFDocument(transaccionesContratadas,transaccionesRealizadas);
+                }else{
+                    Toast.makeText(getActivity(),"No existen transacciones para descargar...",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        horasRecibidas.setText(String.valueOf(horasR[0]));
+        horasDadas.setText(String.valueOf(horasD[0]));
+
+        return view;
+    }
+
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
         mAuth = FirebaseAuth.getInstance();
 
         String current_id = mAuth.getCurrentUser().getUid();
@@ -139,30 +183,11 @@ public class transactionsFragment extends Fragment {
         transaccionesContratadas = new ArrayList<TransaccionesModel>();
         transaccionesRealizadas  = new ArrayList<TransaccionesModel>();
 
-        Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
-
-        horasDadas = view.findViewById(R.id.idHorasDadas);
-        horasRecibidas = view.findViewById(R.id.idHorasRecibidas);
-
-        recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
-        recycler.setHasFixedSize(true);
-        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
-        scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
-
-        if(!checkPermision()){
-            requestPermision();
-        }
-
         transaccionesContratadas = new ArrayList<>();
         transaccionesRealizadas  = new ArrayList<>();
         trabajoActual            = new ArrayList<>();
 
-        final int[] horasR = {0};
-        final int[] horasD = {0};
+
 
         AdapterDatosTransacciones adapter = new AdapterDatosTransacciones(transaccionesContratadas, transaccionesRealizadas);
         recycler.setAdapter(adapter);
@@ -173,36 +198,36 @@ public class transactionsFragment extends Fragment {
 
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.getKey() != null){
-                    String trabajoID = dataSnapshot.getKey();
-                    TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
-                    mTrabajos.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                if(dataSnapshot1.getKey().equals(trabajoID)){
-                                    TransaccionesModel tm = dataSnapshot1.getValue(TransaccionesModel.class);
-                                    if(tm.getIduserhire().equals(current_id)){
-                                        transaccionesContratadas.add(tm);
-                                        adapter.notifyDataSetChanged();
-                                        ++horasD[0];
+                        String trabajoID = dataSnapshot.getKey();
+                        TransaccionesModel tm = new TransaccionesModel();
+                        mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
+                        mTrabajos.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
+                                    if(dataSnapshot1.getKey()!=null){
+                                    if(dataSnapshot1.getKey().equals(trabajoID)){
+                                        TransaccionesModel tm = dataSnapshot1.getValue(TransaccionesModel.class);
+                                        if(tm.getIduserhire().equals(current_id)){
+                                            transaccionesContratadas.add(tm);
+                                            adapter.notifyDataSetChanged();
+                                            ++horasD[0];
+                                        }
+                                        else if(tm.getIdusersupplier().equals(current_id)){
+                                            transaccionesRealizadas.add(tm);
+                                            adapter.notifyDataSetChanged();
+                                            ++horasR[0];
+                                        }
                                     }
-                                    else if(tm.getIdusersupplier().equals(current_id)){
-                                        transaccionesRealizadas.add(tm);
-                                        adapter.notifyDataSetChanged();
-                                        ++horasR[0];
-                                    }
-                                }
+                                }}
                             }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }}
+                            }
+                        });
+                    }}
 
             }
 
@@ -217,27 +242,12 @@ public class transactionsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.getKey() != null){
-                    String trabajoID = dataSnapshot.getKey();
-                    TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
-                    mTrabajos.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                if(dataSnapshot1.getKey().equals(trabajoID)){
-                                    transaccionesRealizadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
-                                    adapter.notifyDataSetChanged();
-                                    ++horasR[0];
-                                }
-                            }
-                        }
+                        transaccionesRealizadas.add(dataSnapshot.getValue(TransaccionesModel.class));
+                        adapter.notifyDataSetChanged();
+                        ++horasR[0];
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }}
+                    }
+                }
             }
 
             @Override
@@ -251,28 +261,10 @@ public class transactionsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.getKey() != null){
-                    String trabajoID = dataSnapshot.getKey();
-                    TransaccionesModel tm = new TransaccionesModel();
-                    mTrabajos = FirebaseDatabase.getInstance().getReference().child("Jobs in progress");
-                    mTrabajos.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
-                                if(dataSnapshot1.getKey().equals(trabajoID)){
-                                    transaccionesContratadas.add(dataSnapshot1.getValue(TransaccionesModel.class));
-                                    adapter.notifyDataSetChanged();
-                                    ++horasD[0];
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }}
+                        transaccionesContratadas.add(dataSnapshot.getValue(TransaccionesModel.class));
+                        adapter.notifyDataSetChanged();
+                        ++horasD[0];
+                    }}
             }
 
             @Override
@@ -280,26 +272,6 @@ public class transactionsFragment extends Fragment {
 
             }
         });
-
-        btnPDF.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              //generatePDF_transactions();
-              create_PDFDocument(transaccionesContratadas,transaccionesRealizadas);
-          }
-        });
-
-        horasRecibidas.setText(String.valueOf(horasR[0]));
-        horasDadas.setText(String.valueOf(horasD[0]));
-
-        return view;
-    }
-
-
-    @Override
-    public void onStart(){
-        super.onStart();
-
 
     }
 
