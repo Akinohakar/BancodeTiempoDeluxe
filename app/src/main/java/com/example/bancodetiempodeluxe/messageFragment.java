@@ -20,9 +20,12 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -86,7 +89,8 @@ public class messageFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         mMessageList=view.findViewById(R.id.message_list);
-        mMessageDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
+        current_user=FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+        mMessageDatabase=FirebaseDatabase.getInstance().getReference().child("Friends").child(current_user);
         mMessageList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
@@ -106,9 +110,13 @@ public class messageFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users users) {
 
+
+
                 holder.setName(users.getName());
                 holder.setJob(users.getJobtitle());
                 holder.SetThumbImage(users.getImage());
+
+
 
                 Log.d("TAG", "--------------");
                 Log.d("TAG", "users.getName() : " + users.getName());
