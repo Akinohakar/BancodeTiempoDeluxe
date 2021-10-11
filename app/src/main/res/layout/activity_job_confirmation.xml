@@ -7,33 +7,23 @@
     android:layout_height="match_parent"
     android:background="#293A80"
     android:fitsSystemWindows="true"
-    tools:context=".DescriptionNotificationRequest">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="144dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="65dp"
-        android:src="@drawable/exampleuser"
-        app:civ_border_color="@color/whiteapp"
-        app:civ_border_width="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".JobConfirmation">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="409dp"
-        android:layout_height="413dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="500dp"
+        android:layout_marginBottom="40dp"
         android:fillViewport="true"
-        android:paddingTop="30dp"
-        android:paddingBottom="10dp"
         android:paddingLeft="20dp"
+        android:paddingTop="30dp"
         android:paddingRight="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutBtn"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,13 +33,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="70dp"
                 android:layout_marginTop="12dp"
+                android:enabled="false"
                 android:hint="Nombre del Solicitante"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
-                android:enabled="false"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
@@ -64,7 +54,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/employeerName"
+                    android:id="@+id/hirerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -80,13 +70,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="70dp"
                 android:layout_marginTop="12dp"
-                android:hint="Pronombre/s del Solicitante"
+                android:enabled="false"
+                android:hint="Nombre del Proveedor"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
-                android:enabled="false"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
@@ -101,7 +91,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/employeerPronoun"
+                    android:id="@+id/providerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -233,11 +223,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:enabled="false"
                 android:hint="Trabajo solicitado"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
-                android:enabled="false"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
@@ -252,7 +242,7 @@
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/job"
+                    android:id="@+id/jobConf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -264,25 +254,26 @@
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
-                android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="12dp"
                 android:text="Descripcion del Trabajo Solicitado"
-                android:textSize="15sp"
                 android:textColor="@color/whiteapp"
-                android:layout_marginLeft="5sp"/>
+                android:textSize="15sp" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="30dp">
 
                 <TextView
-                    android:id="@+id/descJob"
+                    android:id="@+id/descJobConf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:outlineAmbientShadowColor="@color/whiteapp"
@@ -291,10 +282,9 @@
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
                     android:textColorHint="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"/>
+                    android:textColorLink="@color/whiteapp" />
 
             </androidx.core.widget.NestedScrollView>
-
 
 
         </LinearLayout>
@@ -303,54 +293,72 @@
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayoutBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayoutBtnConf"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+        android:divider="@drawable/empty_short_divider"
+        android:orientation="vertical"
         android:showDividers="middle"
-        android:divider="@drawable/empty_tall_divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/rejectJob"
-            android:layout_width="wrap_content"
+            android:id="@+id/completeJobConf"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:backgroundTint="#4CAF50"
+            android:padding="15dp"
+            android:text="Trabajo completado"
+            android:textSize="23dp"
+            app:rippleColor="#247D28"
+            app:strokeColor="@color/blueapp" />
+
+        <Button
+            android:id="@+id/cancelJobConf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
             android:backgroundTint="#F44336"
-            android:text="Rechazar\ntrabajo"
+            android:text="Cancelar\ntrabajo"
             android:textSize="15dp"
             app:icon="@drawable/ic_dangerous_white"
             app:rippleColor="#C21104"
             app:strokeColor="@color/blueapp" />
 
-        <Button
-            android:id="@+id/acceptJob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#4CAF50"
-            android:text="Aceptar\nTrabajo"
-            android:textSize="15dp"
-            app:icon="@drawable/ic_checked"
-            app:rippleColor="#247D28"
-            app:strokeColor="@color/blueapp" />
-
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tViewTitulo"
-        android:layout_width="277dp"
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Nueva Solicitud"
+        android:text="Trabajo en progreso"
         android:textAlignment="center"
         android:textColor="@color/whiteapp"
-        android:textSize="25sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/waitingTextV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esperando la\nsegunda confirmación"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/whiteapp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutBtnConf"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutBtnConf"
+        app:layout_constraintStart_toStartOf="@+id/linearLayoutBtnConf"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutBtnConf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
