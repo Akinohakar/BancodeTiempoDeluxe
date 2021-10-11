@@ -129,11 +129,26 @@ public class JobConfirmation extends AppCompatActivity {
                                         jobMap.put("hour",snapshotJ.child("hour").getValue().toString());
                                         jobMap.put("job",snapshotJ.child("job").getValue().toString());
 
-                                        DatabaseReference trabajoCont = mCurrentDatabase.child("Trabajos Contratados").push();
+                                        DatabaseReference trabajoCont = mCurrentDatabase.child("Hired Jobs").child(JID);
                                         trabajoCont.setValue(jobMap);
 
-                                        DatabaseReference trabajoReal = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Trabajos Realizados").push();
+                                        DatabaseReference trabajoReal = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Worked Jobs").child(JID);
                                         trabajoReal.setValue(jobMap);
+
+                                        DatabaseReference mSupplierDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString());
+                                        mSupplierDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshotS) {
+                                                mSupplierDatabase.child("balance").setValue(Integer.toString(Integer.parseInt(snapshotS.child("balance").getValue(String.class)) + 1));
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                        mCurrentDatabase.child("balance").setValue(Integer.toString(Integer.parseInt(snapshot.child("balance").getValue(String.class)) - 1));
 
                                         mCurrentDatabase.child("Actual Job").removeValue();
                                         FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Actual Job").removeValue();
@@ -182,11 +197,26 @@ public class JobConfirmation extends AppCompatActivity {
                                         jobMap.put("hour",snapshotJ.child("hour").getValue().toString());
                                         jobMap.put("job",snapshotJ.child("job").getValue().toString());
 
-                                        DatabaseReference trabajoReal = mCurrentDatabase.child("Trabajos Realizados").push();
+                                        DatabaseReference trabajoReal = mCurrentDatabase.child("Worked Jobs").child(JID);
                                         trabajoReal.setValue(jobMap);
 
-                                        DatabaseReference trabajoCont = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString()).child("Trabajos Contratados").push();
+                                        DatabaseReference trabajoCont = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString()).child("Hired Jobs").child(JID);
                                         trabajoCont.setValue(jobMap);
+
+                                        DatabaseReference mHirerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString());
+                                        mHirerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshotH) {
+                                                mHirerDatabase.child("balance").setValue(Integer.toString(Integer.parseInt(snapshotH.child("balance").getValue(String.class)) - 1));
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                        mCurrentDatabase.child("balance").setValue(Integer.toString(Integer.parseInt(snapshot.child("balance").getValue(String.class)) + 1));
 
                                         mCurrentDatabase.child("Actual Job").removeValue();
                                         FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString()).child("Actual Job").removeValue();
@@ -195,7 +225,7 @@ public class JobConfirmation extends AppCompatActivity {
 
                                         mJobDatabase.removeValue();
 
-                                        Toast.makeText(JobConfirmation.this, "Trabajo completado exitosamente", Toast.LENGTH_LONG);
+                                        Toast.makeText(JobConfirmation.this, "Trabajo completado exitosamente", Toast.LENGTH_LONG).show();
 
                                         Intent comeBack = new Intent(JobConfirmation.this, MainMenu.class);
                                         startActivity(comeBack);
@@ -204,7 +234,7 @@ public class JobConfirmation extends AppCompatActivity {
                                     else{
                                         mCurrentDatabase.child("notifications").child(NID).removeValue();
 
-                                        Toast.makeText(JobConfirmation.this, "Esperando la confirmación de la otra parte", Toast.LENGTH_LONG);
+                                        Toast.makeText(JobConfirmation.this, "Esperando la confirmación de la otra parte", Toast.LENGTH_LONG).show();
 
                                         Intent comeBack = new Intent(JobConfirmation.this, MainMenu.class);
                                         startActivity(comeBack);
@@ -225,6 +255,13 @@ public class JobConfirmation extends AppCompatActivity {
 
                     }
                 });
+
+            }
+        });
+
+        cancelJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });

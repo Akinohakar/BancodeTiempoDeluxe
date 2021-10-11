@@ -30,6 +30,7 @@ public class DescriptionNotificationRequest extends AppCompatActivity {
     private DatabaseReference mNotifsDatabase, mJobDatabase, mHirerDatabase;
     private FirebaseUser mCurrentUser;
     private Button acceptJob, rejectJob;
+    private String mType;
     private Intent intent;
     //private String pronoun, theJob, theJobDesc;
 
@@ -50,6 +51,7 @@ public class DescriptionNotificationRequest extends AppCompatActivity {
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mNotifsDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString()).child("notifications").child(NID);
+
         mJobDatabase = FirebaseDatabase.getInstance().getReference().child("Jobs in progress").child(JID);
 
         //System.out.println(mHirerDatabase.toString());
@@ -62,59 +64,128 @@ public class DescriptionNotificationRequest extends AppCompatActivity {
         mJobDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DatabaseReference mHirerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("iduserhire").getValue().toString());
+                try {
+                    DatabaseReference mHirerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("iduserhire").getValue().toString());
 
-                mHirerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshotH) {
-                        String display_pronoun = snapshotH.child("pronoun").getValue().toString();
-                        String display_image = snapshotH.child("image").getValue().toString();
+                    mHirerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotH) {
+                            String display_pronoun = snapshotH.child("pronoun").getValue().toString();
+                            String display_image = snapshotH.child("image").getValue().toString();
 
-                        Picasso.get().load(display_image).placeholder(R.drawable.exampleuser).into(profileImgV);
-                        employeerPronoun.setText(display_pronoun);
+                            Picasso.get().load(display_image).placeholder(R.drawable.exampleuser).into(profileImgV);
+                            employeerPronoun.setText(display_pronoun);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
+
+                    mCurrentDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotC) {
+                            String display_job = snapshotC.child("jobtitle").getValue().toString();
+                            String display_jobDesc = snapshotC.child("jobdesc").getValue().toString();
+
+                            job.setText(display_job);
+                            descJob.setText(display_jobDesc);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    String display_name = snapshot.child("nameuserhire").getValue().toString();
+
+                    employeersName.setText(display_name);
+
+                    if (!snapshot.child("status").getValue().toString().equals("sent")) {
+                        mTitulo = findViewById(R.id.tViewTitulo);
+                        acceptJob.setVisibility(View.GONE);
+                        rejectJob.setVisibility(View.GONE);
+                        if (snapshot.child("status").getValue().toString().equals("onProgress")) {
+                            mTitulo.setText("Trabajo en progreso");
+                        }
+                        if (snapshot.child("status").getValue().toString().equals("cancelled")) {
+                            mTitulo.setText("Trabajo cancelado");
+                        }
+                        if (snapshot.child("status").getValue().toString().equals("completed")) {
+                            mTitulo.setText("Trabajo completado");
+                        }
                     }
+                }
+                catch(Exception e){
+                    DatabaseReference mWJobDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString()).child("Worked Jobs").child(JID);
+                    mWJobDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            DatabaseReference mHirerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("iduserhire").getValue().toString());
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                            mHirerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshotH) {
+                                    String display_pronoun = snapshotH.child("pronoun").getValue().toString();
+                                    String display_image = snapshotH.child("image").getValue().toString();
 
-                    }
-                });
+                                    Picasso.get().load(display_image).placeholder(R.drawable.exampleuser).into(profileImgV);
+                                    employeerPronoun.setText(display_pronoun);
+                                }
 
-                DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                mCurrentDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshotC) {
-                        String display_job = snapshotC.child("jobtitle").getValue().toString();
-                        String display_jobDesc = snapshotC.child("jobdesc").getValue().toString();
+                                }
+                            });
 
-                        job.setText(display_job);
-                        descJob.setText(display_jobDesc);
-                    }
+                            DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                            mCurrentDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshotC) {
+                                    String display_job = snapshotC.child("jobtitle").getValue().toString();
+                                    String display_jobDesc = snapshotC.child("jobdesc").getValue().toString();
 
-                    }
-                });
+                                    job.setText(display_job);
+                                    descJob.setText(display_jobDesc);
+                                }
 
-                String display_name = snapshot.child("nameuserhire").getValue().toString();
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                employeersName.setText(display_name);
+                                }
+                            });
 
-                if(!snapshot.child("status").getValue().toString().equals("sent")){
-                    mTitulo = findViewById(R.id.tViewTitulo);
-                    acceptJob.setVisibility(View.GONE);
-                    rejectJob.setVisibility(View.GONE);
-                    if(snapshot.child("status").getValue().toString().equals("onProgress")){
-                        mTitulo.setText("Trabajo en progreso");
-                    }
-                    if(snapshot.child("status").getValue().toString().equals("cancelled")){
-                        mTitulo.setText("Trabajo cancelado");
-                    }
-                    if(snapshot.child("status").getValue().toString().equals("completed")){
-                        mTitulo.setText("Trabajo completado");
-                    }
+                            String display_name = snapshot.child("nameuserhire").getValue().toString();
+
+                            employeersName.setText(display_name);
+
+                            if (!snapshot.child("status").getValue().toString().equals("sent")) {
+                                mTitulo = findViewById(R.id.tViewTitulo);
+                                acceptJob.setVisibility(View.GONE);
+                                rejectJob.setVisibility(View.GONE);
+                                if (snapshot.child("status").getValue().toString().equals("onProgress")) {
+                                    mTitulo.setText("Trabajo en progreso");
+                                }
+                                if (snapshot.child("status").getValue().toString().equals("cancelled")) {
+                                    mTitulo.setText("Trabajo cancelado");
+                                }
+                                if (snapshot.child("status").getValue().toString().equals("completed")) {
+                                    mTitulo.setText("Trabajo completado");
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
 
@@ -127,12 +198,30 @@ public class DescriptionNotificationRequest extends AppCompatActivity {
         acceptJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent acceptIntent = new Intent(DescriptionNotificationRequest.this, ActivityConfirmation.class);
-                acceptIntent.putExtra("JID", JID);
-                acceptIntent.putExtra("NID", NID);
-                acceptIntent.putExtra("Status", "accepted");
-                startActivity(acceptIntent);
-                finish();
+                DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
+                mCurrentDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        try {
+                            String actual = snapshot.child("Actual Job").getValue().toString();
+
+                            Toast.makeText(DescriptionNotificationRequest.this, "No puedes aceptar trabajos cuando tienes uno en progreso", Toast.LENGTH_LONG).show();
+                        }
+                        catch (Exception e){
+                            Intent acceptIntent = new Intent(DescriptionNotificationRequest.this, ActivityConfirmation.class);
+                            acceptIntent.putExtra("JID", JID);
+                            acceptIntent.putExtra("NID", NID);
+                            acceptIntent.putExtra("Status", "accepted");
+                            startActivity(acceptIntent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
