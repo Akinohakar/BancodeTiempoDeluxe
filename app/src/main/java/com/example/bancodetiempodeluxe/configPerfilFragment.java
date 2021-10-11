@@ -126,14 +126,14 @@ public class configPerfilFragment extends Fragment {
 
 
                     switchviewmode.setText("Modo claro");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
 
                 }else{
 
 
                     switchviewmode.setText("Modo oscuro");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
                 }
             }

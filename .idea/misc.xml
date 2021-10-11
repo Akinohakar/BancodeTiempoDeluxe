@@ -19,18 +19,25 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/font/montserrat.xml" value="0.2359375" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_confir_servicio.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_contact_us.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_correo_enviado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_dashboard.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_description_notification_request.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_forget_pass.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_help.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_offer_description.xml" value="0.1" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_problemas_correo.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_register_job.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_report_problems.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_second.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_trasactions.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_verification_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_config_perfil.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_message.xml" value="0.1" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
@@ -45,23 +52,13 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/users_single_layout.xml" value="0.5" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/menu/mian_menu.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_date.xml" value="0.2703125" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_launcher_app_logo_background.xml" value="0.2703125" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/drawable/ic_password.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_confir_servicio.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_dashboard.xml" value="0.17255434782608695" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_description_notification_request.xml" value="0.10190217391304347" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_edit_profile.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_login.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main.xml" value="0.17889492753623187" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_main_menu.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_offer_description.xml" value="0.27232142857142855" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_problemas_correo.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_profile.xml" value="0.2" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_register_job.xml" value="0.264" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_report_problems.xml" value="0.22262773722627738" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_sign_up.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/activity_verification_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_config_perfil.xml" value="0.264" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_profile.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_search.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.2737430167597765" />
@@ -69,7 +66,6 @@
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.17889492753623187" />
         <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/layout/transacciones_item_list.xml" value="0.264" />
-        <entry key="..\:/Users/jediu/Desktop/Tec/Repositorios/Banco de tiempo/BancodeTiempoDeluxe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_app_logo.xml" value="0.2703125" />
       </map>
     </option>
   </component>

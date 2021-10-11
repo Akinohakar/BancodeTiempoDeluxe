@@ -9,8 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="whiteapp">#EFEFEF</color>
     <color name="yellowapp">#FFC947</color>
-    <color name="blueapp">#797E88</color>
-    <color name="blackapp">#5D6C85</color>
+    <color name="blueapp">#185ADB</color>
+    <color name="blackapp">#0A1931</color>
+    <color name="notifblue">#ABBCDA</color>
 
     <color name="d_blue1">#010038</color>
     <color name="d_blue2">#293A80</color>

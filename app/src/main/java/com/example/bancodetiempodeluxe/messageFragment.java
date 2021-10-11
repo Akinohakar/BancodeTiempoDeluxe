@@ -99,7 +99,7 @@ public class messageFragment extends Fragment {
         super.onStart();
         Query query=mMessageDatabase;
 
-
+        //RECUCLERVIEW FIREBASE UI
         FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>().setQuery(query, Users.class).build();
 
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
@@ -117,7 +117,7 @@ public class messageFragment extends Fragment {
 
 
                 final String selected_user_id = getRef(position).getKey();
-//                Set event for component
+                //PARA SELECCIONAR LAS OPCIONES.
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
