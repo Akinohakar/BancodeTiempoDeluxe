@@ -62,18 +62,13 @@
         android:textColor="@color/whiteapp"
         android:layout_marginTop="-20dp"
         />
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    </androidx.core.widget.NestedScrollView>
     <LinearLayout
-        android:layout_width="366dp"
-        android:layout_height="386dp"
+        android:layout_width="match_parent"
+        android:layout_height="371dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
-
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,35 +77,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre Completo"
-            app:startIconDrawable="@drawable/person"
-            app:startIconTint="@color/yellowapp"
-            app:counterEnabled="true"
-            app:counterMaxLength="30"
-            app:hintTextColor="@color/whiteapp"
             android:outlineAmbientShadowColor="@color/whiteapp"
-            android:textColorHint="@color/whiteapp"
             android:outlineSpotShadowColor="@color/whiteapp"
-            app:prefixTextColor="@color/whiteapp"
-            app:helperTextTextColor="@color/whiteapp"
-            app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
             app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/design_default_color_error"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:hintTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/yellowapp"
             app:suffixTextColor="@color/whiteapp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:outlineSpotShadowColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
                 android:shadowColor="@color/whiteapp"
-                android:textColorLink="@color/whiteapp"
                 android:textColor="@color/whiteapp"
                 android:textColorHighlight="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"/>
+                android:textColorHint="@color/whiteapp"
+                android:textColorLink="@color/whiteapp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -119,33 +114,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo Electronico"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/yellowapp"
-            app:hintTextColor="@color/whiteapp"
             android:outlineAmbientShadowColor="@color/whiteapp"
-            android:textColorHint="@color/whiteapp"
             android:outlineSpotShadowColor="@color/whiteapp"
-            app:prefixTextColor="@color/whiteapp"
-            app:helperTextTextColor="@color/whiteapp"
-            app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
             app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:hintTextColor="@color/whiteapp"
             app:placeholderTextColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/yellowapp"
             app:suffixTextColor="@color/whiteapp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:outlineSpotShadowColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
                 android:shadowColor="@color/whiteapp"
-                android:textColorLink="@color/whiteapp"
                 android:textColor="@color/whiteapp"
                 android:textColorHighlight="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"/>
+                android:textColorHint="@color/whiteapp"
+                android:textColorLink="@color/whiteapp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -154,33 +149,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Numero de telefono"
-            app:hintTextColor="@color/whiteapp"
             android:outlineAmbientShadowColor="@color/whiteapp"
-            android:textColorHint="@color/whiteapp"
             android:outlineSpotShadowColor="@color/whiteapp"
-            app:prefixTextColor="@color/whiteapp"
-            app:helperTextTextColor="@color/whiteapp"
-            app:counterOverflowTextColor="@color/whiteapp"
-            app:counterTextColor="@color/whiteapp"
+            android:textColorHint="@color/whiteapp"
             app:boxStrokeColor="@color/yellowapp"
             app:boxStrokeErrorColor="@color/whiteapp"
+            app:counterOverflowTextColor="@color/whiteapp"
+            app:counterTextColor="@color/whiteapp"
             app:errorTextColor="@color/whiteapp"
+            app:helperTextTextColor="@color/whiteapp"
+            app:hintTextColor="@color/whiteapp"
+            app:placeholderTextColor="@color/whiteapp"
+            app:prefixTextColor="@color/whiteapp"
             app:startIconDrawable="@drawable/ic_smartphone"
             app:startIconTint="@color/yellowapp"
-            app:placeholderTextColor="@color/whiteapp"
             app:suffixTextColor="@color/whiteapp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="number"
-                android:outlineSpotShadowColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
+                android:outlineSpotShadowColor="@color/whiteapp"
                 android:shadowColor="@color/whiteapp"
-                android:textColorLink="@color/whiteapp"
                 android:textColor="@color/whiteapp"
                 android:textColorHighlight="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"/>
+                android:textColorHint="@color/whiteapp"
+                android:textColorLink="@color/whiteapp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -191,150 +186,154 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/newPas"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Contraseña"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
-                app:hintTextColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/newPass"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Confirma Contraseña"
-                app:passwordToggleTint="@color/whiteapp"
-                app:passwordToggleEnabled="true"
-                android:textColorHint="@color/whiteapp"
-                app:hintTextColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/newJob"
-                android:layout_weight="1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:hint="Edad"
-                app:startIconDrawable="@drawable/ic_job"
-                app:startIconTint="@color/yellowapp"
-                app:hintTextColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/ic_job"
+                app:startIconTint="@color/yellowapp"
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
-                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/newPronoun"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Pronombres"
                 android:layout_weight="1"
-                app:startIconDrawable="@drawable/person"
-                app:startIconTint="@color/yellowapp"
-                app:hintTextColor="@color/whiteapp"
+                android:hint="Pronombres"
                 android:outlineAmbientShadowColor="@color/whiteapp"
-                android:textColorHint="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
-                app:prefixTextColor="@color/whiteapp"
-                app:helperTextTextColor="@color/whiteapp"
-                app:counterOverflowTextColor="@color/whiteapp"
-                app:counterTextColor="@color/whiteapp"
+                android:textColorHint="@color/whiteapp"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
+                app:counterOverflowTextColor="@color/whiteapp"
+                app:counterTextColor="@color/whiteapp"
                 app:errorTextColor="@color/whiteapp"
+                app:helperTextTextColor="@color/whiteapp"
+                app:hintTextColor="@color/whiteapp"
                 app:placeholderTextColor="@color/whiteapp"
+                app:prefixTextColor="@color/whiteapp"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="@color/yellowapp"
+                android:visibility="gone"
                 app:suffixTextColor="@color/whiteapp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
+                    android:outlineSpotShadowColor="@color/whiteapp"
                     android:shadowColor="@color/whiteapp"
-                    android:textColorLink="@color/whiteapp"
                     android:textColor="@color/whiteapp"
                     android:textColorHighlight="@color/whiteapp"
-                    android:textColorHint="@color/whiteapp"/>
+                    android:textColorHint="@color/whiteapp"
+                    android:textColorLink="@color/whiteapp"
+                     />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -342,23 +341,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Ya tengo cuenta"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/blueapp"
 
-                android:layout_marginRight="2dp"/>
+                android:text="Ya tengo cuenta" />
+
             <Button
                 android:id="@+id/newConfirm"
                 android:layout_width="wrap_content"
-                android:layout_weight="5"
                 android:layout_height="wrap_content"
-                android:text="Continuar"
                 android:layout_marginLeft="2dp"
+                android:layout_weight="5"
                 android:backgroundTint="@color/blueapp"
-                />
+                android:text="Continuar" />
         </LinearLayout>
 
     </LinearLayout>

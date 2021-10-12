@@ -64,17 +64,18 @@
         />
 
     <LinearLayout
-        android:layout_width="366dp"
-        android:layout_height="386dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
         android:orientation="vertical">
 
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/forgetPassemail"
-            android:layout_marginTop="70dp"
+
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -115,7 +116,7 @@
 
 
         <LinearLayout
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
@@ -126,7 +127,7 @@
                 android:text="Restablecer contraseña"
                 android:backgroundTint="@color/blueapp"
 
-                android:layout_marginRight="2dp"/>
+                />
 
         </LinearLayout>
 

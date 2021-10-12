@@ -63,14 +63,10 @@
         android:textColor="@color/whiteapp"
         android:layout_marginTop="-20dp"
         />
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    </androidx.core.widget.NestedScrollView>
     <LinearLayout
-        android:layout_width="366dp"
-        android:layout_height="386dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
@@ -81,7 +77,7 @@
             android:id="@+id/register_job_jobtitle"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="Trabajo"
             app:startIconDrawable="@drawable/person"
             app:startIconTint="@color/yellowapp"
@@ -138,7 +134,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="text"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:outlineAmbientShadowColor="@color/whiteapp"
@@ -156,8 +152,8 @@
             android:text="Seleciona los dias que tienes disponibles de la semana"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
             <CheckBox
                android:id="@+id/register_job_monday"
@@ -167,42 +163,42 @@
                 android:text="L"/>
             <CheckBox
                 android:id="@+id/register_job_tuesday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
                 android:text="M"/>
             <CheckBox
                 android:id="@+id/register_job_wednesday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
                 android:text="X"/>
             <CheckBox
                 android:id="@+id/register_job_thursday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
                 android:text="J"/>
             <CheckBox
                 android:id="@+id/register_job_friday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
                 android:text="V"/>
             <CheckBox
                 android:id="@+id/register_job_saturday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
                 android:text="S"/>
             <CheckBox
                 android:id="@+id/register_job_sunday"
-                android:layout_marginLeft="5dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/whiteapp"
@@ -218,8 +214,8 @@
                 android:id="@+id/register_job_homeaddress"
                 android:layout_weight="1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:hint="Direccion de casa"
                 app:startIconDrawable="@drawable/ic_job"
                 app:startIconTint="@color/yellowapp"
@@ -239,7 +235,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="text"
                     android:outlineSpotShadowColor="@color/whiteapp"
                     android:outlineAmbientShadowColor="@color/whiteapp"
@@ -255,20 +251,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <Button
                 android:id="@+id/register_job_alreadygoLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Ya tengo cuenta"
+                android:textSize="12sp"
                 android:backgroundTint="@color/blueapp"
 
                 android:layout_marginRight="2dp"/>
             <Button
                 android:id="@+id/register_job_goNewAccount"
-                android:layout_width="wrap_content"
-                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Continuar"
                 android:layout_marginLeft="2dp"

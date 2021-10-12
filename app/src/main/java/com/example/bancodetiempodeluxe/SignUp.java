@@ -64,14 +64,14 @@ public class SignUp extends AppCompatActivity {
                 System.out.println(email);
                 String pass = mpas.getEditText().getText().toString();
                 System.out.println(pass);
-                String passconf = mpass.getEditText().toString();
+                String passconf = mpass.getEditText().getText().toString();
                 System.out.println(passconf);
                 String tel = mTel.getEditText().getText().toString();
                 System.out.println(tel);
                 String job = mJobTile.getEditText().getText().toString();
                 String pronoun = mPronoun.getEditText().getText().toString();
                 if (passconf.equals(pass)) {
-                    if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass) || !TextUtils.isEmpty(tel) || !TextUtils.isEmpty(job)) {
+                    if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(tel) && !TextUtils.isEmpty(job)) {
                         //register_user(name,email,pass,tel,job,pronoun);
                         Intent goJobActivity = new Intent(SignUp.this, RegisterJobActivity.class);
                         goJobActivity.putExtra("newusername", name);

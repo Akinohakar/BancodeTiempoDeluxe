@@ -126,7 +126,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     }else if(status.equals("1")){
                         messageChat.setHintTextColor(Color.RED);
-                        messageChat.setHint("Actualmente no puedes chatear");
+                        messageChat.setHint("No puedes chatear");
                         messageChat.setEnabled(false);
                     }
                 }

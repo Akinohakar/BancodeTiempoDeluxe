@@ -21,9 +21,10 @@
             style="@style/Widget.AppCompat.EditText"
             android:layout_marginLeft="30dp"
             android:id="@+id/editTextTypeJob"
-            android:layout_width="320dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
+            android:layout_weight="8"
             android:inputType="textPersonName"
             android:hint="Busca lo que necesites"
             android:textColorHint="@color/whiteapp"
@@ -34,6 +35,8 @@
             android:shadowColor="@color/whiteapp"
             android:textColorLink="@color/whiteapp"/>
         <ImageView
+            android:layout_gravity="end"
+            android:layout_weight="1"
         android:layout_width="65dp"
         android:layout_height="69dp"
         android:src="@drawable/search_white" />
@@ -44,7 +47,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactsRecView"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
+        android:layout_height="match_parent"
 
         android:layout_below="@+id/searchMotor" />
 
