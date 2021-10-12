@@ -55,6 +55,7 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="back">Volver</string>
     <string name="verifyTitle">Verificación de Cuenta</string>
     <string name="verifyDesc">Por favor verifica tu cuenta para poder acceder a la totalidad de nuestros servicios y así crear una comunidad más segura</string>
+    <string name="balance">Balance</string>
     <!-- Placeholders -->
     <string name="placeholderImage">Cambiar por definitiva</string>
     <string name="placeholderHoras">01</string>

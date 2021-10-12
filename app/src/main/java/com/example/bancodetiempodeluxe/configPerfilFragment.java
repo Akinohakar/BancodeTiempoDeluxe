@@ -1,6 +1,8 @@
 package com.example.bancodetiempodeluxe;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -117,22 +119,19 @@ public class configPerfilFragment extends Fragment {
 
         LinearLayout contac = view.findViewById(R.id.idContactUs);
         contac.setOnClickListener(cntactUs);
+        
 
         switchviewmode=view.findViewById(R.id.configperfilmodeswitch);
         switchviewmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-
-
-                    switchviewmode.setText("Modo claro");
+                    switchviewmode.setText("Modo Oscuro");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
 
                 }else{
-
-
-                    switchviewmode.setText("Modo oscuro");
+                    switchviewmode.setText("Modo Claro");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
                 }
