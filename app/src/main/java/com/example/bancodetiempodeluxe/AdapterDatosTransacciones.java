@@ -68,7 +68,7 @@ public class AdapterDatosTransacciones extends RecyclerView.Adapter<AdapterDatos
             hora.setText(tModel.getHour());
             user.setText(tModel.getNameusersupplier());
             work.setText(tModel.getJob());
-            if(tModel.status.equals("cancell")){
+            if(tModel.status.equals("cancelled")){
                 status.setText("Cancelado");
                 imgStatus.setImageResource(R.drawable.ic_cancel);
             }else if(tModel.status.equals("completed")){
