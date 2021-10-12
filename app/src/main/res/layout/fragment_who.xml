@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".whoFragment">
+    tools:context=".whoFragment"
+    android:orientation="vertical"
+    android:background="@color/blackapp">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/placeholderImage"
+        android:src="@drawable/logowhite"/>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/quienesSomosTitle"
+        android:textSize="30sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat_bold"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/quienesSomosDesc"
+        android:textSize="20sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/quienesSomosDesc2"
+        android:textSize="20sp"
+        android:textColor="@color/j_hueso"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <Button
+        android:id="@+id/whoVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/back"
+        android:textColor="@color/blackapp"
+        android:backgroundTint="@color/yellowapp"/>
+
+
+</LinearLayout>

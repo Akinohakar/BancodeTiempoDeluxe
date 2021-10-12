@@ -56,6 +56,7 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="verifyTitle">Verificación de Cuenta</string>
     <string name="verifyDesc">Por favor verifica tu cuenta para poder acceder a la totalidad de nuestros servicios y así crear una comunidad más segura</string>
     <string name="balance">Balance</string>
+    <string name="quienesSomosTitle">¿Quiénes Somos?</string>
     <!-- Placeholders -->
     <string name="placeholderImage">Cambiar por definitiva</string>
     <string name="placeholderHoras">01</string>
@@ -71,4 +72,6 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="horas">H</string>
     <string name="descargarPDF">Descargar PDF</string>
     <string name="poweredByMati">Powered by Mati</string>
+    <string name="quienesSomosDesc">Somos una plataforma con el objetivo de impulsar la economía, la solidaridad y la fraternidad en nuestra comunidad creando una plataforma confiable y segura donde puedes ofrecer o contratar habilidades a cambio de tiempo.</string>
+    <string name="quienesSomosDesc2">¡Acompáñanos en este sueño de construir un mundo mejor!</string>
 </resources>
