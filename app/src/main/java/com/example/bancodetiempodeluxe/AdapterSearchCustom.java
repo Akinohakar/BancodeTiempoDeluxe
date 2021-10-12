@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AdapterSearchCustom extends RecyclerView.Adapter<AdapterSearchCustom.ViewHolderDatos> implements Filterable {
 
     Context context;
@@ -92,7 +94,7 @@ public class AdapterSearchCustom extends RecyclerView.Adapter<AdapterSearchCusto
     };
 
     public static class ViewHolderDatos extends RecyclerView.ViewHolder{
-        ImageView profilePic;
+        CircleImageView profilePic;
         TextView contactName;
         TextView days;
         TextView job;

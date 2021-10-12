@@ -47,14 +47,14 @@
 
     <TextView
         android:id="@+id/register_job_header"
-        android:layout_marginVertical="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Hola,User!"
         android:textColor="@color/whiteapp"
-        android:textSize="40dp" />
+        android:textSize="25dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
@@ -256,7 +256,7 @@
                 android:id="@+id/register_job_alreadygoLogin"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="Ya tengo cuenta"
                 android:textSize="12sp"
                 android:backgroundTint="@color/blueapp"
@@ -266,7 +266,7 @@
                 android:id="@+id/register_job_goNewAccount"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="Continuar"
                 android:layout_marginLeft="2dp"
                 android:backgroundTint="@color/blueapp"
