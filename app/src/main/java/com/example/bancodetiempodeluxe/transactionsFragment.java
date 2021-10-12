@@ -57,10 +57,8 @@ public class transactionsFragment extends Fragment {
     private FirebaseAuth mAuth;
     ArrayList<TransaccionesModel> transaccionesContratadas, transaccionesRealizadas, trabajoActual;
     RecyclerView recycler;
-    TextView horasDadas, horasRecibidas;
-    String username;
-    final int[] horasR = {0};
-    final int[] horasD = {0};
+    TextView balance;
+    String username,balanceDB;
 
     private static final int PERMISSION_REQUEST_CODE = 200;
     Bitmap bmp, scaledbmp;
@@ -114,14 +112,9 @@ public class transactionsFragment extends Fragment {
 
         Button btnPDF = (Button) view.findViewById(R.id.btnDescargarPDF);
 
-        horasDadas = view.findViewById(R.id.idHorasDadas);
-        horasRecibidas = view.findViewById(R.id.idHorasRecibidas);
-
         recycler = (RecyclerView) view.findViewById(R.id.recyclerViewIDTransacciones);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
 
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 80, 80,false);
@@ -142,20 +135,12 @@ public class transactionsFragment extends Fragment {
             }
         });
 
-        horasRecibidas.setText(String.valueOf(horasR[0]));
-        horasDadas.setText(String.valueOf(horasD[0]));
-
-        return view;
-    }
-
-
-    @Override
-    public void onStart(){
-        super.onStart();
+        balance = view.findViewById(R.id.idBalance);
 
         mAuth = FirebaseAuth.getInstance();
 
         String current_id = mAuth.getCurrentUser().getUid();
+        mUsersDatabase       = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id);
 
         mUsersDatabase       = FirebaseDatabase.getInstance().getReference().child("Users").child(current_id);
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
@@ -206,20 +191,18 @@ public class transactionsFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for(DataSnapshot dataSnapshot1: snapshot.getChildren()){
                                     if(dataSnapshot1.getKey()!=null){
-                                    if(dataSnapshot1.getKey().equals(trabajoID)){
-                                        TransaccionesModel tm = dataSnapshot1.getValue(TransaccionesModel.class);
-                                        if(tm.getIduserhire().equals(current_id)){
-                                            transaccionesContratadas.add(tm);
-                                            adapter.notifyDataSetChanged();
-                                            ++horasD[0];
+                                        if(dataSnapshot1.getKey().equals(trabajoID)){
+                                            TransaccionesModel tm = dataSnapshot1.getValue(TransaccionesModel.class);
+                                            if(tm.getIduserhire().equals(current_id)){
+                                                transaccionesContratadas.add(tm);
+                                                adapter.notifyDataSetChanged();
+                                            }
+                                            else if(tm.getIdusersupplier().equals(current_id)){
+                                                transaccionesRealizadas.add(tm);
+                                                adapter.notifyDataSetChanged();
+                                            }
                                         }
-                                        else if(tm.getIdusersupplier().equals(current_id)){
-                                            transaccionesRealizadas.add(tm);
-                                            adapter.notifyDataSetChanged();
-                                            ++horasR[0];
-                                        }
-                                    }
-                                }}
+                                    }}
                             }
 
                             @Override
@@ -242,10 +225,28 @@ public class transactionsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.getKey() != null){
-                        transaccionesRealizadas.add(dataSnapshot.getValue(TransaccionesModel.class));
-                        adapter.notifyDataSetChanged();
-                        ++horasR[0];
+                        final boolean[] inP = {false};
 
+                        mActualJob.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot dataSnapshot1 : snapshot.getChildren()){
+                                    if(dataSnapshot1.getKey().equals(dataSnapshot.getKey())){
+                                        inP[0] = true;
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                        if(!inP[0]){
+                            transaccionesRealizadas.add(dataSnapshot.getValue(TransaccionesModel.class));
+                            adapter.notifyDataSetChanged();
+                        }
                     }
                 }
             }
@@ -261,9 +262,28 @@ public class transactionsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     if(dataSnapshot.getKey() != null){
-                        transaccionesContratadas.add(dataSnapshot.getValue(TransaccionesModel.class));
-                        adapter.notifyDataSetChanged();
-                        ++horasD[0];
+                        final boolean[] inP = {false};
+
+                        mActualJob.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot dataSnapshot1 : snapshot.getChildren()){
+                                    if(dataSnapshot1.getKey().equals(dataSnapshot.getKey())){
+                                        inP[0] = true;
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                        if(!inP[0]){
+                            transaccionesContratadas.add(dataSnapshot.getValue(TransaccionesModel.class));
+                            adapter.notifyDataSetChanged();
+                        }
                     }}
             }
 
@@ -273,6 +293,33 @@ public class transactionsFragment extends Fragment {
             }
         });
 
+
+
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if(dataSnapshot.getKey().equals("balance")){
+                        balanceDB = dataSnapshot.getValue(String.class);
+                        balance.setText(balanceDB);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return view;
+    }
+
+
+    @Override
+    public void onStart(){
+        super.onStart();
     }
 
 
@@ -345,6 +392,19 @@ public class transactionsFragment extends Fragment {
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         title.setTextSize(10);
         canvas.drawText(actualDate,530,30,title);
+
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        title.setTextSize(10);
+        canvas.drawText("Balance", 430, 50, title);
+        canvas.drawText("Horas Dadas", 430, 60, title);
+        canvas.drawText("Horas Recibidas", 430, 70, title);
+
+
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
+        title.setTextSize(8);
+        canvas.drawText(balanceDB, 500, 50, title);
+        canvas.drawText(String.valueOf(transaccionesContratadas.size()), 530, 60, title);
+        canvas.drawText(String.valueOf(transaccionesRealizadas.size()), 530, 70, title);
 
         title.setTextSize(15);
         title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
