@@ -38,18 +38,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pronombres: "
                     android:textColor="@color/whiteapp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/headerPronoun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="Elle"
+                    android:text="Pronombres"
                     android:textColor="@color/whiteapp" />
 
             </LinearLayout>

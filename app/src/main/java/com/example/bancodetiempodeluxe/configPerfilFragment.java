@@ -21,7 +21,6 @@ import android.widget.Switch;
  * create an instance of this fragment.
  */
 public class configPerfilFragment extends Fragment {
-    private Switch switchviewmode;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,22 +120,7 @@ public class configPerfilFragment extends Fragment {
         contac.setOnClickListener(cntactUs);
         
 
-        switchviewmode=view.findViewById(R.id.configperfilmodeswitch);
-        switchviewmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    switchviewmode.setText("Modo Oscuro");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
-
-                }else{
-                    switchviewmode.setText("Modo Claro");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-                }
-            }
-        });
 
         return view;
     }

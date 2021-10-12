@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -38,12 +39,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
     private String mChatUser;
-    private TextView nameChat,seenChat;
+    private TextView nameChat;
     private CircleImageView imageChat;
     private DatabaseReference mChatDatabase;
     private FirebaseAuth mAuth;
     private EditText messageChat;
-    private ImageButton mAdd,mSend;
+    private ImageButton mSend;
     private String mCurrentId;
     private RecyclerView mMessagesList;
     private SwipeRefreshLayout mRefreshLayout;
@@ -72,9 +73,9 @@ public class ChatActivity extends AppCompatActivity {
         //FIND ELEMENTS OF THE CURRENT VIEW
         nameChat=findViewById(R.id.chatusername);
         imageChat=findViewById(R.id.chatuserimage);
-        seenChat=findViewById(R.id.chatlastseen);
+
         messageChat=findViewById(R.id.chatMessage);
-        mAdd=findViewById(R.id.chatadd);
+
         mSend=findViewById(R.id.chatsend);
         //INICIALIZE THE ADAPTER FOR THE RECICLER VIEW
         mAdapter=new MessageAdapter(messageList);
@@ -102,6 +103,35 @@ public class ChatActivity extends AppCompatActivity {
                 nameChat.setText(name);
                 Picasso.get().load(image).placeholder(R.drawable.exampleuser).into(imageChat);
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //Desabilitar en caso de que no este activo el trabajo
+        mChatDatabase.child("Friends").child(mCurrentId).child(mChatUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.hasChild("status")){
+                    String status=snapshot.child("status").getValue().toString();
+                    System.out.println(status);
+                    if(status.equals("0")){
+                        messageChat.setHint("Mensaje");
+                        messageChat.setEnabled(true);
+                        messageChat.setHintTextColor(Color.GRAY);
+
+
+
+                    }else if(status.equals("1")){
+                        messageChat.setHintTextColor(Color.RED);
+                        messageChat.setHint("Actualmente no puedes chatear");
+                        messageChat.setEnabled(false);
+                    }
+                }
+                }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -224,16 +224,16 @@
                     android:id="@+id/profileAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="165dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Edad  14"
                     android:textSize="18sp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/profilePronoun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Pronombres  Elle"
                     android:textSize="18sp" />

@@ -67,7 +67,7 @@ public class SignUp extends AppCompatActivity {
                 System.out.println(tel);
                 String job=mJobTile.getEditText().getText().toString();
                 String pronoun=mPronoun.getEditText().getText().toString();
-                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)||!TextUtils.isEmpty(tel)||!TextUtils.isEmpty(job)||!TextUtils.isEmpty(pronoun)){
+                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)||!TextUtils.isEmpty(tel)||!TextUtils.isEmpty(job)){
                     //register_user(name,email,pass,tel,job,pronoun);
                     Intent goJobActivity= new Intent(SignUp.this,RegisterJobActivity.class);
                     goJobActivity.putExtra("newusername",name);
@@ -75,7 +75,7 @@ public class SignUp extends AppCompatActivity {
                     goJobActivity.putExtra("newuserpass",pass);
                     goJobActivity.putExtra("newusertel",tel);
                     goJobActivity.putExtra("newuserage",job);
-                    goJobActivity.putExtra("newuserpronoun",pronoun);
+                    goJobActivity.putExtra("newuserpronoun","pronoun");
                     startActivity(goJobActivity);
                     finish();
                 }

@@ -154,7 +154,7 @@ public class RegisterJobActivity extends AppCompatActivity {
                             userMap.put("age",age);
                             userMap.put("status","No verificado");//Es que no esta autenticado
                             userMap.put("phone",tel);
-                            userMap.put("pronoun",pronoun);
+                            userMap.put("pronoun","pronoun");//En caso de que se ponda el botton de pronombres
                             userMap.put("image","default");
                             userMap.put("thumb_image","default");
                             userMap.put("jobtitle",job);
