@@ -13,19 +13,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,6 +49,8 @@ public class fragmentSearch extends Fragment {
     private DatabaseReference mUsersDatabase;
     private AdapterSearchCustom adapter;
     private ArrayList<CustomUser> usuarios;
+    private FirebaseAuth mAuth;
+    private String current_id;
 
     private EditText searchEngine;
     private ImageView lupaBuscar;
@@ -116,7 +112,6 @@ public class fragmentSearch extends Fragment {
         lupaBuscar = view.findViewById(R.id.searchButtonLupa);*/
         //mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
-
         recyclerView = view.findViewById(R.id.contactsRecView);
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         recyclerView.setHasFixedSize(true);
@@ -150,35 +145,39 @@ public class fragmentSearch extends Fragment {
     }
 
     public void getData(){
-        usuarios = new ArrayList<>();
+        mAuth = FirebaseAuth.getInstance();
+        current_id = mAuth.getCurrentUser().getUid();
 
+        usuarios = new ArrayList<>();
         adapter = new AdapterSearchCustom(getActivity(),usuarios);
 
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     CustomUser user = new CustomUser();
-                    user.setKey(dataSnapshot.getKey());
+                    if (!dataSnapshot.getKey().equals(current_id)) {
+                        user.setKey(dataSnapshot.getKey());
 
-                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                        if(dataSnapshot1.getKey().equals("name")){
-                            user.setName(dataSnapshot1.getValue(String.class));
-                            usuarios.add(user);
-                            adapter.notifyDataSetChanged();
-                            //Log.d("Added: ", user.toString());
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            if (dataSnapshot1.getKey().equals("name")) {
+                                user.setName(dataSnapshot1.getValue(String.class));
+                                usuarios.add(user);
+                                adapter.notifyDataSetChanged();
+                                //Log.d("Added: ", user.toString());
+                            }
+                            if (dataSnapshot1.getKey().equals("image")) {
+                                user.setImage(dataSnapshot1.getValue(String.class));
+                            }
+                            if (dataSnapshot1.getKey().equals("jobtitle")) {
+                                user.setJobtitle(dataSnapshot1.getValue(String.class));
+                            }
+                            if (dataSnapshot1.getKey().equals("datejob")) {
+                                user.setDatejob(dataSnapshot1.getValue(String.class));
+                            }
                         }
-                        if(dataSnapshot1.getKey().equals("image")){
-                            user.setImage(dataSnapshot1.getValue(String.class));
-                        }
-                        if(dataSnapshot1.getKey().equals("jobtitle")){
-                            user.setJobtitle(dataSnapshot1.getValue(String.class));
-                        }
-                        if(dataSnapshot1.getKey().equals("datejob")){
-                            user.setDatejob(dataSnapshot1.getValue(String.class));
-                        }
+
                     }
-
                 }
 
                 adapter.getFilter().filter(null);
