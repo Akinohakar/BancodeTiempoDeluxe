@@ -29,6 +29,8 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;//Intancia autenticacion Firebase
     private DatabaseReference mDatabase;
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,31 +58,40 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
 
 
-
-                String name=mDisplayName.getEditText().getText().toString();
+                String name = mDisplayName.getEditText().getText().toString();
                 System.out.println(name);
-                String email=mEmail.getEditText().getText().toString();
+                String email = mEmail.getEditText().getText().toString();
                 System.out.println(email);
-                String pass=mpas.getEditText().getText().toString();
+                String pass = mpas.getEditText().getText().toString();
                 System.out.println(pass);
-                String tel=mTel.getEditText().getText().toString();
+                String passconf = mpass.getEditText().toString();
+                System.out.println(passconf);
+                String tel = mTel.getEditText().getText().toString();
                 System.out.println(tel);
-                String job=mJobTile.getEditText().getText().toString();
-                String pronoun=mPronoun.getEditText().getText().toString();
-                if(!TextUtils.isEmpty(name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(pass)||!TextUtils.isEmpty(tel)||!TextUtils.isEmpty(job)){
-                    //register_user(name,email,pass,tel,job,pronoun);
-                    Intent goJobActivity= new Intent(SignUp.this,RegisterJobActivity.class);
-                    goJobActivity.putExtra("newusername",name);
-                    goJobActivity.putExtra("newuseremail",email);
-                    goJobActivity.putExtra("newuserpass",pass);
-                    goJobActivity.putExtra("newusertel",tel);
-                    goJobActivity.putExtra("newuserage",job);
-                    goJobActivity.putExtra("newuserpronoun","pronoun");
-                    startActivity(goJobActivity);
-                    finish();
+                String job = mJobTile.getEditText().getText().toString();
+                String pronoun = mPronoun.getEditText().getText().toString();
+                if (passconf.equals(pass)) {
+                    if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass) || !TextUtils.isEmpty(tel) || !TextUtils.isEmpty(job)) {
+                        //register_user(name,email,pass,tel,job,pronoun);
+                        Intent goJobActivity = new Intent(SignUp.this, RegisterJobActivity.class);
+                        goJobActivity.putExtra("newusername", name);
+                        goJobActivity.putExtra("newuseremail", email);
+                        goJobActivity.putExtra("newuserpass", pass);
+                        goJobActivity.putExtra("newusertel", tel);
+                        goJobActivity.putExtra("newuserage", job);
+                        goJobActivity.putExtra("newuserpronoun", "pronoun");
+                        startActivity(goJobActivity);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(SignUp.this, "Algún campo esta vacío", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(SignUp.this, "La contraseña no coincide", Toast.LENGTH_SHORT).show();
                 }
 
-                }
+            }
 
         });
     }
