@@ -65,6 +65,8 @@ Libero enim sed faucibus turpis in eu mi. Vulputate dignissim suspendisse in est
     <string name="placeholderWork">Carpintería</string>
     <string name="placeholderStatus">Completado</string>
     <string name="placeholderContract">Contrato</string>
+    <string name="buscar">Buscar</string>
+    <string name="buscarBar">Busca el trabajo que necesites</string>
     <!-- Other Values -->
     <string name="horas">H</string>
     <string name="descargarPDF">Descargar PDF</string>

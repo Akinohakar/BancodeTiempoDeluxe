@@ -9,21 +9,34 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,9 +46,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * create an instance of this fragment.
  */
 public class fragmentSearch extends Fragment {
-    private RecyclerView mUserList;
+    //private RecyclerView mUserList;
+    //FirebaseRecyclerAdapter adapter;
+    //FirebaseRecyclerAdapter mAdapter;
+    //FirebaseRecyclerOptions<Users> options;
+
+    private RecyclerView recyclerView;
     private DatabaseReference mUsersDatabase;
+    private AdapterSearchCustom adapter;
+    private ArrayList<CustomUser> usuarios;
+
     private EditText searchEngine;
+    private ImageView lupaBuscar;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -101,28 +124,104 @@ public class fragmentSearch extends Fragment {
         ////contactsRecView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));//El linear leyourt es para indicar que los itesm va a estar en forma de Linear
         //contactsRecView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         //Firebase UI Recicler View
-
-
-        mUserList= view.findViewById(R.id.contactsRecView);
+        /*mUserList= view.findViewById(R.id.contactsRecView);
         searchEngine=view.findViewById(R.id.editTextTypeJob);
         mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users");//reference
-        //mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        lupaBuscar = view.findViewById(R.id.searchButtonLupa);*/
+        //mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
+
+        recyclerView = view.findViewById(R.id.contactsRecView);
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
+        searchEngine = view.findViewById(R.id.editTextTypeJob);
+
+        searchEngine.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(null);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(null);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                adapter.getFilter().filter(editable.toString());
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        getData();
 
         return view;
     }
+
+    public void getData(){
+        usuarios = new ArrayList<>();
+
+        adapter = new AdapterSearchCustom(getActivity(),usuarios);
+
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    CustomUser user = new CustomUser();
+                    user.setKey(dataSnapshot.getKey());
+
+                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                        if(dataSnapshot1.getKey().equals("name")){
+                            user.setName(dataSnapshot1.getValue(String.class));
+                            usuarios.add(user);
+                            adapter.notifyDataSetChanged();
+                            //Log.d("Added: ", user.toString());
+                        }
+                        if(dataSnapshot1.getKey().equals("image")){
+                            user.setImage(dataSnapshot1.getValue(String.class));
+                        }
+                        if(dataSnapshot1.getKey().equals("jobtitle")){
+                            user.setJobtitle(dataSnapshot1.getValue(String.class));
+                        }
+                        if(dataSnapshot1.getKey().equals("datejob")){
+                            user.setDatejob(dataSnapshot1.getValue(String.class));
+                        }
+                    }
+
+                }
+
+                adapter.getFilter().filter(null);
+
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                /*Log.d("TAG", "----------------------------------------------");
+                Log.d("Carga de Usuarios:", "Cargados todos los usuarios!!!");
+                Log.d("Usuarios en lista: ", String.valueOf(usuarios.size()));
+                Log.d("TAG", "----------------------------------------------");*/
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();
+        /*Query query=mUsersDatabase.orderByKey();
+        options = new FirebaseRecyclerOptions.Builder<Users>().setQuery(query, Users.class).build();
 
-
-        Query query=mUsersDatabase.orderByChild("rating");
-
-
-
-        FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>().setQuery(query, Users.class).build();
-
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
+         adapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users users) {
 
@@ -157,10 +256,12 @@ public class fragmentSearch extends Fragment {
 
         };
         mUserList.setAdapter(adapter);
-        adapter.startListening();
+        adapter.startListening();*/
+
+
     }
 
-    public static class UsersViewHolder extends RecyclerView.ViewHolder{
+    /*public static class UsersViewHolder extends RecyclerView.ViewHolder{
         View mView;
         public UsersViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -191,6 +292,5 @@ public class fragmentSearch extends Fragment {
         }
 
 
-    }
-
+    }*/
 }

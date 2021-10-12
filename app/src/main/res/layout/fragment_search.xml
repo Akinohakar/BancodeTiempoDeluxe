@@ -12,10 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#1F304A">
-
-
-
+        android:background="#1F304A"
+        >
 
         <EditText
             style="@style/Widget.AppCompat.EditText"
@@ -24,8 +22,8 @@
             android:layout_width="320dp"
             android:layout_height="match_parent"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Busca lo que necesites"
+            android:inputType="text"
+            android:hint="@string/buscarBar"
             android:textColorHint="@color/whiteapp"
             android:textColorHighlight="@color/whiteapp"
             android:textColor="@color/whiteapp"
@@ -34,9 +32,10 @@
             android:shadowColor="@color/whiteapp"
             android:textColorLink="@color/whiteapp"/>
         <ImageView
-        android:layout_width="65dp"
-        android:layout_height="69dp"
-        android:src="@drawable/search_white" />
+            android:id="@+id/searchButtonLupa"
+            android:layout_width="65dp"
+            android:layout_height="69dp"
+            android:src="@drawable/search_white" />
 
 
     </LinearLayout>
