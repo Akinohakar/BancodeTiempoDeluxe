@@ -15,78 +15,103 @@
         android:theme="@style/Theme.BancodeTiempoDeluxe">
         <activity
             android:name=".JobConfirmation"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ActivityConfirmation"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ChatActivity"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity
             android:name=".VerificationMain"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ProblemasCorreo"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".CorreoEnviado"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ContactUs"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ReportProblems"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Help"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ChangePassword"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ChangeEmail"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ForgetPass"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".DescriptionNotificationRequest"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".RegisterJobActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".confirServicio"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".offerDescription"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Trasactions"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SecondActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".editProfile"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SignUp"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Login"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".MainMenu"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
