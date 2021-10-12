@@ -35,10 +35,9 @@
             android:layout_width="126dp"
             android:layout_height="125dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="142dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="143dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="50dp"
+
+            android:layout_gravity="center"
             android:innerRadius="0dp"
             android:onClick="goProfile"
             android:shape="ring"
@@ -84,8 +83,7 @@
             android:id="@+id/profile_user_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="170dp"
-            android:layout_marginTop="10dp"
+           android:layout_gravity="center"
             android:text="No verificado"
             android:textColor="#685D5D"
             android:textSize="12sp"
@@ -96,16 +94,18 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="121dp"
-        android:layout_height="147dp"
-        android:layout_marginEnd="72dp"
+        android:id="@+id/cardView3"
+        android:layout_width="130dp"
+        android:layout_height="151dp"
+
         android:background="@color/yellowapp"
         android:backgroundTint="@color/yellowapp"
         app:cardElevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53">
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardView">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -150,15 +150,15 @@
         android:id="@+id/cardView"
         android:layout_width="120dp"
         android:layout_height="147dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="144dp"
         android:background="@color/yellowapp"
         android:backgroundTint="@color/yellowapp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53">
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.52">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -171,7 +171,8 @@
                 android:layout_height="42dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/work_black" />
+                android:src="@drawable/work_black"
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/actualWork"
@@ -190,9 +191,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/actualWork"
                 android:layout_centerHorizontal="true"
-                android:textAlignment="center"
                 android:layout_marginTop="10dp"
                 android:text=""
+                android:textAlignment="center"
                 android:textSize="14sp" />
 
 
@@ -200,52 +201,40 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="413dp"
-        android:layout_height="215dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-            <LinearLayout
-                android:layout_width="match_parent"
+
+
+            <TextView
+                android:id="@+id/profileAge"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/profileAge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="165dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Edad  14"
-                    android:textSize="18sp" />
+                android:layout_gravity="center"
 
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/profilePronoun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Pronombres  Elle"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-
+                android:fontFamily="@font/montserrat"
+                android:text="Edad  14"
+                android:textSize="18sp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Descripcion de Trabajo" />
@@ -255,7 +244,9 @@
                 android:id="@+id/profileJobDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="20dp"
+
                 android:text=" " />
 
 

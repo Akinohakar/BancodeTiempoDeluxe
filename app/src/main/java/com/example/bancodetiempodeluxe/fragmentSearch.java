@@ -107,22 +107,7 @@ public class fragmentSearch extends Fragment {
         View view=  inflater.inflate(R.layout.fragment_search, container, false);//Inflate fragment layout
         super.onCreate(savedInstanceState);
 
-        //For normar recicler view,in tis case we are using firebase ui recicler view
-        //contactsRecView=view.findViewById(R.id.contactsRecView);//Se isntancia aqui
-        //ArrayList<Contact> contacts=new ArrayList<>();
-        //contacts.add(new Contact("Contacto 1","Toma@tomassitometonatiu.com","https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg","Plomeria", "L M M J V S D"));
-        //contacts.add(new Contact("Contacto 2","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Carpinteria","L M M J V S D"));
-        //contacts.add(new Contact("Contacto 3","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Tineria","L M M J V S D"));
-        //contacts.add(new Contact("Contacto 4","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Programacion","L M M J V S D"));
-        //contacts.add(new Contact("Contacto 5","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Director de cine","L M M J V S D"));
-        //contacts.add(new Contact("Contacto 6","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Derecho","L M M J V S D"));
-        //contacts.add(new Contact("Contacto 7","Toma@tomassitometonatiu.com","https://www.google.com.mx/","Asesorias","L M M J V S D"));
-        ////Lista de contactos
-        //ContactRecViewAdapter adapter=new ContactRecViewAdapter(getActivity());//se hace el adater o se intancia,el aprameto que se las pasa el constructor es el contecto de la main Activity
-        //adapter.setContacts(contacts);//se le pone el arraylist
-        //contactsRecView.setAdapter(adapter);
-        ////contactsRecView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));//El linear leyourt es para indicar que los itesm va a estar en forma de Linear
-        //contactsRecView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
         //Firebase UI Recicler View
         /*mUserList= view.findViewById(R.id.contactsRecView);
         searchEngine=view.findViewById(R.id.editTextTypeJob);

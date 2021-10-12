@@ -86,7 +86,7 @@ public class profileFragment extends Fragment {
         userActualJob=view.findViewById(R.id.profileWorkTitle);
         userRating=view.findViewById(R.id.profileActualRating);
         userAge=view.findViewById(R.id.profileAge);
-        userPronoun=view.findViewById(R.id.profilePronoun);
+
         userJobDesc=view.findViewById(R.id.profileJobDesc);
         //To retrive the data
         mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
@@ -108,7 +108,6 @@ public class profileFragment extends Fragment {
                 userName.setText(name);
                 userRating.setText(rating);
                 userActualJob.setText(work);
-                userPronoun.setText("Pronombres: "+pronoun);
                 userJobDesc.setText(jobdesc);
                 userAge.setText("Edad: "+edad);
                 Picasso.get().load(image).into(userImage);

@@ -42,13 +42,16 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_width="409dp"
-        android:layout_height="413dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:fillViewport="true"
         android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@+id/submitChangesButton"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +83,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="text"
                     android:outlineAmbientShadowColor="@color/whiteapp"
                     android:outlineSpotShadowColor="@color/whiteapp"
@@ -128,7 +131,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:visibility="gone"
                 android:id="@+id/editPronombres"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -138,6 +140,7 @@
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
                 android:textColorHint="@color/whiteapp"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/yellowapp"
                 app:boxStrokeErrorColor="@color/whiteapp"
                 app:counterOverflowTextColor="@color/whiteapp"
@@ -271,21 +274,22 @@
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
-                android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="12dp"
                 android:text="Descripcion Trabajo"
-                android:textSize="15sp"
                 android:textColor="@color/whiteapp"
-                android:layout_marginLeft="5sp"/>
+                android:textSize="15sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="5sp"
                 android:id="@+id/editJobDesc"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
                 android:hint="Escribe Aqui"
                 android:outlineAmbientShadowColor="@color/whiteapp"
                 android:outlineSpotShadowColor="@color/whiteapp"
@@ -318,8 +322,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
         </LinearLayout>
 
 
@@ -329,13 +331,13 @@
         android:id="@+id/submitChangesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="28dp"
         android:backgroundTint="@color/blueapp"
         android:text="Confirmar Cambios"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@color/yellowapp"
         app:strokeColor="@color/blueapp" />
 

@@ -19,11 +19,12 @@
             style="@style/Widget.AppCompat.EditText"
             android:layout_marginLeft="30dp"
             android:id="@+id/editTextTypeJob"
-            android:layout_width="320dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
             android:inputType="text"
             android:hint="@string/buscarBar"
+            android:layout_weight="8"
             android:textColorHint="@color/whiteapp"
             android:textColorHighlight="@color/whiteapp"
             android:textColor="@color/whiteapp"
@@ -32,10 +33,11 @@
             android:shadowColor="@color/whiteapp"
             android:textColorLink="@color/whiteapp"/>
         <ImageView
-            android:id="@+id/searchButtonLupa"
-            android:layout_width="65dp"
-            android:layout_height="69dp"
-            android:src="@drawable/search_white" />
+            android:layout_gravity="end"
+            android:layout_weight="1"
+        android:layout_width="65dp"
+        android:layout_height="69dp"
+        android:src="@drawable/search_white" />
 
 
     </LinearLayout>
@@ -43,7 +45,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactsRecView"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
+        android:layout_height="match_parent"
 
         android:layout_below="@+id/searchMotor" />
 
