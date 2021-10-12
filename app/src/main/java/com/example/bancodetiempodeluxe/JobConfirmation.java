@@ -56,46 +56,58 @@ public class JobConfirmation extends AppCompatActivity {
         mJobDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String display_hName = snapshot.child("nameuserhire").getValue().toString();
-                String display_sName = snapshot.child("nameusersupplier").getValue().toString();
-                String display_job = snapshot.child("job").getValue().toString();
+                try {
+                    String display_hName = snapshot.child("nameuserhire").getValue().toString();
+                    String display_sName = snapshot.child("nameusersupplier").getValue().toString();
+                    String display_job = snapshot.child("job").getValue().toString();
 
-                hirerName.setText(display_hName);
-                providerName.setText(display_sName);
-                mJob.setText(display_job);
+                    hirerName.setText(display_hName);
+                    providerName.setText(display_sName);
+                    mJob.setText(display_job);
 
-                DatabaseReference mSupplierDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("idusersupplier").getValue().toString());
-                mSupplierDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshotS) {
-                        String display_jobDesc = snapshotS.child("jobdesc").getValue().toString();
+                    DatabaseReference mSupplierDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(snapshot.child("idusersupplier").getValue().toString());
+                    mSupplierDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshotS) {
+                            String display_jobDesc = snapshotS.child("jobdesc").getValue().toString();
 
-                        jobDesc.setText(display_jobDesc);
+                            jobDesc.setText(display_jobDesc);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    if (mCurrentUser.getUid().toString().equals(snapshot.child("iduserhire").getValue().toString())) {
+                        //Usuario actual es el solicitante
+
+                        if (snapshot.child("hirerstatus").getValue(Integer.class) == 1) {
+                            completeJob.setVisibility(View.GONE);
+                            cancelJob.setVisibility(View.GONE);
+                            waitingTextV.setVisibility(View.VISIBLE);
+                        }
                     }
+                    if (mCurrentUser.getUid().toString().equals(snapshot.child("idusersupplier").getValue().toString())) {
+                        //Usuario actual es el proveedor
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                if(mCurrentUser.getUid().toString().equals(snapshot.child("iduserhire").getValue().toString())){
-                    //Usuario actual es el solicitante
-
-                    if(snapshot.child("hirerstatus").getValue(Integer.class) == 1){
-                        completeJob.setVisibility(View.GONE);
-                        cancelJob.setVisibility(View.GONE);
-                        waitingTextV.setVisibility(View.VISIBLE);
+                        if (snapshot.child("providerstatus").getValue(Integer.class) == 1) {
+                            completeJob.setVisibility(View.GONE);
+                            cancelJob.setVisibility(View.GONE);
+                            waitingTextV.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
-                if(mCurrentUser.getUid().toString().equals(snapshot.child("idusersupplier").getValue().toString())){
-                    //Usuario actual es el proveedor
+                catch(Exception e){
+                    DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
+                    mCurrentDatabase.child("notifications").child(NID).removeValue();
 
-                    if(snapshot.child("providerstatus").getValue(Integer.class) == 1){
-                        completeJob.setVisibility(View.GONE);
-                        cancelJob.setVisibility(View.GONE);
-                        waitingTextV.setVisibility(View.VISIBLE);
-                    }
+                    Toast.makeText(JobConfirmation.this, "El trabajo ha sido cancelado", Toast.LENGTH_SHORT).show();
+
+                    Intent comeBack = new Intent(JobConfirmation.this, MainMenu.class);
+                    startActivity(comeBack);
+                    finish();
                 }
             }
 
@@ -154,6 +166,9 @@ public class JobConfirmation extends AppCompatActivity {
                                         FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Actual Job").removeValue();
 
                                         mCurrentDatabase.child("notifications").child(NID).removeValue();
+
+                                        FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrentUser.getUid().toString()).child(snapshotJ.child("idusersupplier").getValue().toString()).child("status").setValue("1");
+                                        FirebaseDatabase.getInstance().getReference().child("Friends").child(snapshotJ.child("idusersupplier").getValue().toString()).child(mCurrentUser.getUid().toString()).child("status").setValue("1");
 
                                         mJobDatabase.removeValue();
 
@@ -223,6 +238,9 @@ public class JobConfirmation extends AppCompatActivity {
 
                                         mCurrentDatabase.child("notifications").child(NID).removeValue();
 
+                                        FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrentUser.getUid().toString()).child(snapshotJ.child("iduserhire").getValue().toString()).child("status").setValue("1");
+                                        FirebaseDatabase.getInstance().getReference().child("Friends").child(snapshotJ.child("iduserhire").getValue().toString()).child(mCurrentUser.getUid().toString()).child("status").setValue("1");
+
                                         mJobDatabase.removeValue();
 
                                         Toast.makeText(JobConfirmation.this, "Trabajo completado exitosamente", Toast.LENGTH_LONG).show();
@@ -262,6 +280,100 @@ public class JobConfirmation extends AppCompatActivity {
         cancelJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseReference mCurrentDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid().toString());
+                mCurrentDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child("Actual Job").child(JID).child("Rol").getValue().toString().equals("hirer")){
+                            mJobDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshotJ) {
+                                    HashMap<String, String> jobMap = new HashMap<>();
+                                    jobMap.put("iduserhire",snapshotJ.child("iduserhire").getValue().toString());
+                                    jobMap.put("idusersupplier",snapshotJ.child("idusersupplier").getValue().toString());
+                                    jobMap.put("nameuserhire",snapshotJ.child("nameuserhire").getValue().toString());
+                                    jobMap.put("nameusersupplier",snapshotJ.child("nameusersupplier").getValue().toString());
+                                    jobMap.put("status","cancelled");
+                                    jobMap.put("rating",snapshotJ.child("rating").getValue().toString());
+                                    jobMap.put("date",snapshotJ.child("date").getValue().toString());
+                                    jobMap.put("hour",snapshotJ.child("hour").getValue().toString());
+                                    jobMap.put("job",snapshotJ.child("job").getValue().toString());
+
+                                    mCurrentDatabase.child("Hired Jobs").child(JID).setValue(jobMap);
+                                    FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Worked Jobs").child(JID).setValue(jobMap);
+
+                                    mCurrentDatabase.child("Actual Job").removeValue();
+                                    FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("idusersupplier").getValue().toString()).child("Actual Job").removeValue();
+
+                                    mCurrentDatabase.child("notifications").child(NID).removeValue();
+
+                                    FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrentUser.getUid().toString()).child(snapshotJ.child("idusersupplier").getValue().toString()).child("status").setValue("1");
+                                    FirebaseDatabase.getInstance().getReference().child("Friends").child(snapshotJ.child("idusersupplier").getValue().toString()).child(mCurrentUser.getUid().toString()).child("status").setValue("1");
+
+                                    mJobDatabase.removeValue();
+
+                                    Toast.makeText(JobConfirmation.this, "Trabajo cancelado exitosamente", Toast.LENGTH_LONG).show();
+
+                                    Intent comeBack = new Intent(JobConfirmation.this, MainMenu.class);
+                                    startActivity(comeBack);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+
+                        if(snapshot.child("Actual Job").child(JID).child("Rol").getValue().toString().equals("supplier")){
+                            mJobDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshotJ) {
+                                    HashMap<String, String> jobMap = new HashMap<>();
+                                    jobMap.put("iduserhire",snapshotJ.child("iduserhire").getValue().toString());
+                                    jobMap.put("idusersupplier",snapshotJ.child("idusersupplier").getValue().toString());
+                                    jobMap.put("nameuserhire",snapshotJ.child("nameuserhire").getValue().toString());
+                                    jobMap.put("nameusersupplier",snapshotJ.child("nameusersupplier").getValue().toString());
+                                    jobMap.put("status","cancelled");
+                                    jobMap.put("rating",snapshotJ.child("rating").getValue().toString());
+                                    jobMap.put("date",snapshotJ.child("date").getValue().toString());
+                                    jobMap.put("hour",snapshotJ.child("hour").getValue().toString());
+                                    jobMap.put("job",snapshotJ.child("job").getValue().toString());
+
+                                    mCurrentDatabase.child("Worked Jobs").child(JID).setValue(jobMap);
+                                    FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString()).child("Hired Jobs").child(JID).setValue(jobMap);
+
+                                    mCurrentDatabase.child("Actual Job").removeValue();
+                                    FirebaseDatabase.getInstance().getReference().child("Users").child(snapshotJ.child("iduserhire").getValue().toString()).child("Actual Job").removeValue();
+
+                                    mCurrentDatabase.child("notifications").child(NID).removeValue();
+
+                                    FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrentUser.getUid().toString()).child(snapshotJ.child("iduserhire").getValue().toString()).child("status").setValue("1");
+                                    FirebaseDatabase.getInstance().getReference().child("Friends").child(snapshotJ.child("iduserhire").getValue().toString()).child(mCurrentUser.getUid().toString()).child("status").setValue("1");
+
+                                    mJobDatabase.removeValue();
+
+                                    Toast.makeText(JobConfirmation.this, "Trabajo cancelado exitosamente", Toast.LENGTH_LONG).show();
+
+                                    Intent comeBack = new Intent(JobConfirmation.this, MainMenu.class);
+                                    startActivity(comeBack);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
         });

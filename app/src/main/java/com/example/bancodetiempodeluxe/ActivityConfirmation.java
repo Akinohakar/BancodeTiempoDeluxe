@@ -97,7 +97,7 @@ public class ActivityConfirmation extends AppCompatActivity {
                     mFriendsDatabase=FirebaseDatabase.getInstance().getReference();
                     //Status 0:In progress
                     //Status 1:Job Finished\
-                    mFriendsDatabase.child("Users").child(provider).addValueEventListener(new ValueEventListener() {
+                    mFriendsDatabase.child("Users").child(provider).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshotJV) {
 
@@ -116,7 +116,8 @@ public class ActivityConfirmation extends AppCompatActivity {
 
                         }
                     });
-                    mFriendsDatabase.child("Users").child(hirer).addValueEventListener(new ValueEventListener() {
+
+                    mFriendsDatabase.child("Users").child(hirer).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshotJV) {
                             String image=snapshotJV.child("image").getValue().toString();
@@ -134,13 +135,6 @@ public class ActivityConfirmation extends AppCompatActivity {
 
                         }
                     });
-
-
-
-
-
-
-
 
                 }
 

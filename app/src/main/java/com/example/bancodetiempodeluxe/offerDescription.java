@@ -118,44 +118,57 @@ public class offerDescription extends AppCompatActivity {
                mThisUser.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       if(Integer.parseInt(snapshot.child("balance").getValue().toString()) >= 0) {
-
-                           name = snapshot.child("name").getValue().toString();
-
-                           HashMap<String, String> jobMap = new HashMap<>();
-                           jobMap.put("iduserhire", mCurrent_user.getUid());
-                           jobMap.put("idusersupplier", user_id);
-                           jobMap.put("nameuserhire", name);
-                           jobMap.put("nameusersupplier", mProfileName.getText().toString());
-                           jobMap.put("status", "sent");
-                           jobMap.put("rating", "0.0");
-                           jobMap.put("date", date);
-                           jobMap.put("hour", hour);
-                           jobMap.put("job", mProfileJobTitle.getText().toString());
-
-
-                           pushedRef.setValue(jobMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                               @Override
-                               public void onComplete(@NonNull Task<Void> task) {
-                                   Toast.makeText(offerDescription.this, "Servicio Solicitado", Toast.LENGTH_SHORT).show();
-                                   String value_key = pushedRef.getKey();
-                                   System.out.println(value_key);
-
+                       mThisUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(@NonNull DataSnapshot snapshotU) {
+                               if(snapshotU.child("Actual Job").hasChildren()){
+                                   Toast.makeText(offerDescription.this, "No puedes pedir trabajos mientras tienes uno en progreso", Toast.LENGTH_SHORT).show();
                                }
-                           });
+                               else if(Integer.parseInt(snapshot.child("balance").getValue().toString()) >= 0) {
 
-                           DatabaseReference refNotif = mUsersDatabase.child("notifications").push();
-                           mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("type").setValue("request");
-                           mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("status").setValue(0);
-                           mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("job").setValue(pushedRef.getKey().toString());
+                                   name = snapshot.child("name").getValue().toString();
 
-                           Intent intent = new Intent(offerDescription.this, MainMenu.class);
-                           startActivity(intent);
-                           finish();
-                       }
-                       else{
-                           Toast.makeText(offerDescription.this, "No puede pedir trabajos cuando su balance es negativo", Toast.LENGTH_LONG).show();
-                       }
+                                   HashMap<String, String> jobMap = new HashMap<>();
+                                   jobMap.put("iduserhire", mCurrent_user.getUid());
+                                   jobMap.put("idusersupplier", user_id);
+                                   jobMap.put("nameuserhire", name);
+                                   jobMap.put("nameusersupplier", mProfileName.getText().toString());
+                                   jobMap.put("status", "sent");
+                                   jobMap.put("rating", "0.0");
+                                   jobMap.put("date", date);
+                                   jobMap.put("hour", hour);
+                                   jobMap.put("job", mProfileJobTitle.getText().toString());
+
+
+                                   pushedRef.setValue(jobMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                       @Override
+                                       public void onComplete(@NonNull Task<Void> task) {
+                                           Toast.makeText(offerDescription.this, "Servicio Solicitado", Toast.LENGTH_SHORT).show();
+                                           String value_key = pushedRef.getKey();
+                                           System.out.println(value_key);
+
+                                       }
+                                   });
+
+                                   DatabaseReference refNotif = mUsersDatabase.child("notifications").push();
+                                   mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("type").setValue("request");
+                                   mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("status").setValue(0);
+                                   mUsersDatabase.child("notifications").child(refNotif.getKey().toString()).child("job").setValue(pushedRef.getKey().toString());
+
+                                   Intent intent = new Intent(offerDescription.this, MainMenu.class);
+                                   startActivity(intent);
+                                   finish();
+                               }
+                               else{
+                                   Toast.makeText(offerDescription.this, "No puede pedir trabajos cuando su balance es negativo", Toast.LENGTH_LONG).show();
+                               }
+                           }
+
+                           @Override
+                           public void onCancelled(@NonNull DatabaseError error) {
+
+                           }
+                       });
 
                    }
 
