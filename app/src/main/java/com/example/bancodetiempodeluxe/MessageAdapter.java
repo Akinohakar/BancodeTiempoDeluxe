@@ -25,8 +25,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<Messages> mMessagesList;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+
     public MessageAdapter(List<Messages> mMessagesList){
         this.mMessagesList=mMessagesList;
+
 
     }
 
@@ -67,10 +69,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.imageUser.setVisibility(View.INVISIBLE);
 
         }else{
-            holder.imageUser.setVisibility(View.VISIBLE);
+            holder.imageUser.setVisibility(View.GONE);
             holder.message.setGravity(Gravity.START);
             holder.messageText.setBackgroundResource(R.drawable.mesage_text_background);
             holder.messageText.setTextColor(Color.WHITE);
+
+
 
         }
 
