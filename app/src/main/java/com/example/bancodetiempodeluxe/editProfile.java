@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +47,7 @@ public class editProfile extends AppCompatActivity {
     private static final int GALLERY_PICK=1;
     private CircleImageView mDisplayImage;
     private Snackbar snackbar,snackbarImg;
+    private CheckBox dayL,dayM,dayMI,dayJV,dayV,dayS,dayD;
 
     //Storage Firebase
     private StorageReference mImageStorage;
@@ -60,6 +62,13 @@ public class editProfile extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_edit_profile);
         //Finding Views
+        dayL=findViewById(R.id.editprofile_job_monday);
+        dayM=findViewById(R.id.editprofile_job_tuesday);
+        dayMI=findViewById(R.id.editprofile_job_wednesday);
+        dayJV=findViewById(R.id.editprofile_job_thursday);
+        dayV=findViewById(R.id.editprofile_job_friday);
+        dayS=findViewById(R.id.editprofile_job_saturday);
+        dayD=findViewById(R.id.editprofile_job_sunday);
         editProfilePic=findViewById(R.id.fabImageChange);
         editName=findViewById(R.id.editName);
         submitChanges=findViewById(R.id.submitChangesButton);
@@ -91,6 +100,30 @@ public class editProfile extends AppCompatActivity {
                  String job=snapshot.child("jobtitle").getValue().toString();
                  String descjob=snapshot.child("jobdesc").getValue().toString();
                  String image=snapshot.child("image").getValue().toString();
+                 String datejob=snapshot.child("datejob").getValue().toString();
+                 System.out.println(datejob);
+
+                 if(datejob.contains("L")){
+                    dayL.setChecked(true);
+                 }
+                 if(datejob.contains("M")){
+                     dayM.setChecked(true);
+                 }
+                 if(datejob.contains("X")){
+                     dayMI.setChecked(true);
+                 }
+                 if(datejob.contains("J")){
+                     dayJV.setChecked(true);
+                 }
+                 if(datejob.contains("V")){
+                     dayV.setChecked(true);
+                 }
+                 if(datejob.contains("S")){
+                     dayS.setChecked(true);
+                 }
+                 if(datejob.contains("D")){
+                     dayD.setChecked(true);
+                 }
                  editName.getEditText().setText(name);
                  editAge.getEditText().setText(age);
                  editPronouns.getEditText().setText(pronoun);
@@ -127,6 +160,35 @@ public class editProfile extends AppCompatActivity {
                 String adrs=editAdr.getEditText().getText().toString();
                 String job=editJob.getEditText().getText().toString();
                 String descjob=editDescJob.getEditText().getText().toString();
+
+                //Contatenate into date
+                StringBuilder strDate= new StringBuilder();
+                if (dayL.isChecked()){
+                    strDate.append("L ");
+                }
+                if (dayM.isChecked()){
+                    strDate.append("M ");
+                }
+                if (dayMI.isChecked()){
+                    strDate.append("X ");
+
+                }
+                if (dayJV.isChecked()){
+                    strDate.append("J ");
+                }
+                if (dayV.isChecked()){
+                    strDate.append("V ");
+
+                }
+                if (dayS.isChecked()){
+                    strDate.append("S ");
+                }
+                if (dayD.isChecked()){
+                    strDate.append("D ");
+
+                }
+
+                mStatusDatabse.child("datejob").setValue(strDate.toString());
                 mStatusDatabse.child("address").setValue(adrs);
                 mStatusDatabse.child("jobtitle").setValue(job);
                 mStatusDatabse.child("phone").setValue(phone);
@@ -143,7 +205,7 @@ public class editProfile extends AppCompatActivity {
                             snackbar=Snackbar.make(view,"Datos actualizados",Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }else{
-                            Toast.makeText(getApplicationContext(), "Ups no quiero cambairme : )", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Hubo un error a cqambiar los datos", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -209,7 +271,7 @@ public class editProfile extends AppCompatActivity {
                                     mStatusDatabse.child("image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {//put the image url into the user child(img)
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+
                                             mPicProgress.dismiss();
                                             snackbarImg.show();
 

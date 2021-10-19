@@ -19,6 +19,7 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/font/montserrat.xml" value="0.2359375" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_confir_servicio.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_confirmation.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_contact_us.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_correo_enviado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/activity_dashboard.xml" value="0.14427083333333332" />
@@ -44,6 +45,7 @@
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_profile.xml" value="0.32547387887193713" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_transactions.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/fragment_who.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/header.xml" value="0.22" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/message_single_layout.xml" value="0.33" />
         <entry key="..\:/Users/aeaqu/AndroidStudioProjects/BancodeTiempoDeluxe/app/src/main/res/layout/ofert_list_item.xml" value="0.22" />
