@@ -239,6 +239,8 @@
                     android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editJob"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -274,6 +276,66 @@
                     android:textColorHint="@color/whiteapp"
                     android:textColorLink="@color/whiteapp" />
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whiteapp"
+                android:text="Seleciona los dias que tienes disponibles de la semana"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/editprofile_job_monday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="L"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_tuesday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="M"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_wednesday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="X"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_thursday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="J"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_friday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="V"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_saturday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="S"/>
+                <CheckBox
+                    android:id="@+id/editprofile_job_sunday"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteapp"
+                    android:text="D"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -283,6 +345,7 @@
                 android:text="Descripcion Trabajo"
                 android:textColor="@color/whiteapp"
                 android:textSize="15sp" />
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editJobDesc"
