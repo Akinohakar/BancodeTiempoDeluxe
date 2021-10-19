@@ -1,39 +1,28 @@
 package com.example.bancodetiempodeluxe;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,11 +30,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * create an instance of this fragment.
  */
 public class fragmentSearch extends Fragment {
-    //private RecyclerView mUserList;
-    //FirebaseRecyclerAdapter adapter;
-    //FirebaseRecyclerAdapter mAdapter;
-    //FirebaseRecyclerOptions<Users> options;
-
     private RecyclerView recyclerView;
     private DatabaseReference mUsersDatabase;
     private AdapterSearchCustom adapter;
@@ -54,7 +38,6 @@ public class fragmentSearch extends Fragment {
     private String current_id;
 
     private EditText searchEngine;
-    private ImageView lupaBuscar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,15 +86,6 @@ public class fragmentSearch extends Fragment {
         // Inflate the layout for this fragment
         View view=  inflater.inflate(R.layout.fragment_search, container, false);//Inflate fragment layout
         super.onCreate(savedInstanceState);
-
-
-        //Firebase UI Recicler View
-        /*mUserList= view.findViewById(R.id.contactsRecView);
-        searchEngine=view.findViewById(R.id.editTextTypeJob);
-        mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users");//reference
-        mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        lupaBuscar = view.findViewById(R.id.searchButtonLupa);*/
-        //mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
         recyclerView = view.findViewById(R.id.contactsRecView);
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -190,10 +164,6 @@ public class fragmentSearch extends Fragment {
 
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
-                /*Log.d("TAG", "----------------------------------------------");
-                Log.d("Carga de Usuarios:", "Cargados todos los usuarios!!!");
-                Log.d("Usuarios en lista: ", String.valueOf(usuarios.size()));
-                Log.d("TAG", "----------------------------------------------");*/
 
             }
 
@@ -208,7 +178,24 @@ public class fragmentSearch extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        /*Query query=mUsersDatabase.orderByKey();
+    }
+
+
+//private RecyclerView mUserList;
+//FirebaseRecyclerAdapter adapter;
+//FirebaseRecyclerAdapter mAdapter;
+//FirebaseRecyclerOptions<Users> options;
+
+
+    //Firebase UI Recicler View
+        /*mUserList= view.findViewById(R.id.contactsRecView);
+        searchEngine=view.findViewById(R.id.editTextTypeJob);
+        mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users");//reference
+        mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        lupaBuscar = view.findViewById(R.id.searchButtonLupa);*/
+    //mUserList.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
+/*Query query=mUsersDatabase.orderByKey();
         options = new FirebaseRecyclerOptions.Builder<Users>().setQuery(query, Users.class).build();
 
          adapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
@@ -249,7 +236,7 @@ public class fragmentSearch extends Fragment {
         adapter.startListening();*/
 
 
-    }
+}
 
     /*public static class UsersViewHolder extends RecyclerView.ViewHolder{
         View mView;
@@ -283,4 +270,3 @@ public class fragmentSearch extends Fragment {
 
 
     }*/
-}
