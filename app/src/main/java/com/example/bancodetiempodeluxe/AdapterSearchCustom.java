@@ -70,8 +70,10 @@ public class AdapterSearchCustom extends RecyclerView.Adapter<AdapterSearchCusto
 
                 for(CustomUser customUser : usersFull){
 
-                    if(customUser.getJobtitle().toLowerCase(Locale.ROOT).contains(filterPattern)){
-                        filteredUsers.add(customUser);
+                    if(customUser.getJobtitle() != null){
+                        if(customUser.getJobtitle().toLowerCase(Locale.ROOT).contains(filterPattern)){
+                            filteredUsers.add(customUser);
+                        }
                     }
 
                 }

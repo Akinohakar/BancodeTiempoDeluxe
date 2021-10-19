@@ -528,6 +528,7 @@ public class transactionsFragment extends Fragment {
             document.writeTo(new FileOutputStream(file));
             Toast.makeText(getActivity(),"PDF generado Correctamente en "+Environment.getExternalStorageDirectory().getAbsolutePath(), Toast.LENGTH_SHORT).show();
         }catch (FileNotFoundException e) {
+            requestPermision();
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
